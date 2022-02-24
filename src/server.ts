@@ -13,7 +13,12 @@ app.use(bodyParser.json());
 app.use(routes);
 //rotas ficam depois do express.json pois ele faz a aplicação interpretar json
 
-const port = 3333;
-app.listen(port, () => console.log(`🔥 Server running on port ${port} 🚀 `));
+import "./database/connection";
+
+app.listen(process.env.NODE_PORT, () =>
+  console.log(
+    `🔥 Server running on host http://localhost:${process.env.NODE_PORT} 🚀 `
+  )
+);
 
 app.get("/", (req, res) => res.send({ message: "Hello PokeWorld!" }));
