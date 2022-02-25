@@ -1,6 +1,5 @@
 import { AxiosInstance, AxiosResponse } from "axios";
 import { api } from "../client/api";
-import { IPokemonListResponse } from "../interfaces";
 import { IGetPokemonsListService } from "../protocols/getPokemonsListService";
 import axios from "axios";
 
