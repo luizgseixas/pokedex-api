@@ -29,9 +29,13 @@ export interface IPokemonData {
 
 interface ISprite {
   front_default: string;
-  back_default: string;
   front_shiny: string;
+  front_female?: string;
+  front_shiny_female?: string;
+  back_default: string;
   back_shiny: string;
+  back_female?: string;
+  back_shiny_female?: string;
 }
 
 interface IMove {
@@ -71,4 +75,45 @@ interface IEvolution_detail {
   held_item: string;
   item: string;
   location: string;
+}
+
+export namespace PokemonChainResponse {
+  type Response = {
+    id: number
+    chain: Chain
+  }
+
+  type Chain = {
+    evolution_details: Evolution_detals[]
+    is_baby: boolean
+    species: {
+      name: string,
+      url: string
+    }
+    envolves_to: Chain[]
+  }
+
+  type Evolution_detals = {
+    gender: null,
+    held_item: null,
+    item: null,
+    known_move: null,
+    known_move_type: null,
+    location: null,
+    min_affection: null,
+    min_beauty: null,
+    min_happiness: number,
+    min_level: number,
+    needs_overworld_rain: boolean,
+    party_species: null,
+    party_type: null,
+    relative_physical_stats: null,
+    time_of_day: string,
+    trade_species: null,
+    trigger: {
+      name: string,
+      url: string
+    },
+    turn_upside_down: boolean
+  }
 }

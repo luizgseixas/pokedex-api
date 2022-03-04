@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { PokedexController } from "../app/controllers/pokedex_controller";
+import { PokedexController } from "../app/controllers/pokedex-controller";
 
 const router = Router();
 const pokeController = new PokedexController();

@@ -1,5 +1,5 @@
 import { IPokemonListResponse } from "../interfaces/interfaces";
 
 export interface IGetPokemonsListService {
-  execute: () => Promise<IPokemonListResponse | undefined | 0>;
+  execute: () => Promise<string | 0>;
 }
