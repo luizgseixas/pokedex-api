@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { IGetPokemonsListService } from "../protocols/get-pokemons-list-service";
+import { IGetPokemonsListService } from "../../domain/services";
 import { GetPokemonsList } from "../services";
 
 export class PokedexController {

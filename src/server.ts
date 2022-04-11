@@ -3,7 +3,7 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import routes from "./routes/routes";
-import { connection } from "./database/connection";
+import { connection } from "./infra/connection";
 
 const app = express();
 

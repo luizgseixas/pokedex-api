@@ -1,6 +1,6 @@
 import { AxiosInstance, AxiosResponse } from "axios";
 import { Api } from "../client/api";
-import { IGetPokemonsListService } from "../protocols/get-pokemons-list-service";
+import { IGetPokemonsListService } from "../../domain/services";
 import axios from "axios";
 
 interface IPokemon {
@@ -14,11 +14,11 @@ export class GetPokemonsList implements IGetPokemonsListService {
 
   public async execute() {
     try {
-      const { data } = await this.api.get<IPokemon>("https://pokeapi.co/api/v2/pokemon");
+      const { data } = await this.api.get<IPokemon>("/pokemon");
 
       if (!data) return 0;
       // console.log(data);
-      
+
       return data;
     } catch (error) {
       console.error(error);
