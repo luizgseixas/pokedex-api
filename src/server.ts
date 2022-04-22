@@ -2,8 +2,14 @@ import "reflect-metadata";
 import "dotenv/config";
 import express from "express";
 import cors from "cors";
+import swaggerUi from 'swagger-ui-express'
+
 import routes from "./routes/routes";
 import { connection } from "./infra/connection";
+
+import swaggerDocs from './swagger.json';
+
+
 
 const app = express();
 
@@ -13,6 +19,7 @@ app.use(cors());
 app.use(express.json());
 app.use(routes);
 //rotas ficam depois do express.json pois ele faz a aplicação interpretar json
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 connection();
 
 app.listen(process.env.NODE_PORT, () =>
