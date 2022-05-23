@@ -1,12 +1,11 @@
-import { AxiosInstance, AxiosResponse } from "axios";
 import { Api } from "../client/api";
 import { IGetPokemonsListService } from "../../domain/services";
-import axios from "axios";
+
 
 interface IPokemon {
   name: string
 }
-export class GetPokemonsList implements IGetPokemonsListService {
+export class GetPokemonsListService implements IGetPokemonsListService {
   private api: Api;
   constructor() {
     this.api = new Api();

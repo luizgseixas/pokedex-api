@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { IGetPokemonsListService } from "../../domain/services";
-import { GetPokemonsList } from "../services";
+import { GetPokemonsListService } from "../services";
 
 export class PokedexController {
   async hello(req: Request, res: Response) {
@@ -8,7 +8,7 @@ export class PokedexController {
   }
 
   async getPokemonList(req: Request, res: Response) {
-    const service = new GetPokemonsList();
+    const service = new GetPokemonsListService();
     try {
       const list = await service.execute();
       console.log(list)
