@@ -1,10 +1,12 @@
 import { Router } from "express";
-import { PokedexController } from "../application/controllers";
+import { makeGetFamilyTree } from "src/main/factories/get-family-tree";
+import { PokedexController } from "../../application/controllers";
 
 const router = Router();
 const pokeController = new PokedexController();
 router.get("/", pokeController.hello);
 router.get("/list", pokeController.getPokemonList);
 // router.get("/pokemon/:name", pokeController.fetchPokemonInfo);
+router.get('/tree/:id', makeGetFamilyTree().execute )
 
 export default router;

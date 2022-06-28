@@ -5,9 +5,9 @@ import cors from "cors";
 import swaggerUi from 'swagger-ui-express'
 
 import routes from "./routes/routes";
-import { connection } from "./infra/typeorm/connection";
+import { connection } from "../infra/typeorm/connection";
 
-import swaggerDocs from './swagger.json';
+import swaggerDocs from '../swagger.json';
 
 
 
