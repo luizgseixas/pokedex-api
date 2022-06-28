@@ -1,9 +1,15 @@
-import { Column, Entity, JoinTable, ManyToMany, PrimaryColumn } from "typeorm";
-import { Move } from "./move";
-import { Type } from "./types";
+import { PokemonChainResponse } from "src/domain/interfaces/interfaces";
+import { Pokemon } from "src/domain/typeorm/entities/pokemon";
+import { Column, CreateDateColumn, Entity, JoinTable, ManyToMany, PrimaryColumn } from "typeorm";
+import { MoveEntity } from "./move";
+import { TypeEntity } from "./types";
 
 @Entity()
-export class Pokemon {
+export class PokemonEntity {
+  constructor(data: Partial<PokemonEntity | Pokemon>) {
+    if (data) Object.assign(this, data);
+  }
+
   @PrimaryColumn()
   id: string;
 
@@ -61,11 +67,40 @@ export class Pokemon {
   @Column()
   speed: number;
 
-  @ManyToMany(() => Move, (move) => move.pokemon, { nullable: false })
-  @JoinTable()
-  move: Move[];
+  @CreateDateColumn()
+  created_at?: Date;
 
-  @ManyToMany(() => Type, (type) => type.pokemon, { nullable: false })
+  @ManyToMany(() => MoveEntity, (move) => move.pokemon, { nullable: false })
   @JoinTable()
-  type: Type[];
+  move: MoveEntity[];
+
+  @ManyToMany(() => TypeEntity, (type) => type.pokemon, { nullable: false })
+  @JoinTable()
+  type: TypeEntity[];
+
+  public toPlainClass(): Pokemon {
+    return new Pokemon(
+      {
+        name: this.name,
+        heigth: this.heigth,
+        weight: this.weight,
+        location_area: this.location_area,
+        sprite_front_default: this.sprite_front_default,
+        sprite_front_female: this.sprite_front_female,
+        sprite_front_shiny: this.sprite_front_shiny,
+        sprite_front_shiny_female: this.sprite_front_shiny_female,
+        sprite_back_default: this.sprite_back_default,
+        sprite_back_female: this.sprite_back_female,
+        sprite_back_shiny: this.sprite_back_shiny,
+        sprite_back_shiny_female: this.sprite_back_shiny_female,
+        hp: this.hp,
+        attack: this.attack,
+        defense: this.defense,
+        special_attack: this.special_attack,
+        special_defense: this.special_defense,
+        speed: this.speed,
+      },
+      this.id,
+    );
+  }
 }

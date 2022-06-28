@@ -2,14 +2,15 @@ import {
   Column,
   Entity,
   ManyToMany,
-  ManyToOne,
-  PrimaryColumn,
   PrimaryGeneratedColumn,
 } from "typeorm";
-import { Pokemon } from "./pokemon";
+
+import { PokemonEntity } from "./pokemon";
+
+import { Move } from '@src/domain/typeorm/entities'
 
 @Entity()
-export class Move {
+export class MoveEntity {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
@@ -19,6 +20,17 @@ export class Move {
   @Column()
   url: string;
 
-  @ManyToMany(() => Pokemon, (pokemon) => pokemon.move, { nullable: false })
-  pokemon: Pokemon[];
+  @ManyToMany(() => PokemonEntity, (pokemon) => pokemon.move, { nullable: false })
+  pokemon: PokemonEntity[];
+
+  public toPlainClass(): Move {
+    return new Move(
+      {
+        name: this.name,
+        url: this.url,
+        pokemon: this.pokemon
+      },
+      this.id,
+    );
+  }
 }
