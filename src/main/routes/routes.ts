@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { makeGetFamilyTree } from "src/main/factories/get-family-tree";
-import { PokedexController } from "../../application/controllers";
+import { PokedexController } from "../../presentation/controllers";
 
 const router = Router();
 const pokeController = new PokedexController();
