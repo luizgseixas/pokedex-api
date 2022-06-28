@@ -1,1 +1,1 @@
-export * from "./get-pokemons-list-service";
+export * from "./get-pokemons-list.service";
