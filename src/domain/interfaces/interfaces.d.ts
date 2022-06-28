@@ -55,7 +55,8 @@ interface IStat {
   stat: { name: string };
 }
 
-export interface IEvolutions {
+export interface IFamilyTree {
+  baby_trigger_item: any;
   id: string;
   chain: IEvolutionChain;
 }
