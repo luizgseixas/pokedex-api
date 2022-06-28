@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { IGetPokemonsListService } from "../../domain/services";
-import { GetPokemonsListService } from "../services";
+import { GetPokemonsListService } from "../../application/services";
 
 export class PokedexController {
   async hello(req: Request, res: Response) {
