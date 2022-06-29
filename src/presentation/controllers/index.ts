@@ -1,1 +1,1 @@
-export * from './get-pokemon-list.controller'
+export * from './get-pokemons-list.controller';
