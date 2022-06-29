@@ -4,6 +4,7 @@ import { left, right } from 'src/domain/shared/utils/either';
 
 export class GetPokemonsListFeature implements IGetPokemonsList {
   private api: PokemonApi;
+
   constructor() {
     this.api = new PokemonApi();
   }
@@ -12,12 +13,10 @@ export class GetPokemonsListFeature implements IGetPokemonsList {
     try {
       const { data } = await this.api.getPokemonLists();
 
-      if (!data) return left(0);
-
       return right(data);
-    } catch (error) {
-      console.error(error);
-      throw new Error();
+    } catch (err) {
+      console.error(err);
+      return left(err);
     }
   }
 }

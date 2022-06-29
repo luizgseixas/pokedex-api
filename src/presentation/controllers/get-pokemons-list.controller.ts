@@ -1,6 +1,6 @@
 import { IGetPokemonsList } from '@src/domain/features';
 import { IController } from '../protocols';
-import { ok, serverError } from '../helpers/http-helper';
+import { badRequest, ok } from '../helpers/http-helper';
 
 export class GetPokemonsListController implements IController {
   private readonly getPokemonsListFeature: IGetPokemonsList;
@@ -10,14 +10,13 @@ export class GetPokemonsListController implements IController {
   }
 
   async handle() {
-    try {
-      const list = await this.getPokemonsListFeature.execute();
-      console.log(list);
+    const result = await this.getPokemonsListFeature.execute();
+    console.log(result);
 
-      return ok(list);
-    } catch (error: any) {
-      console.error(error);
-      return serverError(error);
+    if (result.isLeft()) {
+      return badRequest(result.value);
     }
+
+    return ok(result.value);
   }
 }
