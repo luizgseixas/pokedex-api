@@ -14,6 +14,15 @@ export class PokemonApi extends HttpClient {
     }
   }
 
+  async getPokemonInformations(pokemon: string): Promise<any> {
+    try {
+      console.log('pokemon', pokemon);
+      return this.instance.get(`/pokemon/${pokemon}`);
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
   async getFamilyTree(pokemonId: string): Promise<any> {
     try {
       return this.instance.get(`/pokemon-species/${pokemonId}`);
