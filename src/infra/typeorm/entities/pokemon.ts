@@ -1,8 +1,7 @@
-import { PokemonChainResponse } from "src/domain/interfaces/interfaces";
-import { Pokemon } from "src/domain/typeorm/entities/pokemon";
-import { Column, CreateDateColumn, Entity, JoinTable, ManyToMany, PrimaryColumn } from "typeorm";
-import { MoveEntity } from "./move";
-import { TypeEntity } from "./types";
+import { Pokemon } from 'src/domain/typeorm/entities/pokemon';
+import { Column, CreateDateColumn, Entity, JoinTable, ManyToMany, PrimaryColumn } from 'typeorm';
+import { MoveEntity } from './move';
+import { TypeEntity } from './types';
 
 @Entity()
 export class PokemonEntity {
