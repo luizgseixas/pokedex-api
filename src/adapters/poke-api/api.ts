@@ -1,27 +1,24 @@
-import { AxiosResponse } from "axios";
-import { HttpClient } from "../http";
-
+import { AxiosResponse } from 'axios';
+import { HttpClient } from '../http';
 
 export class PokemonApi extends HttpClient {
-  constructor () {
-    super({ baseURL: 'https://pokeapi.co/api/v2'});
+  constructor() {
+    super({ baseURL: 'https://pokeapi.co/api/v2' });
   }
 
-  async getPokemonLists(): Promise<AxiosResponse<any>> {
+  async getPokemonLists(): Promise<any> {
     try {
       return this.instance.get('/pokemon');
     } catch (err) {
-      console.error(err)
-      return null;
+      console.error(err);
     }
   }
 
-  async getFamilyTree(pokemonId: string): Promise<AxiosResponse<any>> {
+  async getFamilyTree(pokemonId: string): Promise<any> {
     try {
-      return this.instance.get(`/pokemon-species/${pokemonId}`)
+      return this.instance.get(`/pokemon-species/${pokemonId}`);
     } catch (err) {
-      console.error(err)
-      return null
+      console.error(err);
     }
   }
 }
