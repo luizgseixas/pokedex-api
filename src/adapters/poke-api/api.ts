@@ -1,4 +1,4 @@
-import { IFamilyTree, IPokemonData, IPokemonList } from '@src/domain/adapters/responses';
+import { IFamilyTree, IPokemonData, IPokemonListResponse } from '@src/domain/adapters/responses';
 import { AxiosResponse } from 'axios';
 import { HttpClient } from '../http';
 
@@ -7,8 +7,11 @@ export class PokemonApi extends HttpClient {
     super({ baseURL: 'https://pokeapi.co/api/v2' });
   }
 
-  async getPokemonLists(): Promise<AxiosResponse<IPokemonList>> {
-    return this.instance.get('/pokemon');
+  async getPokemonLists(
+    offset?: string,
+    limit?: string,
+  ): Promise<AxiosResponse<IPokemonListResponse>> {
+    return this.instance.get(`/pokemon?offset=${offset}&limit=${limit}`);
   }
 
   async getPokemonInformations(pokemon: string): Promise<AxiosResponse<IPokemonData>> {

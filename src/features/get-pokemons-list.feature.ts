@@ -9,9 +9,9 @@ export class GetPokemonsListFeature implements IGetPokemonsList {
     this.api = new PokemonApi();
   }
 
-  public async execute(): IGetPokemonsList.Result {
+  public async execute({ offset, limit }: IGetPokemonsList.Params): IGetPokemonsList.Result {
     try {
-      const { data } = await this.api.getPokemonLists();
+      const { data } = await this.api.getPokemonLists(offset, limit);
 
       return right(data);
     } catch (err) {

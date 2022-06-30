@@ -10,7 +10,6 @@ export class GetPokemonInformationController implements IController {
   }
 
   async handle(httpRequest?: HttpRequest | undefined): Promise<HttpResponse> {
-    console.log('httpRequest', httpRequest);
     const result = await this.getPokemonInformationFeature.execute(httpRequest?.params);
 
     if (result.isLeft()) {

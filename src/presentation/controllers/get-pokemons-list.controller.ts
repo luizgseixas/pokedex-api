@@ -1,5 +1,5 @@
 import { IGetPokemonsList } from '@src/domain/features';
-import { IController } from '../protocols';
+import { HttpRequest, IController } from '../protocols';
 import { badRequest, ok } from '../helpers/http-helper';
 
 export class GetPokemonsListController implements IController {
@@ -9,8 +9,8 @@ export class GetPokemonsListController implements IController {
     this.getPokemonsListFeature = getPokemonsListFeature;
   }
 
-  async handle() {
-    const result = await this.getPokemonsListFeature.execute();
+  async handle(httpRequest: HttpRequest) {
+    const result = await this.getPokemonsListFeature.execute(httpRequest?.query);
     console.log(result);
 
     if (result.isLeft()) {
