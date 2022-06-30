@@ -3,13 +3,13 @@ export interface IPokemonData {
   name: string;
   height: number;
   weight: number;
-  types: IPokemonType[];
+  types: IType[];
   stats: IStat[];
   sprites: ISprite;
   moves: IMove[];
 }
 
-interface ISprite {
+export interface ISprite {
   front_default: string;
   front_shiny: string;
   front_female?: string;
@@ -20,19 +20,20 @@ interface ISprite {
   back_shiny_female?: string;
 }
 
-interface IMove {
+export interface IMove {
   move: {
     name: string;
+    url: string;
   };
 }
 
-interface IPokemonType {
+export interface IType {
   type: {
     name: string;
   };
 }
 
-interface IStat {
+export interface IStat {
   base_stat: number;
   stat: { name: string };
 }
