@@ -3,7 +3,7 @@ import { Request, Response } from 'express';
 
 // adapter para qualquer controller ser aceito pelo express, caso seja necessário trocar o express futuramente
 
-export const adaptRoute = (controller: IController) => {
+export const adaptRouteExpress = (controller: IController) => {
   return async (req: Request, res: Response) => {
     const httpRequest: HttpRequest = {
       body: req.body,
