@@ -14,22 +14,33 @@ export class MapFamilyTreeFeature implements IMapFamilyTree {
       const { data } = await this.api.getFamilyTree(pokemonId);
       console.log(data);
 
-      const familyTree = {
-        first_evolution: {
-          name: data.chain.species.name,
-        },
+      const first_evolution = {
+        name: data.chain.species.name,
+      };
 
-        second_evolution: {
+      let second_evolution = {};
+      let third_evolution = {};
+
+      if (data.chain.evolves_to.length > 0) {
+        second_evolution = {
           name: data.chain.evolves_to[0].species.name,
           evolves_details: evolutions_filter(data.chain.evolves_to[0].evolution_details),
-        },
+        };
+      }
 
-        third_evolution: {
+      if (data.chain.evolves_to[0].evolves_to.length > 0) {
+        third_evolution = {
           name: data.chain.evolves_to[0].evolves_to[0].species.name,
           evolves_details: evolutions_filter(
             data.chain.evolves_to[0].evolves_to[0].evolution_details,
           ),
-        },
+        };
+      }
+
+      const familyTree = {
+        first_evolution,
+        second_evolution,
+        third_evolution,
       };
 
       console.log(familyTree);

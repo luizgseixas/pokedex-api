@@ -1,8 +1,25 @@
 import { Either } from '../shared/utils/either';
-import { IFamilyTree } from '../adapters/responses';
 
 export interface IMapFamilyTree {
   execute: (params: IMapFamilyTree.Params) => IMapFamilyTree.Result;
+}
+
+export interface IPokemonFamilyTree {
+  first_evolution: {
+    name: string;
+  };
+  second_evolution:
+    | {
+        name: string;
+        evolves_details: Record<string, unknown>;
+      }
+    | Record<string, unknown>;
+  third_evolution:
+    | {
+        name: string;
+        evolves_details: Record<string, unknown>;
+      }
+    | Record<string, unknown>;
 }
 
 export namespace IMapFamilyTree {
@@ -10,5 +27,5 @@ export namespace IMapFamilyTree {
     pokemonId: string;
   };
 
-  export type Result = Promise<Either<Error, any>>;
+  export type Result = Promise<Either<Error, IPokemonFamilyTree>>;
 }
