@@ -1,14 +1,13 @@
 import { Router } from 'express';
-// import { makeGetFamilyTree } from '@src/main/factories/get-family-tree';
-import { adaptRoute } from '../adapters/express-routes-adapter';
+import { adaptRouteExpress } from '../adapters/express-routes-adapter';
+import { makeGetFamilyTreeController } from '../factories/get-family-tree';
 import { makeGetPokemonInformationController } from '../factories/get-pokemon-information';
 import { makeGetPokemonListController } from '../factories/get-pokemon-list';
 
 const router = Router();
 
-router.get('/list', adaptRoute(makeGetPokemonListController()));
-router.get('/pokemon/:pokemon', adaptRoute(makeGetPokemonInformationController()));
-
-// router.get('/tree/:id', makeGetFamilyTree().execute);
+router.get('/list', adaptRouteExpress(makeGetPokemonListController()));
+router.get('/pokemon/:pokemon', adaptRouteExpress(makeGetPokemonInformationController()));
+router.get('/tree/:pokemonId', adaptRouteExpress(makeGetFamilyTreeController()));
 
 export default router;

@@ -1,23 +1,21 @@
-import { Request, Response } from 'express';
-import { IController } from 'src/domain/controller/controller';
-import { IFamilyTree } from 'src/domain/interfaces/interfaces';
-import { IMapFamilyTreeService } from 'src/domain/services/map-family-tree.service';
+import { IController } from '@src/presentation/protocols/controller';
+import { IMapFamilyTree } from '@src/domain/features';
+import { HttpRequest } from '../protocols';
+import { badRequest, ok } from '../helpers/http-helper';
 
-export class GetFamilyTreeController implements IController<IFamilyTree> {
-  private readonly getFamilyTreeService: IMapFamilyTreeService;
+export class GetFamilyTreeController implements IController {
+  private readonly getFamilyTreeFeature: IMapFamilyTree;
 
-  constructor(getFamilyTreeService: IMapFamilyTreeService) {
-    this.getFamilyTreeService = getFamilyTreeService;
+  constructor(getFamilyTreeFeature: IMapFamilyTree) {
+    this.getFamilyTreeFeature = getFamilyTreeFeature;
   }
 
-  async execute(req: Request, res: Response) {
-    const { id } = req.params;
-
-    const result = await this.getFamilyTreeService.execute(id);
+  async handle(httpRequest: HttpRequest) {
+    const result = await this.getFamilyTreeFeature.execute(httpRequest.params);
 
     if (result.isLeft()) {
-      throw new Error();
+      return badRequest(result.value);
     }
-    return result;
+    return ok(result.value);
   }
 }
