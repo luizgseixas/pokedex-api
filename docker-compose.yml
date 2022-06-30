@@ -1,7 +1,6 @@
 version: '3.1'
 
 services:
-
   add_news:
     image: postgres:alpine
     ports:
@@ -11,7 +10,7 @@ services:
     volumes:
       - pg-data:/var/lib/postgresql/data
     environment:
-      POSTGRES_DB: dbnews
+      POSTGRES_DB: pokedex
       POSTGRES_USER: pguser
       POSTGRES_PASSWORD: pgpassword
 
@@ -22,6 +21,3 @@ services:
       ADMINER_DESIGN: dracula
     ports:
       - 8080:8080
-
-volumes:
-  pg-data:

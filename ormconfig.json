@@ -6,9 +6,9 @@
   "password": "pgpassword",
   "database": "pokedex",
   "synchronize": true,
-  "entities": ["dist/infra/typeorm/entities/*.js"],
-  "migrations": ["dist/infra/typeorm/migrations/*.js"],
+  "entities": ["./dist/infra/typeorm/entities/*.js"],
+  "migrations": ["./dist/infra/typeorm/migrations/*.js"],
   "cli": {
-    "migrationsDir": "src/infra/typeorm/migrations"
+    "migrationsDir": "./src/infra/typeorm/migrations"
   }
 }
