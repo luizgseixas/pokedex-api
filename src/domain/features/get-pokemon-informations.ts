@@ -1,10 +1,4 @@
-import {
-  IMove,
-  IPokemonData,
-  ISprite,
-  IStat,
-  IType,
-} from '../adapters/responses/pokemon-informations';
+import { ISprite, IStat, IType } from '../adapters/responses/pokemon-informations';
 import { Either } from '../shared/utils/either';
 import { IPokemonFamilyTree } from './map-family-tree';
 
