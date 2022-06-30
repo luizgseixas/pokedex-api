@@ -1,10 +1,10 @@
-import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
-import { Type } from "@src/domain/typeorm/entities";
-import { PokemonEntity } from "./pokemon";
+import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Type } from '@src/domain/typeorm/entities';
+import { PokemonEntity } from './pokemon';
 
-@Entity()
+@Entity('tb_type')
 export class TypeEntity {
-  @PrimaryGeneratedColumn("uuid")
+  @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column()
@@ -21,7 +21,7 @@ export class TypeEntity {
       {
         name: this.name,
         url: this.url,
-        pokemon: this.pokemon
+        pokemon: this.pokemon,
       },
       this.id,
     );

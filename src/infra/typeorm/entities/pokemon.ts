@@ -3,7 +3,7 @@ import { Column, CreateDateColumn, Entity, JoinTable, ManyToMany, PrimaryColumn 
 import { MoveEntity } from './move';
 import { TypeEntity } from './types';
 
-@Entity()
+@Entity('tb_pokemon')
 export class PokemonEntity {
   constructor(data: Partial<PokemonEntity | Pokemon>) {
     if (data) Object.assign(this, data);

@@ -1,17 +1,12 @@
-import {
-  Column,
-  Entity,
-  ManyToMany,
-  PrimaryGeneratedColumn,
-} from "typeorm";
+import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
 
-import { PokemonEntity } from "./pokemon";
+import { PokemonEntity } from './pokemon';
 
-import { Move } from '@src/domain/typeorm/entities'
+import { Move } from '@src/domain/typeorm/entities';
 
-@Entity()
+@Entity('tb_move')
 export class MoveEntity {
-  @PrimaryGeneratedColumn("uuid")
+  @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column()
@@ -28,7 +23,7 @@ export class MoveEntity {
       {
         name: this.name,
         url: this.url,
-        pokemon: this.pokemon
+        pokemon: this.pokemon,
       },
       this.id,
     );
