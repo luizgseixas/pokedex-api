@@ -1,5 +1,5 @@
 import { IController } from '@src/presentation/protocols/controller';
-import { IMapFamilyTree } from '@src/domain/features';
+import { IMapFamilyTree } from '@src/domain/usecases';
 import { HttpRequest } from '../protocols';
 import { badRequest, ok } from '../helpers/http-helper';
 

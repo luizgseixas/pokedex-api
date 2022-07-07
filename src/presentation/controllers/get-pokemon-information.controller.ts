@@ -1,5 +1,5 @@
 import { HttpRequest, HttpResponse, IController } from '../protocols';
-import { IGetPokemonInformation } from '@src/domain/features';
+import { IGetPokemonInformation } from '@src/domain/usecases';
 import { badRequest, ok } from '../helpers/http-helper';
 
 export class GetPokemonInformationController implements IController {

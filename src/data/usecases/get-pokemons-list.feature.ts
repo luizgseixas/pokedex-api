@@ -1,4 +1,4 @@
-import { IGetPokemonsList } from '@src/domain/features';
+import { IGetPokemonsList } from '@src/domain/usecases';
 import { PokemonApi } from '@src/adapters/poke-api/api';
 import { left, right } from 'src/domain/shared/utils/either';
 

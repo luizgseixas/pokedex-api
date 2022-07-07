@@ -1,7 +1,7 @@
-import { IMapFamilyTree } from '@src/domain/features/map-family-tree';
+import { IMapFamilyTree } from '@src/domain/usecases/map-family-tree';
 import { left, right } from '@src/domain/shared/utils/either';
 import { evolutions_filter } from '@src/shared/utils/evolutions-filter';
-import { PokemonApi } from '../adapters/poke-api/api';
+import { PokemonApi } from '../../adapters/poke-api/api';
 
 export class MapFamilyTreeFeature implements IMapFamilyTree {
   private api: PokemonApi;

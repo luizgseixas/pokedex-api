@@ -1,5 +1,5 @@
 import { PokemonApi } from '@src/adapters/poke-api/api';
-import { IGetPokemonInformation, IMapFamilyTree } from '@src/domain/features';
+import { IGetPokemonInformation, IMapFamilyTree } from '@src/domain/usecases';
 import { left, right } from '@src/domain/shared/utils/either';
 import { movesFilter } from '@src/shared/utils/moves-filter';
 import { spritesFilter } from '@src/shared/utils/sprites-filter';
