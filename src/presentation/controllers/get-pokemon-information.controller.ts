@@ -3,14 +3,14 @@ import { IGetPokemonInformation } from '@src/domain/usecases';
 import { badRequest, ok } from '../helpers/http-helper';
 
 export class GetPokemonInformationController implements IController {
-  private readonly getPokemonInformationFeature: IGetPokemonInformation;
+  private readonly getPokemonInformation: IGetPokemonInformation;
 
-  constructor(getPokemonInformationFeature: IGetPokemonInformation) {
-    this.getPokemonInformationFeature = getPokemonInformationFeature;
+  constructor(getPokemonInformation: IGetPokemonInformation) {
+    this.getPokemonInformation = getPokemonInformation;
   }
 
   async handle(httpRequest?: HttpRequest | undefined): Promise<HttpResponse> {
-    const result = await this.getPokemonInformationFeature.execute(httpRequest?.params);
+    const result = await this.getPokemonInformation.execute(httpRequest?.params);
 
     if (result.isLeft()) {
       return badRequest(result.value);

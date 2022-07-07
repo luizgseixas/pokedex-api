@@ -4,14 +4,14 @@ import { HttpRequest } from '../protocols';
 import { badRequest, ok } from '../helpers/http-helper';
 
 export class GetFamilyTreeController implements IController {
-  private readonly getFamilyTreeFeature: IMapFamilyTree;
+  private readonly getFamilyTree: IMapFamilyTree;
 
-  constructor(getFamilyTreeFeature: IMapFamilyTree) {
-    this.getFamilyTreeFeature = getFamilyTreeFeature;
+  constructor(getFamilyTree: IMapFamilyTree) {
+    this.getFamilyTree = getFamilyTree;
   }
 
   async handle(httpRequest: HttpRequest) {
-    const result = await this.getFamilyTreeFeature.execute(httpRequest.params);
+    const result = await this.getFamilyTree.execute(httpRequest.params);
 
     if (result.isLeft()) {
       return badRequest(result.value);
