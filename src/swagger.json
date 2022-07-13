@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "Pokedex DB",
+    "title": "Pokedex",
     "descirption": "Api minimamente aceitável pra eu jogar um fire red, hehe",
     "version": "1.0.0"
   },
@@ -16,7 +16,43 @@
       "get": {
         "summary": "Buscar lista de pokemons",
         "descrption": "Bate na pokeApi e busca uma lista contendo 20 pokemons listados na ordem da pokedex original",
+        "tags": ["Pokemon"],
+        "security": [],
+        "requestBody": {
+          "content": {
+            "application/json": {},
+            "examples": {
+              "list": {
+                "value": {
+                  "name": "Charmander",
+                  "url": "https://any_url/next"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pokemon/:pokemon": {
+      "get": {
+        "summary": "Pokemon informations",
+        "description": "",
         "tags": ["Pokemon"]
+      }
+    },
+    "/tree/:pokemonId": {
+      "get": {
+        "summary": "Pokemon evolutions",
+        "description": "Get all pokemon evolutions",
+        "tags": ["Pokemon"]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "List": {
+        "type": "array",
+        "properties": {}
       }
     }
   }
