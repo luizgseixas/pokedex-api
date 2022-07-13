@@ -1,14 +1,14 @@
 version: '3.1'
 
 services:
-  add_news:
+  pg_db:
     image: postgres:alpine
     ports:
       - '5432:5432'
     container_name: 'pgsql'
     restart: always
     volumes:
-      - pg-data:/var/lib/postgresql/data
+      - pg-data:/var/lib/docker/volumes/pokedexapi_pg-data/_data
     environment:
       POSTGRES_DB: pokedex
       POSTGRES_USER: pguser
