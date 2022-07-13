@@ -1,17 +1,17 @@
 import { IMapFamilyTree } from '@src/domain/usecases/map-family-tree';
 import { left, right } from '@src/domain/shared/utils/either';
 import { evolutions_filter } from '@src/shared/utils/evolutions-filter';
-import { IPokemonApi } from '@src/domain/adapters/api';
+import { FamilyTreeRequester } from '@src/domain/adapters';
 
 export class MapFamilyTree implements IMapFamilyTree {
-  private readonly api: IPokemonApi;
-  constructor(api: IPokemonApi) {
+  private readonly api: FamilyTreeRequester;
+  constructor(api: FamilyTreeRequester) {
     this.api = api;
   }
 
   async execute({ pokemonId }: IMapFamilyTree.Params): IMapFamilyTree.Result {
     try {
-      const data = await this.api.getFamilyTree(pokemonId);
+      const data = await this.api.familyTree(pokemonId);
       console.log(data);
 
       const first_evolution = {

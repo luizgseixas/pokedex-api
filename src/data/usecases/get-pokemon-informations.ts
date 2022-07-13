@@ -2,20 +2,20 @@ import { IGetPokemonInformation, IMapFamilyTree } from '@src/domain/usecases';
 import { left, right } from '@src/domain/shared/utils/either';
 import { movesFilter } from '@src/shared/utils/moves-filter';
 import { spritesFilter } from '@src/shared/utils/sprites-filter';
-import { IPokemonApi } from '@src/domain/adapters/api';
+import { PokemonInformationsRequester } from '@src/domain/adapters';
 
 export class GetPokemonInformation implements IGetPokemonInformation {
-  private readonly api: IPokemonApi;
+  private readonly api: PokemonInformationsRequester;
   private readonly mapFamilyTree: IMapFamilyTree;
 
-  constructor(mapFamilyTree: IMapFamilyTree, api: IPokemonApi) {
+  constructor(mapFamilyTree: IMapFamilyTree, api: PokemonInformationsRequester) {
     this.api = api;
     this.mapFamilyTree = mapFamilyTree;
   }
 
   async execute({ pokemon }: IGetPokemonInformation.Params): IGetPokemonInformation.Result {
     try {
-      const data = await this.api.getPokemonInformations(pokemon);
+      const data = await this.api.informations(pokemon);
 
       const familyTree = await this.mapFamilyTree.execute({ pokemonId: data.id.toString() });
 
