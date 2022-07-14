@@ -1,7 +1,7 @@
 import { PokemonInformationsRequester } from '../../../domain/adapters';
 import { IPokemonData } from '../../../domain/adapters/responses';
 import { IGetPokemonInformation, IMapFamilyTree } from '../../../domain/usecases';
-import { right } from '../../../domain/shared/utils/either';
+import { left, right } from '../../../domain/shared/utils/either';
 
 import { makeFamilyTree, makePokemonData } from './mocks';
 
@@ -52,6 +52,14 @@ describe('GetPokemonInformations Usecase', () => {
     const familyTreeSpy = jest.spyOn(mapFamilyTreeStub, 'execute')
     await sut.execute({ pokemon: '1' })
     expect(familyTreeSpy).toHaveBeenCalledWith({ pokemonId: '1' })
+  });
+
+  test('Should return a left error when MapFamilyTree usecase trowns', async () => {
+    const { sut, mapFamilyTreeStub } = makeSut();
+    jest.spyOn(mapFamilyTreeStub, 'execute')
+      .mockReturnValueOnce(new Promise((resolve) => resolve(left(Error()))))
+    const promise = sut.execute({ pokemon: '1' })
+    await expect(promise).resolves.toEqual(left(Error()))
   });
 
   test('Should call PokemonInformationsRequester with correct values', async () => {
