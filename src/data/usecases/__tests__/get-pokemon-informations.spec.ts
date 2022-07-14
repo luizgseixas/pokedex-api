@@ -53,4 +53,11 @@ describe('GetPokemonInformations Usecase', () => {
     await sut.execute({ pokemon: '1' })
     expect(familyTreeSpy).toHaveBeenCalledWith({ pokemonId: '1' })
   });
+
+  test('Should call PokemonInformationsRequester with correct values', async () => {
+    const { sut, apiStub } = makeSut();
+    const informationsSpy = jest.spyOn(apiStub, 'informations')
+    await sut.execute({ pokemon: '1' })
+    expect(informationsSpy).toHaveBeenCalledWith('1')
+  });
 });
