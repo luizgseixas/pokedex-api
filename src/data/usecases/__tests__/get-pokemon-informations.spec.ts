@@ -68,4 +68,12 @@ describe('GetPokemonInformations Usecase', () => {
     await sut.execute({ pokemon: '1' })
     expect(informationsSpy).toHaveBeenCalledWith('1')
   });
+
+  test('Should return a left error when PokemonInformationsRequester trowns', async () => {
+    const { sut, apiStub } = makeSut();
+    jest.spyOn(apiStub, 'informations')
+      .mockReturnValueOnce(new Promise((resolve, reject) => reject(Error())))
+    const promise = sut.execute({ pokemon: '1' })
+    await expect(promise).resolves.toEqual(left(Error()))
+  });
 });
