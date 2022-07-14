@@ -7,12 +7,12 @@ services:
       - '5432:5432'
     container_name: 'pgsql'
     restart: always
-    volumes:
-      - pg-data:/var/lib/docker/volumes/pokedexapi_pg-data/_data
     environment:
       POSTGRES_DB: pokedex
       POSTGRES_USER: pguser
       POSTGRES_PASSWORD: pgpassword
+    volumes:
+      - ./data:/data/db
 
   adminer:
     image: adminer
@@ -21,3 +21,4 @@ services:
       ADMINER_DESIGN: dracula
     ports:
       - 8080:8080
+
