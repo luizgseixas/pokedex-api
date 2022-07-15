@@ -2,7 +2,6 @@ import { FamilyTreeRequester } from '@src/domain/adapters';
 import { IEvolutionChain } from '@src/domain/adapters/responses';
 import { left, right } from '@src/domain/shared/utils/either';
 import { IMapFamilyTree } from '@src/domain/usecases';
-import { rejects } from 'assert';
 import { MapFamilyTree } from '../map-family-tree';
 import {
   makeEvolutionChain,
