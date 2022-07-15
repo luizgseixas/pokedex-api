@@ -1,6 +1,6 @@
 import { PokemonsListRequester } from '@src/domain/adapters';
 import { IPokemonListResponse } from '@src/domain/adapters/responses';
-import { left } from '@src/domain/shared/utils/either';
+import { left, right } from '@src/domain/shared/utils/either';
 import { IGetPokemonsList } from '@src/domain/usecases';
 import { GetPokemonsList } from '../get-pokemons-list';
 import { makePrimitivePokemonsList } from './mocks';
@@ -57,5 +57,11 @@ describe('GetPokemonsList Usecase', () => {
       .mockReturnValueOnce(new Promise((resolve, rejects) => rejects(new Error())));
     const promise = sut.execute();
     await expect(promise).resolves.toEqual(left(Error()));
+  });
+
+  test.only('Should return a right PokemonsList with success', async () => {
+    const { sut } = makeSut();
+    const list = await sut.execute();
+    expect(list).toEqual(right(makePrimitivePokemonsList()));
   });
 });

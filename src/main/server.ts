@@ -7,7 +7,7 @@ import swaggerUi from 'swagger-ui-express';
 import routes from './routes';
 import { connection } from '../infra/typeorm/connection';
 
-import swaggerDocs from '../swagger.json';
+// import swaggerDocs from '../swagger.json';
 
 const app = express();
 
@@ -17,7 +17,7 @@ app.use(cors());
 app.use(routes);
 
 //rotas ficam depois do express.json pois ele faz a aplicação interpretar json
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+// app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 connection();
 
 app.listen(process.env.NODE_PORT, () =>
