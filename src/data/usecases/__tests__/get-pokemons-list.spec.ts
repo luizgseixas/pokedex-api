@@ -1,5 +1,6 @@
 import { PokemonsListRequester } from '@src/domain/adapters';
 import { IPokemonListResponse } from '@src/domain/adapters/responses';
+import { left } from '@src/domain/shared/utils/either';
 import { IGetPokemonsList } from '@src/domain/usecases';
 import { GetPokemonsList } from '../get-pokemons-list';
 import { makePrimitivePokemonsList } from './mocks';
@@ -47,5 +48,14 @@ describe('GetPokemonsList Usecase', () => {
     const pokemonsListRequesterSpy = jest.spyOn(pokemonsListRequesterStub, 'lists');
     await sut.execute({ offset: '1', limit: '20' });
     expect(pokemonsListRequesterSpy).toHaveBeenCalledWith('1', '20');
+  });
+
+  test('Should return a left error if PokemonsListRequester throws', async () => {
+    const { sut, pokemonsListRequesterStub } = makeSut();
+    jest
+      .spyOn(pokemonsListRequesterStub, 'lists')
+      .mockReturnValueOnce(new Promise((resolve, rejects) => rejects(new Error())));
+    const promise = sut.execute();
+    await expect(promise).resolves.toEqual(left(Error()));
   });
 });
