@@ -12,6 +12,7 @@
   ],
   "rules": {
     "@typescript-eslint/no-namespace": "off",
-    "no-undef": "off"
+    "no-undef": "off",
+    "prefer-const": "off"
   }
 }
