@@ -1,5 +1,5 @@
 import { IGetPokemonsList } from '@src/domain/usecases';
-import { left, right } from 'src/domain/shared/utils/either';
+import { left, right } from '@src/domain/shared/utils/either';
 import { PokemonsListRequester } from '@src/domain/adapters/pokemon-list';
 
 export class GetPokemonsList implements IGetPokemonsList {
@@ -9,9 +9,9 @@ export class GetPokemonsList implements IGetPokemonsList {
     this.api = api;
   }
 
-  public async execute({ offset, limit }: IGetPokemonsList.Params): IGetPokemonsList.Result {
+  public async execute(params?: IGetPokemonsList.Params): IGetPokemonsList.Result {
     try {
-      const data = await this.api.lists(offset, limit);
+      const data = await this.api.lists(params?.offset, params?.limit);
 
       return right(data);
     } catch (err) {
