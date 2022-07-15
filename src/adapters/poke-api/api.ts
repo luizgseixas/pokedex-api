@@ -1,5 +1,5 @@
 import { FamilyTreeRequester, PokemonInformationsRequester, PokemonsListRequester } from '@src/domain/adapters';
-import { IFamilyTree, IPokemonData, IPokemonListResponse } from '@src/domain/adapters/responses';
+import { IEvolutionChain, IPokemonData, IPokemonListResponse } from '@src/domain/adapters/responses';
 import { HttpClient } from '../http';
 
 export class PokemonApiRequester extends HttpClient implements PokemonsListRequester, FamilyTreeRequester, PokemonInformationsRequester {
@@ -17,7 +17,7 @@ export class PokemonApiRequester extends HttpClient implements PokemonsListReque
     return data;
   }
 
-  async familyTree(pokemonId: string): Promise<IFamilyTree> {
+  async familyTree(pokemonId: string): Promise<IEvolutionChain> {
     const { data } = await this.instance.get(`/evolution-chain/${pokemonId}`);
     return data;
   }
