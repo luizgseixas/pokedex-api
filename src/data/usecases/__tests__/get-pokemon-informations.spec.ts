@@ -11,7 +11,7 @@ const makeMapFamilyTree = (): IMapFamilyTree => {
   class MapFamilyTreeStub implements IMapFamilyTree {
     async execute(params: IMapFamilyTree.Params): IMapFamilyTree.Result {
       // return new Promise((resolve) => resolve(right(makeFamilyTree())));
-      return new Promise(resolve => resolve(right(makeFamilyTree())));
+      return new Promise((resolve) => resolve(right(makeFamilyTree())));
     }
   }
 
@@ -20,13 +20,13 @@ const makeMapFamilyTree = (): IMapFamilyTree => {
 
 const makeApi = (): PokemonInformationsRequester => {
   class PokemonInformationsRequesterStub implements PokemonInformationsRequester {
-    informations (pokemon: string): Promise<IPokemonData> {
-      return new Promise(resolve => resolve(makePokemonData()))
+    async informations(pokemon: string): Promise<IPokemonData> {
+      return new Promise((resolve) => resolve(makePokemonData()));
     }
   }
 
-  return new PokemonInformationsRequesterStub()
-}
+  return new PokemonInformationsRequesterStub();
+};
 
 interface SutTypes {
   sut: IGetPokemonInformation;
@@ -49,37 +49,39 @@ const makeSut = (): SutTypes => {
 describe('GetPokemonInformations Usecase', () => {
   test('Should call MapFamilyTree usecase with correct values', async () => {
     const { sut, mapFamilyTreeStub } = makeSut();
-    const familyTreeSpy = jest.spyOn(mapFamilyTreeStub, 'execute')
-    await sut.execute({ pokemon: '1' })
-    expect(familyTreeSpy).toHaveBeenCalledWith({ pokemonId: '1' })
+    const familyTreeSpy = jest.spyOn(mapFamilyTreeStub, 'execute');
+    await sut.execute({ pokemon: '1' });
+    expect(familyTreeSpy).toHaveBeenCalledWith({ pokemonId: '1' });
   });
 
   test('Should return a left error when MapFamilyTree usecase trowns', async () => {
     const { sut, mapFamilyTreeStub } = makeSut();
-    jest.spyOn(mapFamilyTreeStub, 'execute')
-      .mockReturnValueOnce(new Promise((resolve) => resolve(left(Error()))))
-    const promise = sut.execute({ pokemon: '1' })
-    await expect(promise).resolves.toEqual(left(Error()))
+    jest
+      .spyOn(mapFamilyTreeStub, 'execute')
+      .mockReturnValueOnce(new Promise((resolve) => resolve(left(Error()))));
+    const promise = sut.execute({ pokemon: '1' });
+    await expect(promise).resolves.toEqual(left(Error()));
   });
 
   test('Should call PokemonInformationsRequester with correct values', async () => {
     const { sut, PokemonInformationsRequesterStub } = makeSut();
-    const informationsSpy = jest.spyOn(PokemonInformationsRequesterStub, 'informations')
-    await sut.execute({ pokemon: '1' })
-    expect(informationsSpy).toHaveBeenCalledWith('1')
+    const informationsSpy = jest.spyOn(PokemonInformationsRequesterStub, 'informations');
+    await sut.execute({ pokemon: '1' });
+    expect(informationsSpy).toHaveBeenCalledWith('1');
   });
 
   test('Should return a left error when PokemonInformationsRequester trowns', async () => {
     const { sut, PokemonInformationsRequesterStub } = makeSut();
-    jest.spyOn(PokemonInformationsRequesterStub, 'informations')
-      .mockReturnValueOnce(new Promise((resolve, reject) => reject(Error())))
-    const promise = sut.execute({ pokemon: '1' })
-    await expect(promise).resolves.toEqual(left(Error()))
+    jest
+      .spyOn(PokemonInformationsRequesterStub, 'informations')
+      .mockReturnValueOnce(new Promise((resolve, reject) => reject(Error())));
+    const promise = sut.execute({ pokemon: '1' });
+    await expect(promise).resolves.toEqual(left(Error()));
   });
 
   test('Should GetPokemonInformation usecase return a pokemonInformations on success', async () => {
     const { sut } = makeSut();
-    const informations = await sut.execute({ pokemon: '1' })
-    expect(informations).toEqual(right(makePokemonInformations()))
+    const informations = await sut.execute({ pokemon: '1' });
+    expect(informations).toEqual(right(makePokemonInformations()));
   });
 });

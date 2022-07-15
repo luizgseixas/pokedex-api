@@ -11,7 +11,7 @@ import {
 
 const makeFamilyTreeRequester = (): FamilyTreeRequester => {
   class familyTreeRequesterStub implements FamilyTreeRequester {
-    familyTree(pokemonId: string): Promise<IEvolutionChain> {
+    async familyTree(pokemonId: string): Promise<IEvolutionChain> {
       return new Promise((resolve) => resolve(makeEvolutionChain()));
     }
   }
