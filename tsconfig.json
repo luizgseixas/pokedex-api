@@ -18,5 +18,12 @@
     "strictPropertyInitialization": false,
     "allowJs": true,
     // "resolveJsonModule": true
-  }
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "**/*.spec.ts",
+    "**/*.test.ts"
+  ]
 }
