@@ -3,7 +3,7 @@ import { IPokemonData } from '../../../domain/adapters/responses';
 import { IGetPokemonInformation, IMapFamilyTree } from '../../../domain/usecases';
 import { left, right } from '../../../domain/shared/utils/either';
 
-import { makeFamilyTree, makePokemonData, makePokemonInformations } from './mocks';
+import { makeFamilyTree, makePokemonData, makePokemonInformations } from './__mocks__';
 
 import { GetPokemonInformation } from '../get-pokemon-informations';
 

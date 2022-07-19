@@ -7,7 +7,7 @@ import {
   makeEvolutionChain,
   makeFirstAndSecondEvolutionChain,
   makeFirstEvolutionChain,
-} from './mocks';
+} from './__mocks__';
 
 const makeFamilyTreeRequester = (): FamilyTreeRequester => {
   class familyTreeRequesterStub implements FamilyTreeRequester {

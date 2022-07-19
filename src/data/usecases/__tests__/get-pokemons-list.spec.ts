@@ -3,7 +3,7 @@ import { IPokemonListResponse } from '@src/domain/adapters/responses';
 import { left, right } from '@src/domain/shared/utils/either';
 import { IGetPokemonsList } from '@src/domain/usecases';
 import { GetPokemonsList } from '../get-pokemons-list';
-import { makePokemonList, makePrimitivePokemonsList } from './mocks';
+import { makePokemonList, makePrimitivePokemonsList } from './__mocks__';
 
 const makePokemonsListRequester = (): PokemonsListRequester => {
   class PokemonsListRequesterStub implements PokemonsListRequester {
