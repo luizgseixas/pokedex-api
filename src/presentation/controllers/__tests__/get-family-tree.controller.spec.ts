@@ -3,7 +3,7 @@ import { IMapFamilyTree } from '../../../domain/usecases/map-family-tree'
 import { makeFamilyTree } from './__mocks__/get-family-tree.mock'
 import { HttpRequest } from '../../protocols';
 import { left, right } from '../../../domain/shared/utils/either';
-import { badRequest, ok } from '../../helpers/http-helper';
+import { badRequest, ok, serverError } from '../../helpers/http-helper';
 
 const makeMapFamilyTree = (): IMapFamilyTree => {
   class MapFamilyTreeStub implements IMapFamilyTree {
@@ -44,11 +44,11 @@ describe('GetFamilyTree Controller', () => {
     expect(mapSpy).toHaveBeenCalledWith({ pokemonId: '1' });
   })
 
-  test('Should return 400 if mapFamilyTree returns a left error', async () => {
+  test('Should return 500 if mapFamilyTree returns a left error', async () => {
     const { sut, mapFamilyTreeStub } = makeSut();
     jest.spyOn(mapFamilyTreeStub, 'execute').mockReturnValueOnce(new Promise(resolve => resolve(left(new Error()))))
     const httpResponse = await sut.handle(makeFakeRequest());
-    expect(httpResponse).toEqual(badRequest(new Error()));
+    expect(httpResponse).toEqual(serverError(new Error()));
   })
 
   test('Sould return 200 on success', async () => {
