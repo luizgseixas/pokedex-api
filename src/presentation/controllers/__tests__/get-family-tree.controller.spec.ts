@@ -4,6 +4,7 @@ import { makeFamilyTree } from './__mocks__/get-family-tree.mock'
 import { HttpRequest } from '../../protocols';
 import { left, right } from '../../../domain/shared/utils/either';
 import { badRequest, ok, serverError } from '../../helpers/http-helper';
+import { MissingParamError } from '../../errors/missing-param-error';
 
 const makeMapFamilyTree = (): IMapFamilyTree => {
   class MapFamilyTreeStub implements IMapFamilyTree {
@@ -37,6 +38,12 @@ const makeSut = (): SutTypes => {
 }
 
 describe('GetFamilyTree Controller', () => {
+  test('Should return 400 if pokemonId param is not provided', async () => {
+    const { sut } = makeSut();
+    const httpResponse = await sut.handle({});
+    expect(httpResponse).toEqual(badRequest(new MissingParamError('pokemonId')));
+  })
+
   test('Should call mapFamilyTree with correct value', async () => {
     const { sut, mapFamilyTreeStub } = makeSut();
     const mapSpy = jest.spyOn(mapFamilyTreeStub, 'execute')
