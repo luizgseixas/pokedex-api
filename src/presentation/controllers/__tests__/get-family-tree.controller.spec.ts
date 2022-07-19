@@ -43,4 +43,11 @@ describe('GetFamilyTree Controller', () => {
     await sut.handle(makeFakeRequest());
     expect(mapSpy).toHaveBeenCalledWith({ pokemonId: '1' });
   })
+
+  test('Should return 400 if mapFamilyTree returns a left error', async () => {
+    const { sut, mapFamilyTreeStub } = makeSut();
+    jest.spyOn(mapFamilyTreeStub, 'execute').mockReturnValueOnce(new Promise(resolve => resolve(left(new Error()))))
+    const httpResponse = await sut.handle(makeFakeRequest());
+    expect(httpResponse).toEqual(badRequest(new Error()));
+  })
 })
