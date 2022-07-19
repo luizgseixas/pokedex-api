@@ -10,4 +10,5 @@ module.exports = {
     '^@src/(.*)$': '<rootDir>/src/$1',
   },
   setupFiles: ['dotenv/config'],
+  "modulePathIgnorePatterns": ["__mocks__"]
 };
