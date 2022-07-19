@@ -16,9 +16,6 @@ export class GetPokemonsList implements IGetPokemonsList {
       const next = data.next ? data.next.split('?')[1] : null;
       const previous = data.previous ? data.previous.split('?')[1] : null;
 
-      console.log(next, previous);
-      console.log(process.env.API_URL);
-
       data.next = next != null ? `${process.env.API_URL}?${next}` : null;
       data.previous = previous != null ? `${process.env.API_URL}?${previous}` : null;
 
