@@ -3,7 +3,7 @@ import { IPokemonListResponse } from '@src/domain/adapters/responses';
 import { left, right } from '@src/domain/shared/utils/either';
 import { IGetPokemonsList } from '@src/domain/usecases';
 import { GetPokemonsList } from '../get-pokemons-list';
-import { makePrimitivePokemonsList } from './mocks';
+import { makePokemonList, makePrimitivePokemonsList } from './mocks';
 
 const makePokemonsListRequester = (): PokemonsListRequester => {
   class PokemonsListRequesterStub implements PokemonsListRequester {
@@ -59,9 +59,9 @@ describe('GetPokemonsList Usecase', () => {
     await expect(promise).resolves.toEqual(left(Error()));
   });
 
-  test.only('Should return a right PokemonsList with success', async () => {
+  test('Should return a right PokemonsList with success', async () => {
     const { sut } = makeSut();
     const list = await sut.execute();
-    expect(list).toEqual(right(makePrimitivePokemonsList()));
+    expect(list).toEqual(right(makePokemonList()));
   });
 });
