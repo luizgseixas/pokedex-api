@@ -1,4 +1,4 @@
-import { GetFamilyTreeController } from 'src/presentation/controllers/get-family-tree.controller';
+import { GetFamilyTreeController } from 'src/presentation/controllers';
 import { MapFamilyTree } from 'src/data/usecases';
 import { IController } from 'src/presentation/protocols';
 import { PokemonApiRequester } from '@src/adapters/poke-api/api';

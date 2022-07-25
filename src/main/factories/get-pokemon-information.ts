@@ -1,11 +1,11 @@
 import { PokemonApiRequester } from '@src/adapters/poke-api/api';
 import { GetPokemonInformation, MapFamilyTree } from '@src/data/usecases';
-import { GetPokemonInformationController } from '@src/presentation/controllers/get-pokemon-information.controller';
+import { GetPokemonInformationsController } from '@src/presentation/controllers';
 import { IController } from '@src/presentation/protocols';
 
-export const makeGetPokemonInformationController = (): IController => {
+export const makeGetPokemonInformationsController = (): IController => {
   const api = new PokemonApiRequester();
   const mapPokemonFamilyTree = new MapFamilyTree(api);
   const getPokemonInformation = new GetPokemonInformation(mapPokemonFamilyTree, api);
-  return new GetPokemonInformationController(getPokemonInformation);
+  return new GetPokemonInformationsController(getPokemonInformation);
 };

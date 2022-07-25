@@ -2,7 +2,7 @@ import { HttpRequest, HttpResponse, IController } from '../protocols';
 import { IGetPokemonInformation } from '@src/domain/usecases';
 import { badRequest, ok } from '../helpers/http-helper';
 
-export class GetPokemonInformationController implements IController {
+export class GetPokemonInformationsController implements IController {
   private readonly getPokemonInformation: IGetPokemonInformation;
 
   constructor(getPokemonInformation: IGetPokemonInformation) {
