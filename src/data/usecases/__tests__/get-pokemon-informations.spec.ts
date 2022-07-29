@@ -1,6 +1,6 @@
 import { PokemonInformationsRequester } from '../../../domain/adapters';
 import { IPokemonData } from '../../../domain/adapters/responses';
-import { IGetPokemonInformation, IMapFamilyTree } from '../../../domain/usecases';
+import { IGetPokemonInformations, IMapFamilyTree } from '../../../domain/usecases';
 import { left, right } from '../../../domain/shared/utils/either';
 
 import { makeFamilyTree, makePokemonData, makePokemonInformations } from './__mocks__';
@@ -29,7 +29,7 @@ const makeApi = (): PokemonInformationsRequester => {
 };
 
 interface SutTypes {
-  sut: IGetPokemonInformation;
+  sut: IGetPokemonInformations;
   mapFamilyTreeStub: IMapFamilyTree;
   PokemonInformationsRequesterStub: PokemonInformationsRequester;
 }

@@ -1,11 +1,11 @@
 import { PokemonInformationsModel } from '../models/pokemon-informations';
 import { Either } from '../shared/utils/either';
 
-export interface IGetPokemonInformation {
-  execute: (params: IGetPokemonInformation.Params) => IGetPokemonInformation.Result;
+export interface IGetPokemonInformations {
+  execute: (params: IGetPokemonInformations.Params) => IGetPokemonInformations.Result;
 }
 
-export namespace IGetPokemonInformation {
+export namespace IGetPokemonInformations {
   export type Params = {
     pokemon: string;
   };
