@@ -1,11 +1,11 @@
+import { IGetPokemonInformations } from '@src/domain/usecases';
 import { HttpRequest, HttpResponse, IController } from '../protocols';
-import { IGetPokemonInformation } from '@src/domain/usecases';
 import { badRequest, ok } from '../helpers/http-helper';
 
 export class GetPokemonInformationsController implements IController {
-  private readonly getPokemonInformation: IGetPokemonInformation;
+  private readonly getPokemonInformation: IGetPokemonInformations;
 
-  constructor(getPokemonInformation: IGetPokemonInformation) {
+  constructor(getPokemonInformation: IGetPokemonInformations) {
     this.getPokemonInformation = getPokemonInformation;
   }
 
