@@ -17,6 +17,8 @@
     "@typescript-eslint"
   ],
   "rules": {
+    "space-before-function-paren": ["error", "always"],
+    "arrow-body-style": "off",
     "import/prefer-default-export": "off",
     "import/no-unresolved": "off",
     "import/extensions": "off",

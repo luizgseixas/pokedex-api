@@ -6,9 +6,9 @@ module.exports = {
   transform: {
     '.+\\.ts$': 'ts-jest',
   },
+  setupFiles: ['dotenv/config'],
   moduleNameMapper: {
     '^@src/(.*)$': '<rootDir>/src/$1',
   },
-  setupFiles: ['dotenv/config'],
-  "modulePathIgnorePatterns": ["__mocks__"]
+  modulePathIgnorePatterns: ['__mocks__'],
 };

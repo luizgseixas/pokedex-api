@@ -5,11 +5,11 @@ import { PokemonsListRequester } from '@src/domain/adapters/pokemon-list';
 export class GetPokemonsList implements IGetPokemonsList {
   private readonly api: PokemonsListRequester;
 
-  constructor(api: PokemonsListRequester) {
+  constructor (api: PokemonsListRequester) {
     this.api = api;
   }
 
-  public async execute(params?: IGetPokemonsList.Params): IGetPokemonsList.Result {
+  public async execute (params?: IGetPokemonsList.Params): IGetPokemonsList.Result {
     try {
       const data = await this.api.lists(params?.offset, params?.limit);
 
@@ -21,7 +21,6 @@ export class GetPokemonsList implements IGetPokemonsList {
 
       return right(data);
     } catch (err) {
-      console.error(err);
       return left(err);
     }
   }
