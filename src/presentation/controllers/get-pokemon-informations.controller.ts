@@ -1,19 +1,19 @@
 import { IGetPokemonInformations } from '@src/domain/usecases';
 import { HttpRequest, HttpResponse, IController } from '../protocols';
-import { badRequest, ok } from '../helpers/http-helper';
+import { badRequest, ok, serverError } from '../helpers/http-helper';
 
 export class GetPokemonInformationsController implements IController {
   private readonly getPokemonInformation: IGetPokemonInformations;
 
-  constructor(getPokemonInformation: IGetPokemonInformations) {
+  constructor (getPokemonInformation: IGetPokemonInformations) {
     this.getPokemonInformation = getPokemonInformation;
   }
 
-  async handle(httpRequest?: HttpRequest | undefined): Promise<HttpResponse> {
+  async handle (httpRequest?: HttpRequest | undefined): Promise<HttpResponse> {
     const result = await this.getPokemonInformation.execute(httpRequest?.params);
 
     if (result.isLeft()) {
-      return badRequest(result.value);
+      return serverError(result.value);
     }
 
     return ok(result.value);

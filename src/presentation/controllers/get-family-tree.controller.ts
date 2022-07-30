@@ -7,11 +7,11 @@ import { HttpRequest } from '../protocols';
 export class GetFamilyTreeController implements IController {
   private readonly getFamilyTree: IMapFamilyTree;
 
-  constructor(getFamilyTree: IMapFamilyTree) {
+  constructor (getFamilyTree: IMapFamilyTree) {
     this.getFamilyTree = getFamilyTree;
   }
 
-  async handle(httpRequest: HttpRequest) {
+  async handle (httpRequest: HttpRequest) {
     if (!httpRequest.params) return badRequest(new MissingParamError('pokemonId'));
     const result = await this.getFamilyTree.execute(httpRequest.params);
 
