@@ -1,6 +1,6 @@
 import { IGetPokemonsList } from '@src/domain/usecases';
 import { HttpRequest, IController } from '../protocols';
-import { badRequest, ok, serverError } from '../helpers/http-helper';
+import { ok, serverError } from '../helpers/http-helper';
 
 export class GetPokemonsListController implements IController {
   private readonly getPokemonsList: IGetPokemonsList;
@@ -12,7 +12,7 @@ export class GetPokemonsListController implements IController {
   async handle (httpRequest: HttpRequest) {
     const result = await this.getPokemonsList.execute(httpRequest?.query);
 
-    if (result.isLeft()) {
+    if (result.isFailure()) {
       return serverError(result.value);
     }
 

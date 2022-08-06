@@ -1,7 +1,7 @@
-import { FamilyTreeRequester } from '@src/domain/adapters';
-import { IEvolutionChain } from '@src/domain/adapters/responses';
-import { left, right } from '@src/domain/shared/utils/either';
-import { IMapFamilyTree } from '@src/domain/usecases';
+import { FamilyTreeRequester } from '../../../domain/adapters';
+import { IEvolutionChain } from '../../../domain/adapters/responses';
+import { failure, success } from '../../../domain/shared/utils/either';
+import { IMapFamilyTree } from '../../../domain/usecases';
 import { MapFamilyTree } from '../map-family-tree';
 import {
   makeEvolutionChain,
@@ -10,13 +10,13 @@ import {
 } from './__mocks__';
 
 const makeFamilyTreeRequester = (): FamilyTreeRequester => {
-  class familyTreeRequesterStub implements FamilyTreeRequester {
-    async familyTree(pokemonId: string): Promise<IEvolutionChain> {
+  class FamilyTreeRequesterStub implements FamilyTreeRequester {
+    async familyTree (pokemonId: string): Promise<IEvolutionChain> {
       return new Promise((resolve) => resolve(makeEvolutionChain()));
     }
   }
 
-  return new familyTreeRequesterStub();
+  return new FamilyTreeRequesterStub();
 };
 
 interface SutTypes {
@@ -44,13 +44,13 @@ describe('MapFamilyTree Usecase', () => {
     expect(familyTreeRequesterSpy).toHaveBeenCalledWith('1');
   });
 
-  test('Should return familyTreeRequester a left error if familyTreeRequester thword', async () => {
+  test('Should return familyTreeRequester a failure error if familyTreeRequester thword', async () => {
     const { sut, familyTreeRequesterStub } = makeSut();
     jest
       .spyOn(familyTreeRequesterStub, 'familyTree')
       .mockReturnValueOnce(new Promise((resolve, rejects) => rejects(new Error())));
     const promise = sut.execute(sutParam);
-    expect(promise).resolves.toEqual(left(Error()));
+    expect(promise).resolves.toEqual(failure(Error()));
   });
 
   test("Should return only first_evolution if don't have more evolutions on success", async () => {
@@ -61,7 +61,7 @@ describe('MapFamilyTree Usecase', () => {
     const familyTree = await sut.execute(sutParam);
     console.log(familyTree);
     expect(familyTree).toEqual(
-      right({
+      success({
         first_evolution: {
           name: 'any_name',
         },
@@ -76,7 +76,7 @@ describe('MapFamilyTree Usecase', () => {
       .mockReturnValueOnce(new Promise((resolve) => resolve(makeFirstAndSecondEvolutionChain())));
     const familyTree = await sut.execute(sutParam);
     expect(familyTree).toEqual(
-      right({
+      success({
         first_evolution: {
           name: 'any_name',
         },
@@ -94,7 +94,7 @@ describe('MapFamilyTree Usecase', () => {
     const { sut } = makeSut();
     const familyTree = await sut.execute(sutParam);
     expect(familyTree).toEqual(
-      right({
+      success({
         first_evolution: {
           name: 'any_name',
         },

@@ -1,13 +1,13 @@
-import { PokemonsListRequester } from '@src/domain/adapters';
-import { IPokemonListResponse } from '@src/domain/adapters/responses';
-import { left, right } from '@src/domain/shared/utils/either';
-import { IGetPokemonsList } from '@src/domain/usecases';
+import { IPokemonListResponse } from '../../../domain/adapters/responses';
+import { failure, success } from '../../../domain/shared/utils/either';
+import { IGetPokemonsList } from '../../../domain/usecases';
+import { PokemonsListRequester } from '../../../domain/adapters';
 import { GetPokemonsList } from '../get-pokemons-list';
 import { makePokemonList, makePrimitivePokemonsList } from './__mocks__';
 
 const makePokemonsListRequester = (): PokemonsListRequester => {
   class PokemonsListRequesterStub implements PokemonsListRequester {
-    async lists(
+    async lists (
       offset?: string | undefined,
       limit?: string | undefined,
     ): Promise<IPokemonListResponse> {
@@ -23,7 +23,7 @@ interface SutTypes {
   pokemonsListRequesterStub: PokemonsListRequester;
 }
 
-const sutParam = { pokemonId: '1' };
+const sutParam = { offset: '1', limit: '20' };
 
 const makeSut = (): SutTypes => {
   const pokemonsListRequesterStub = makePokemonsListRequester();
@@ -46,22 +46,22 @@ describe('GetPokemonsList Usecase', () => {
   test('Should call PokemonsListRequester with correct value', async () => {
     const { sut, pokemonsListRequesterStub } = makeSut();
     const pokemonsListRequesterSpy = jest.spyOn(pokemonsListRequesterStub, 'lists');
-    await sut.execute({ offset: '1', limit: '20' });
+    await sut.execute(sutParam);
     expect(pokemonsListRequesterSpy).toHaveBeenCalledWith('1', '20');
   });
 
-  test('Should return a left error if PokemonsListRequester throws', async () => {
+  test('Should return a failure error if PokemonsListRequester throws', async () => {
     const { sut, pokemonsListRequesterStub } = makeSut();
     jest
       .spyOn(pokemonsListRequesterStub, 'lists')
       .mockReturnValueOnce(new Promise((resolve, rejects) => rejects(new Error())));
     const promise = sut.execute();
-    await expect(promise).resolves.toEqual(left(Error()));
+    await expect(promise).resolves.toEqual(failure(Error()));
   });
 
-  test('Should return a right PokemonsList with success', async () => {
+  test('Should return a success PokemonsList with success', async () => {
     const { sut } = makeSut();
     const list = await sut.execute();
-    expect(list).toEqual(right(makePokemonList()));
+    expect(list).toEqual(success(makePokemonList()));
   });
 });

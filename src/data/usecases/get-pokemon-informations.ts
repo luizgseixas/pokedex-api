@@ -1,5 +1,5 @@
 import { IGetPokemonInformations, IMapFamilyTree } from '@src/domain/usecases';
-import { left, right } from '@src/domain/shared/utils/either';
+import { failure, success } from '@src/domain/shared/utils/either';
 import { movesFilter } from '@src/shared/utils/moves-filter';
 import { spritesFilter } from '@src/shared/utils/sprites-filter';
 import { PokemonInformationsRequester } from '@src/domain/adapters';
@@ -9,19 +9,19 @@ export class GetPokemonInformation implements IGetPokemonInformations {
 
   private readonly mapFamilyTree: IMapFamilyTree;
 
-  constructor(mapFamilyTree: IMapFamilyTree, api: PokemonInformationsRequester) {
+  constructor (mapFamilyTree: IMapFamilyTree, api: PokemonInformationsRequester) {
     this.api = api;
     this.mapFamilyTree = mapFamilyTree;
   }
 
-  async execute({ pokemon }: IGetPokemonInformations.Params): IGetPokemonInformations.Result {
+  async execute ({ pokemon }: IGetPokemonInformations.Params): IGetPokemonInformations.Result {
     try {
       const data = await this.api.informations(pokemon);
 
       const familyTree = await this.mapFamilyTree.execute({ pokemonId: data.id.toString() });
 
-      if (familyTree.isLeft()) {
-        return left(familyTree.value);
+      if (familyTree.isFailure()) {
+        return failure(familyTree.value);
       }
 
       const information = {
@@ -34,10 +34,10 @@ export class GetPokemonInformation implements IGetPokemonInformations {
         familyTree: familyTree.value,
       };
 
-      return right(information);
+      return success(information);
     } catch (err) {
       console.error(err);
-      return left(err);
+      return failure(err);
     }
   }
 }

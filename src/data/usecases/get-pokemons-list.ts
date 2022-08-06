@@ -1,5 +1,5 @@
 import { IGetPokemonsList } from '@src/domain/usecases';
-import { left, right } from '@src/domain/shared/utils/either';
+import { failure, success } from '@src/domain/shared/utils/either';
 import { PokemonsListRequester } from '@src/domain/adapters/pokemon-list';
 
 export class GetPokemonsList implements IGetPokemonsList {
@@ -19,9 +19,9 @@ export class GetPokemonsList implements IGetPokemonsList {
       data.next = next != null ? `${process.env.API_URL}?${next}` : null;
       data.previous = previous != null ? `${process.env.API_URL}?${previous}` : null;
 
-      return right(data);
+      return success(data);
     } catch (err) {
-      return left(err);
+      return failure(err);
     }
   }
 }

@@ -2,14 +2,14 @@ import { GetFamilyTreeController } from '../get-family-tree.controller';
 import { IMapFamilyTree } from '../../../domain/usecases/map-family-tree';
 import { makeFamilyTree } from './__mocks__/get-family-tree.mock';
 import { HttpRequest } from '../../protocols';
-import { left, right } from '../../../domain/shared/utils/either';
+import { failure, success } from '../../../domain/shared/utils/either';
 import { badRequest, ok, serverError } from '../../helpers/http-helper';
 import { MissingParamError } from '../../errors/missing-param-error';
 
 const makeMapFamilyTree = (): IMapFamilyTree => {
   class MapFamilyTreeStub implements IMapFamilyTree {
-    async execute(params: IMapFamilyTree.Params): IMapFamilyTree.Result {
-      return new Promise((resolve) => resolve(right(makeFamilyTree())));
+    async execute (params: IMapFamilyTree.Params): IMapFamilyTree.Result {
+      return new Promise((resolve) => resolve(success(makeFamilyTree())));
     }
   }
 
@@ -51,9 +51,9 @@ describe('GetFamilyTree Controller', () => {
     expect(mapSpy).toHaveBeenCalledWith({ pokemonId: '1' });
   });
 
-  test('Should return 500 if mapFamilyTree returns a left error', async () => {
+  test('Should return 500 if mapFamilyTree returns a failure error', async () => {
     const { sut, mapFamilyTreeStub } = makeSut();
-    jest.spyOn(mapFamilyTreeStub, 'execute').mockReturnValueOnce(new Promise((resolve) => resolve(left(new Error()))));
+    jest.spyOn(mapFamilyTreeStub, 'execute').mockReturnValueOnce(new Promise((resolve) => resolve(failure(new Error()))));
     const httpResponse = await sut.handle(makeFakeRequest());
     expect(httpResponse).toEqual(serverError(new Error()));
   });

@@ -2,13 +2,13 @@ import { GetPokemonsListController } from '../get-pokemons-list.controller';
 import { IGetPokemonsList } from '../../../domain/usecases';
 import { fakePokemonList } from './__mocks__/get-pokemons-list.mock';
 import { HttpRequest } from '../../protocols';
-import { left, right } from '../../../domain/shared/utils/either';
+import { failure, success } from '../../../domain/shared/utils/either';
 import { ok, serverError } from '../../helpers/http-helper';
 
 const makeGetPokemonsList = (): IGetPokemonsList => {
   class GetPokemonsListStub implements IGetPokemonsList {
     async execute (params?: IGetPokemonsList.Params | undefined): IGetPokemonsList.Result {
-      return new Promise((resolve) => resolve(right(fakePokemonList)));
+      return new Promise((resolve) => resolve(success(fakePokemonList)));
     }
   }
 
@@ -44,9 +44,9 @@ describe('GetPokemonsList Controller', () => {
     expect(listStub).toHaveBeenCalledWith({ offset: '0', limit: '20' });
   });
 
-  test('Should return 500 if GetPokemonsList return a left error', async () => {
+  test('Should return 500 if GetPokemonsList return a failure error', async () => {
     const { sut, getPokemonsListStub } = makeSut();
-    jest.spyOn(getPokemonsListStub, 'execute').mockReturnValue(new Promise((resolve) => resolve(left(new Error()))));
+    jest.spyOn(getPokemonsListStub, 'execute').mockReturnValue(new Promise((resolve) => resolve(failure(new Error()))));
     const httpResponse = await sut.handle(makeFakeRequest());
     expect(httpResponse).toEqual(serverError(new Error()));
   });

@@ -26,6 +26,9 @@
     "no-redeclare": "off",
     "no-promise-executor-return": "off",
     "class-methods-use-this": "off",
-    "max-classes-per-file": "off"
+    "max-classes-per-file": "off",
+    "no-use-before-define": "off",
+    "no-param-reassign": "off",
+    "prefer-const": "off"
   }
 }
