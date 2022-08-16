@@ -20,6 +20,7 @@ export class MapFamilyTree implements IMapFamilyTree {
       familyTree = {
         first_evolution: { name: data.chain.species.name },
       };
+      console.log(familyTree);
 
       if (data.chain.evolves_to.length > 0) {
         familyTree.second_evolution = {
