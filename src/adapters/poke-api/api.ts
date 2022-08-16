@@ -19,7 +19,6 @@ export class PokemonApiRequester extends HttpClient implements PokemonsListReque
 
   async familyTree (pokemonId: string): Promise<IEvolutionChain> {
     const { data } = await this.instance.get(`/evolution-chain/${pokemonId}`);
-    console.log('batata');
     return data;
   }
 }
