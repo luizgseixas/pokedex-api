@@ -4,15 +4,20 @@ import { failure, success } from '../../../domain/shared/utils/either';
 import { IMapFamilyTree } from '../../../domain/usecases';
 import { MapFamilyTree } from '../map-family-tree';
 import {
-  makeEvolutionChain,
-  makeFirstAndSecondEvolutionChain,
-  makeFirstEvolutionChain,
+  makeFamilyTreeOne,
+  makeFamilyTreeTwo,
+  makeFamilyTreeThree,
+  makeFamilyTreeAll,
+  makeOneEvolutionChain,
+  makeTwoEvolutionChain,
+  makeThreeEvolutionChain,
+  makeAllEvolutionChain,
 } from './__mocks__';
 
 const makeFamilyTreeRequester = (): FamilyTreeRequester => {
   class FamilyTreeRequesterStub implements FamilyTreeRequester {
     async familyTree (pokemonId: string): Promise<IEvolutionChain> {
-      return new Promise((resolve) => resolve(makeEvolutionChain()));
+      return new Promise((resolve) => resolve(makeThreeEvolutionChain()));
     }
   }
 
@@ -57,15 +62,11 @@ describe('MapFamilyTree Usecase', () => {
     const { sut, familyTreeRequesterStub } = makeSut();
     jest
       .spyOn(familyTreeRequesterStub, 'familyTree')
-      .mockReturnValueOnce(new Promise((resolve) => resolve(makeFirstEvolutionChain())));
+      .mockReturnValueOnce(new Promise((resolve) => resolve(makeOneEvolutionChain())));
     const familyTree = await sut.execute(sutParam);
     console.log(familyTree);
     expect(familyTree).toEqual(
-      success({
-        first_evolution: {
-          name: 'any_name',
-        },
-      }),
+      success(makeFamilyTreeOne()),
     );
   });
 
@@ -73,44 +74,29 @@ describe('MapFamilyTree Usecase', () => {
     const { sut, familyTreeRequesterStub } = makeSut();
     jest
       .spyOn(familyTreeRequesterStub, 'familyTree')
-      .mockReturnValueOnce(new Promise((resolve) => resolve(makeFirstAndSecondEvolutionChain())));
+      .mockReturnValueOnce(new Promise((resolve) => resolve(makeTwoEvolutionChain())));
     const familyTree = await sut.execute(sutParam);
     expect(familyTree).toEqual(
-      success({
-        first_evolution: {
-          name: 'any_name',
-        },
-        second_evolution: {
-          evolves_details: {
-            min_level: 16,
-          },
-          name: 'any_name',
-        },
-      }),
+      success(makeFamilyTreeTwo()),
     );
   });
 
-  test('Should return all three evolutions on success', async () => {
+  test("Should return three evolutions if don't have more evolutions on success", async () => {
     const { sut } = makeSut();
     const familyTree = await sut.execute(sutParam);
     expect(familyTree).toEqual(
-      success({
-        first_evolution: {
-          name: 'any_name',
-        },
-        second_evolution: {
-          evolves_details: {
-            min_level: 16,
-          },
-          name: 'any_name',
-        },
-        third_evolution: {
-          evolves_details: {
-            min_level: 32,
-          },
-          name: 'any_name',
-        },
-      }),
+      success(makeFamilyTreeThree()),
+    );
+  });
+
+  test('Should return all evolutions on success', async () => {
+    const { sut, familyTreeRequesterStub } = makeSut();
+    jest
+      .spyOn(familyTreeRequesterStub, 'familyTree')
+      .mockReturnValueOnce(new Promise((resolve) => resolve(makeAllEvolutionChain())));
+    const familyTree = await sut.execute(sutParam);
+    expect(familyTree).toEqual(
+      success(makeFamilyTreeAll()),
     );
   });
 });

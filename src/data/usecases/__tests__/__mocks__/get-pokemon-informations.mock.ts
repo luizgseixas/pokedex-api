@@ -1,6 +1,6 @@
 import { IPokemonData } from '@src/domain/adapters/responses';
 import { PokemonInformationsModel } from '@src/domain/models/pokemon-informations';
-import { makeFamilyTree } from './map-family-tree.mock';
+import { makeFamilyTreeThree } from './map-family-tree.mock';
 
 export const makePokemonData = (): IPokemonData => ({
   id: 1,
@@ -60,5 +60,5 @@ export const makePokemonInformations = (): PokemonInformationsModel => ({
       url: 'any_url',
     },
   ],
-  familyTree: makeFamilyTree(),
+  familyTree: makeFamilyTreeThree(),
 });

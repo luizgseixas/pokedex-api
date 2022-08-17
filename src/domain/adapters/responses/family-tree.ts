@@ -11,16 +11,21 @@ export interface IChain {
   evolution_details: IEvolutionDetail[];
 }
 
+interface IDetail {
+  name: string;
+  url: string;
+}
+
 export interface IEvolutionDetail {
   gender: string | null;
   min_level: number | null;
   min_happiness: number | null;
   trade_species: boolean | null;
   known_move: string | null;
-  known_move_type: string | null;
+  known_move_type: IDetail | null;
   held_item: string | null;
-  item: string | null;
-  location: string | null;
+  item: IDetail | null;
+  location: IDetail | null;
   min_affection: any | null;
   min_beauty: any | null;
   needs_overworld_rain: boolean | null;

@@ -3,14 +3,14 @@ import { IPokemonData } from '../../../domain/adapters/responses';
 import { IGetPokemonInformations, IMapFamilyTree } from '../../../domain/usecases';
 import { failure, success } from '../../../domain/shared/utils/either';
 
-import { makeFamilyTree, makePokemonData, makePokemonInformations } from './__mocks__';
+import { makeFamilyTreeThree, makePokemonData, makePokemonInformations } from './__mocks__';
 
 import { GetPokemonInformation } from '../get-pokemon-informations';
 
 const makeMapFamilyTree = (): IMapFamilyTree => {
   class MapFamilyTreeStub implements IMapFamilyTree {
     async execute (params: IMapFamilyTree.Params): IMapFamilyTree.Result {
-      return new Promise((resolve) => resolve(success(makeFamilyTree())));
+      return new Promise((resolve) => resolve(success(makeFamilyTreeThree())));
     }
   }
 
