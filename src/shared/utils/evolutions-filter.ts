@@ -6,8 +6,12 @@ export const evolutionsDetailsFilter = (arr: Array<any>): any => {
 
   const evolutions = arr.map((datail) => Object.keys(datail).reduce((newObj, key) => {
     const value = datail[key];
-    if (value !== null && value !== false && key !== 'trigger' && value !== '') {
-      newObj[key] = value;
+    if (value !== null && value !== false && value !== '') {
+      if (key === 'trigger') {
+        newObj[key] = value.name;
+      } else {
+        newObj[key] = value;
+      }
     }
     return newObj;
   }, {}))[0];
