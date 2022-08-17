@@ -7,7 +7,7 @@ export interface PokemonInformationsModel {
   stats: Array<Stat>;
   types: Array<Type>;
   moves: Array<Move>;
-  familyTree: FamilyTreeModel;
+  familyTree: Array<FamilyTreeModel>;
 }
 
 interface Sprite {
