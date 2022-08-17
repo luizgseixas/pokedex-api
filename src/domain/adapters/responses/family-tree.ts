@@ -4,7 +4,7 @@ export interface IEvolutionChain {
   chain: IChain;
 }
 
-interface IChain {
+export interface IChain {
   species: { name: string; url: string };
   evolves_to: IChain[];
   is_baby: boolean;

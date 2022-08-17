@@ -10,5 +10,5 @@ export namespace IMapFamilyTree {
     pokemonId: string;
   };
 
-  export type Result = Promise<Either<Error, FamilyTreeModel>>;
+  export type Result = Promise<Either<Error, FamilyTreeModel[]>>;
 }
