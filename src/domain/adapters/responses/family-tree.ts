@@ -4,14 +4,14 @@ export interface IEvolutionChain {
   chain: IChain;
 }
 
-interface IChain {
+export interface IChain {
   species: { name: string; url: string };
   evolves_to: IChain[];
   is_baby: boolean;
-  evolution_details: IEvolution_detail[];
+  evolution_details: IEvolutionDetail[];
 }
 
-interface IEvolution_detail {
+export interface IEvolutionDetail {
   gender: string | null;
   min_level: number | null;
   min_happiness: number | null;

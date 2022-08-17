@@ -29,6 +29,7 @@
     "max-classes-per-file": "off",
     "no-use-before-define": "off",
     "no-param-reassign": "off",
-    "prefer-const": "off"
+    "prefer-const": "off",
+    "max-len": "off"
   }
 }
