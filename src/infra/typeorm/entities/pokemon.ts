@@ -1,83 +1,85 @@
 import { Pokemon } from '@src/domain/typeorm/entities/pokemon';
-import { Column, CreateDateColumn, Entity, JoinTable, ManyToMany, PrimaryColumn } from 'typeorm';
+import {
+  Column, CreateDateColumn, Entity, JoinTable, ManyToMany, PrimaryColumn,
+} from 'typeorm';
 import { MoveEntity } from './move';
 import { TypeEntity } from './types';
 
 @Entity('tb_pokemon')
 export class PokemonEntity {
-  constructor(data: Partial<PokemonEntity | Pokemon>) {
+  constructor (data: Partial<PokemonEntity | Pokemon>) {
     if (data) Object.assign(this, data);
   }
 
   @PrimaryColumn()
-  id: string;
+    id: string;
 
   @Column()
-  name: string;
+    name: string;
 
   @Column()
-  heigth: number;
+    heigth: number;
 
   @Column()
-  weight: number;
+    weight: number;
 
   @Column()
-  location_area: string;
+    location_area: string;
 
   @Column()
-  sprite_front_default: string;
+    sprite_front_default: string;
 
   @Column({ nullable: true })
-  sprite_front_female: string;
+    sprite_front_female: string;
 
   @Column()
-  sprite_front_shiny: string;
+    sprite_front_shiny: string;
 
   @Column({ nullable: true })
-  sprite_front_shiny_female: string;
+    sprite_front_shiny_female: string;
 
   @Column()
-  sprite_back_default: string;
+    sprite_back_default: string;
 
   @Column({ nullable: true })
-  sprite_back_female: string;
+    sprite_back_female: string;
 
   @Column()
-  sprite_back_shiny: string;
+    sprite_back_shiny: string;
 
   @Column({ nullable: true })
-  sprite_back_shiny_female: string;
+    sprite_back_shiny_female: string;
 
   @Column()
-  hp: number;
+    hp: number;
 
   @Column()
-  attack: number;
+    attack: number;
 
   @Column()
-  defense: number;
+    defense: number;
 
   @Column()
-  special_attack: number;
+    special_attack: number;
 
   @Column()
-  special_defense: number;
+    special_defense: number;
 
   @Column()
-  speed: number;
+    speed: number;
 
   @CreateDateColumn()
-  created_at?: Date;
+    created_at?: Date;
 
   @ManyToMany(() => MoveEntity, (move) => move.pokemon, { nullable: false })
   @JoinTable()
-  move: MoveEntity[];
+    move: MoveEntity[];
 
   @ManyToMany(() => TypeEntity, (type) => type.pokemon, { nullable: false })
   @JoinTable()
-  type: TypeEntity[];
+    type: TypeEntity[];
 
-  public toPlainClass(): Pokemon {
+  public toPlainClass (): Pokemon {
     return new Pokemon(
       {
         name: this.name,

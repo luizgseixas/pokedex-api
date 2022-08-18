@@ -1,5 +1,5 @@
 export class Pokemon {
-  constructor(data?: Omit<Pokemon, 'id'>, id?: string) {
+  constructor (data?: Omit<Pokemon, 'id'>, id?: string) {
     if (data) Object.assign(this, data);
     if (id) this.id = id;
   }

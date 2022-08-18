@@ -1,22 +1,24 @@
-import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column, Entity, ManyToMany, PrimaryGeneratedColumn,
+} from 'typeorm';
 import { Type } from '@src/domain/typeorm/entities';
 import { PokemonEntity } from './pokemon';
 
 @Entity('tb_type')
 export class TypeEntity {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+    id: string;
 
   @Column()
-  name: string;
+    name: string;
 
   @Column()
-  url: string;
+    url: string;
 
   @ManyToMany(() => PokemonEntity, (pokemon) => pokemon.type)
-  pokemon: PokemonEntity[];
+    pokemon: PokemonEntity[];
 
-  public toPlainClass(): Type {
+  public toPlainClass (): Type {
     return new Type(
       {
         name: this.name,

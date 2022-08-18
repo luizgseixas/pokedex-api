@@ -1,7 +1,7 @@
-import { Pokemon } from "./pokemon";
+import { Pokemon } from './pokemon';
 
 export class Move {
-  constructor(data?: Omit<Move, 'id'>, id?: string) {
+  constructor (data?: Omit<Move, 'id'>, id?: string) {
     if (data) Object.assign(this, data);
     if (id) this.id = id;
   }
