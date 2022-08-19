@@ -4,18 +4,21 @@ import { FamilyTreeModel } from '@src/domain/models/family-tree';
 export const evolutionsDetailsFilter = (arr: Array<any>): any => {
   if (arr.length === 0) return null;
 
-  const evolutions = arr.map((datail) => Object.keys(datail).reduce((newObj, key) => {
-    const value = datail[key];
-    if (value !== null && value !== false && value !== '') {
-      if (key === 'trigger') {
-        newObj[key] = value.name;
-      } else {
-        newObj[key] = value;
+  const evolutions = arr.map((detail) => {
+    if (detail.location) console.log('masi um', detail);
+    return Object.keys(detail).reduce((newObj, key) => {
+      const value = detail[key];
+      if (value !== null && value !== false && value !== '') {
+        // console.log(value);
+        if (key === 'trigger') {
+          newObj[key] = value.name;
+        } else {
+          newObj[key] = value;
+        }
       }
-    }
-    return newObj;
-  }, {}))[0];
-
+      return newObj;
+    }, {});
+  })[0];
   return evolutions;
 };
 
