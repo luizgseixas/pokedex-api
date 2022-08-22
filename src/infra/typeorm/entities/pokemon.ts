@@ -3,6 +3,7 @@ import {
   Column, CreateDateColumn, Entity, JoinTable, ManyToMany, PrimaryColumn,
 } from 'typeorm';
 import { MoveEntity } from './move';
+import { TrainerEntity } from './trainer';
 import { TypeEntity } from './types';
 
 @Entity('tb_pokemon')
@@ -71,13 +72,17 @@ export class PokemonEntity {
   @CreateDateColumn()
     created_at?: Date;
 
-  @ManyToMany(() => MoveEntity, (move) => move.pokemon, { nullable: false })
+  @ManyToMany(() => MoveEntity, (move) => move.pokemons, { nullable: false })
   @JoinTable()
-    move: MoveEntity[];
+    moves: MoveEntity[];
 
-  @ManyToMany(() => TypeEntity, (type) => type.pokemon, { nullable: false })
+  @ManyToMany(() => TypeEntity, (type) => type.pokemons, { nullable: false })
   @JoinTable()
-    type: TypeEntity[];
+    types: TypeEntity[];
+
+  @ManyToMany(() => TrainerEntity, (trainer) => trainer.pokemons, { nullable: false })
+  @JoinTable()
+    trainers: PokemonEntity[];
 
   public toPlainClass (): Pokemon {
     return new Pokemon(

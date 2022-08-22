@@ -16,15 +16,14 @@ export class MoveEntity {
   @Column()
     url: string;
 
-  @ManyToMany(() => PokemonEntity, (pokemon) => pokemon.move, { nullable: false })
-    pokemon: PokemonEntity[];
+  @ManyToMany(() => PokemonEntity, (pokemon) => pokemon.moves, { nullable: false })
+    pokemons: PokemonEntity[];
 
   public toPlainClass (): Move {
     return new Move(
       {
         name: this.name,
         url: this.url,
-        pokemon: this.pokemon,
       },
       this.id,
     );

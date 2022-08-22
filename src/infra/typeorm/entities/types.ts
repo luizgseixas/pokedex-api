@@ -15,15 +15,14 @@ export class TypeEntity {
   @Column()
     url: string;
 
-  @ManyToMany(() => PokemonEntity, (pokemon) => pokemon.type)
-    pokemon: PokemonEntity[];
+  @ManyToMany(() => PokemonEntity, (pokemon) => pokemon.types, { nullable: false })
+    pokemons: PokemonEntity[];
 
   public toPlainClass (): Type {
     return new Type(
       {
         name: this.name,
         url: this.url,
-        pokemon: this.pokemon,
       },
       this.id,
     );

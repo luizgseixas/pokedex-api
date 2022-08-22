@@ -1,3 +1,7 @@
+import { Move } from './move';
+import { Trainer } from './trainer';
+import { Type } from './type';
+
 export class Pokemon {
   constructor (data?: Omit<Pokemon, 'id'>, id?: string) {
     if (data) Object.assign(this, data);
@@ -23,5 +27,8 @@ export class Pokemon {
   special_attack: number;
   special_defense: number;
   speed: number;
+  types?: Type[];
+  moves?: Move[];
+  trainer?: Trainer[];
   created_at?: Date;
 }

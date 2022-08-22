@@ -9,5 +9,5 @@ export class Type {
   id: string;
   name: string;
   url: string;
-  pokemon: Pokemon[];
+  pokemon?: Pokemon[];
 }
