@@ -6,7 +6,7 @@ import { MoveEntity } from './move';
 import { PokemonEntity } from './pokemon';
 import { TypeEntity } from './types';
 
-@Entity('tb_pokemon')
+@Entity('tb_trainer')
 export class TrainerEntity {
   constructor (data: Partial<TrainerEntity | Trainer>) {
     if (data) Object.assign(this, data);
