@@ -1,7 +1,7 @@
-import { IPokemonListResponse } from '../../../domain/adapters/responses';
-import { failure, success } from '../../../domain/shared/utils/either';
-import { IGetPokemonsList } from '../../../domain/usecases';
-import { PokemonsListRequester } from '../../../domain/adapters';
+import { IPokemonListResponse } from '../../../../domain/adapters/responses';
+import { failure, success } from '../../../../domain/shared/utils/either';
+import { IGetPokemonsList } from '../../../../domain/usecases';
+import { PokemonsListRequester } from '../../../../domain/adapters';
 import { GetPokemonsList } from '../get-pokemons-list';
 import { makePokemonList, makePrimitivePokemonsList } from './__mocks__';
 
