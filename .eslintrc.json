@@ -32,6 +32,8 @@
     "prefer-const": "off",
     "max-len": "off",
     "no-console": "off",
-    "lines-between-class-members": "off"
+    "lines-between-class-members": "off",
+    "no-useless-constructor": "off",
+    "no-empty-function": "off"
   }
 }

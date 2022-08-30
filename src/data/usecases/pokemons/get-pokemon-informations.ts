@@ -5,14 +5,7 @@ import { spritesFilter } from '@src/shared/utils/sprites-filter';
 import { IPokemonInformationsRequester } from '@src/domain/adapters';
 
 export class GetPokemonInformation implements IGetPokemonInformations {
-  private readonly api: IPokemonInformationsRequester;
-
-  private readonly mapFamilyTree: IMapFamilyTree;
-
-  constructor (mapFamilyTree: IMapFamilyTree, api: IPokemonInformationsRequester) {
-    this.api = api;
-    this.mapFamilyTree = mapFamilyTree;
-  }
+  constructor (private readonly mapFamilyTree: IMapFamilyTree, private readonly api: IPokemonInformationsRequester) {}
 
   async execute ({ pokemon }: IGetPokemonInformations.Params): IGetPokemonInformations.Result {
     try {
