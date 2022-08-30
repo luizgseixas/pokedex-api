@@ -1,5 +1,5 @@
 import { IPokemonData } from './responses';
 
-export interface PokemonInformationsRequester {
+export interface IPokemonInformationsRequester {
   informations: (pokemon: string) => Promise<IPokemonData>;
 }

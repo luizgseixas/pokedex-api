@@ -2,14 +2,14 @@ import { IGetPokemonInformations, IMapFamilyTree } from '@src/domain/usecases/po
 import { failure, success } from '@src/domain/shared/utils/either';
 import { movesFilter } from '@src/shared/utils/moves-filter';
 import { spritesFilter } from '@src/shared/utils/sprites-filter';
-import { PokemonInformationsRequester } from '@src/domain/adapters';
+import { IPokemonInformationsRequester } from '@src/domain/adapters';
 
 export class GetPokemonInformation implements IGetPokemonInformations {
-  private readonly api: PokemonInformationsRequester;
+  private readonly api: IPokemonInformationsRequester;
 
   private readonly mapFamilyTree: IMapFamilyTree;
 
-  constructor (mapFamilyTree: IMapFamilyTree, api: PokemonInformationsRequester) {
+  constructor (mapFamilyTree: IMapFamilyTree, api: IPokemonInformationsRequester) {
     this.api = api;
     this.mapFamilyTree = mapFamilyTree;
   }

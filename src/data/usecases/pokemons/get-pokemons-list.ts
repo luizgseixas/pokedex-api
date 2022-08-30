@@ -1,11 +1,11 @@
 import { IGetPokemonsList } from '@src/domain/usecases/pokemon';
 import { failure, success } from '@src/domain/shared/utils/either';
-import { PokemonsListRequester } from '@src/domain/adapters/pokemon-list';
+import { IPokemonsListRequester } from '@src/domain/adapters/pokemon-list';
 
 export class GetPokemonsList implements IGetPokemonsList {
-  private readonly api: PokemonsListRequester;
+  private readonly api: IPokemonsListRequester;
 
-  constructor (api: PokemonsListRequester) {
+  constructor (api: IPokemonsListRequester) {
     this.api = api;
   }
 
