@@ -1,6 +1,6 @@
 import { IPokemonListResponse } from '../../../../domain/adapters/responses';
 import { failure, success } from '../../../../domain/shared/utils/either';
-import { IGetPokemonsList } from '../../../../domain/usecases';
+import { IGetPokemonsList } from '../../../../domain/usecases/pokemon';
 import { PokemonsListRequester } from '../../../../domain/adapters';
 import { GetPokemonsList } from '../get-pokemons-list';
 import { makePokemonList, makePrimitivePokemonsList } from './__mocks__';

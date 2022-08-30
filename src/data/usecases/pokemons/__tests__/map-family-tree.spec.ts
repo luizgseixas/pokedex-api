@@ -1,7 +1,7 @@
 import { FamilyTreeRequester } from '../../../../domain/adapters';
 import { IEvolutionChain } from '../../../../domain/adapters/responses';
 import { failure, success } from '../../../../domain/shared/utils/either';
-import { IMapFamilyTree } from '../../../../domain/usecases';
+import { IMapFamilyTree } from '../../../../domain/usecases/pokemon';
 import { MapFamilyTree } from '../map-family-tree';
 import {
   makeFamilyTreeOne,

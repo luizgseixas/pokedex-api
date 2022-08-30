@@ -1,4 +1,4 @@
-import { IGetPokemonInformations, IMapFamilyTree } from '@src/domain/usecases';
+import { IGetPokemonInformations, IMapFamilyTree } from '@src/domain/usecases/pokemon';
 import { failure, success } from '@src/domain/shared/utils/either';
 import { movesFilter } from '@src/shared/utils/moves-filter';
 import { spritesFilter } from '@src/shared/utils/sprites-filter';

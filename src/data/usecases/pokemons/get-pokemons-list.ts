@@ -1,4 +1,4 @@
-import { IGetPokemonsList } from '@src/domain/usecases';
+import { IGetPokemonsList } from '@src/domain/usecases/pokemon';
 import { failure, success } from '@src/domain/shared/utils/either';
 import { PokemonsListRequester } from '@src/domain/adapters/pokemon-list';
 
