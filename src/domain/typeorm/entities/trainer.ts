@@ -11,5 +11,5 @@ export class Trainer {
   email: string;
   password: string;
   pokemons?: Pokemon[];
-  created_at?: Date;
+  created_at?: Date | string;
 }
