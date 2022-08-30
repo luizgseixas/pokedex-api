@@ -1,22 +1,8 @@
 import { success } from '../../../../domain/shared/utils/either';
-import { Trainer } from '../../../../domain/typeorm/entities';
 import { IAddTrainerModel } from '../../../../domain/usecases/trainer';
 import { IAddTrainerRepository } from '../../protocols/db/add-trainer-repository';
 import { DbAddTrainer } from '../db-add-trainer';
-
-const makeFakeTrainer = (): Trainer => ({
-  id: 'anny_id',
-  name: 'anny_name',
-  email: 'any_email',
-  password: 'any_password',
-  created_at: 'new Date()',
-});
-
-const makeFakeTrainerData = (): IAddTrainerModel => ({
-  name: 'valid_name',
-  email: 'valid_email@mail.com',
-  password: 'valid_password',
-});
+import { makeFakeTrainer, makeFakeTrainerData } from './__mocks__/db-add-trainer.mock';
 
 const makeAddTrainerRepository = (): IAddTrainerRepository => {
   class AddTrainerRepositoryStub implements IAddTrainerRepository {
