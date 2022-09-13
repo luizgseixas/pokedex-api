@@ -20,4 +20,4 @@ app.use(routes);
 // app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 connection();
 
-app.listen(process.env.NODE_PORT, () => console.log(`🔥 Server running on host http://localhost:${process.env.NODE_PORT} 🚀 `));
+app.listen(process.env.NODE_PORT, () => console.log(`🔥 Server running at http://localhost:${process.env.NODE_PORT} 🚀 `));

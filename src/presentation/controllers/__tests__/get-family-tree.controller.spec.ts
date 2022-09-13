@@ -1,5 +1,5 @@
 import { GetFamilyTreeController } from '../get-family-tree.controller';
-import { IMapFamilyTree } from '../../../domain/usecases/map-family-tree';
+import { IMapFamilyTree } from '../../../domain/usecases/pokemon';
 import { makeFamilyTree } from './__mocks__/get-family-tree.mock';
 import { HttpRequest } from '../../protocols';
 import { failure, success } from '../../../domain/shared/utils/either';
