@@ -1,4 +1,4 @@
-import { success } from '../../../../domain/shared/utils/either';
+import { failure, success } from '../../../../domain/shared/utils/either';
 import { IAddTrainerModel } from '../../../../domain/usecases/trainer';
 import { IAddTrainerRepository } from '../../protocols/db/add-trainer-repository';
 import { DbAddTrainer } from '../db-add-trainer';
@@ -33,5 +33,12 @@ describe('DbAddTrainer UseCase', () => {
     const addSpy = jest.spyOn(addTrainerRepositoryStub, 'perform');
     await sut.execute(makeFakeTrainerData());
     expect(addSpy).toHaveBeenCalledWith(makeFakeTrainerData());
+  });
+
+  test('Should return a failure error of AddAccountRepository throws', async () => {
+    const { sut, addTrainerRepositoryStub } = makeSut();
+    jest.spyOn(addTrainerRepositoryStub, 'perform').mockImplementationOnce(() => { throw new Error(); });
+    const promise = await sut.execute(makeFakeTrainerData());
+    expect(promise).toEqual(failure(new Error()));
   });
 });
