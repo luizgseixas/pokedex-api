@@ -1,8 +1,8 @@
-import { FamilyTreeRequester, PokemonInformationsRequester, PokemonsListRequester } from '@src/domain/adapters';
+import { IFamilyTreeRequester, IPokemonInformationsRequester, IPokemonsListRequester } from '@src/domain/adapters';
 import { IEvolutionChain, IPokemonData, IPokemonListResponse } from '@src/domain/adapters/responses';
 import { HttpClient } from '../http';
 
-export class PokemonApiRequester extends HttpClient implements PokemonsListRequester, FamilyTreeRequester, PokemonInformationsRequester {
+export class PokemonApiRequester extends HttpClient implements IPokemonsListRequester, IFamilyTreeRequester, IPokemonInformationsRequester {
   constructor () {
     super({ baseURL: 'https://pokeapi.co/api/v2' });
   }
