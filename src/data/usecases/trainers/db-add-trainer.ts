@@ -6,7 +6,11 @@ export class DbAddTrainer implements IAddTrainer {
   constructor (private readonly addTrainerRepository: IAddTrainerRepository) {}
 
   async execute (trainer: IAddTrainerModel): IAddTrainer.Result {
-    this.addTrainerRepository.perform(trainer);
+    try {
+      await this.addTrainerRepository.perform(trainer);
+    } catch (err) {
+      return failure(err);
+    }
     return failure({});
   }
 }
