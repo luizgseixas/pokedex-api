@@ -3,11 +3,7 @@ import { failure, success } from '@src/domain/shared/utils/either';
 import { IPokemonsListRequester } from '@src/domain/adapters/pokemon-list';
 
 export class GetPokemonsList implements IGetPokemonsList {
-  private readonly api: IPokemonsListRequester;
-
-  constructor (api: IPokemonsListRequester) {
-    this.api = api;
-  }
+  constructor (private readonly api: IPokemonsListRequester) {}
 
   public async execute (params?: IGetPokemonsList.Params): IGetPokemonsList.Result {
     try {

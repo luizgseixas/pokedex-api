@@ -4,11 +4,7 @@ import { chainFilter } from '@src/shared/utils/evolutions-filter';
 import { IFamilyTreeRequester } from '@src/domain/adapters';
 
 export class MapFamilyTree implements IMapFamilyTree {
-  private readonly api: IFamilyTreeRequester;
-
-  constructor (api: IFamilyTreeRequester) {
-    this.api = api;
-  }
+  constructor (private readonly api: IFamilyTreeRequester) {}
 
   async execute ({ pokemonId }: IMapFamilyTree.Params): IMapFamilyTree.Result {
     try {
