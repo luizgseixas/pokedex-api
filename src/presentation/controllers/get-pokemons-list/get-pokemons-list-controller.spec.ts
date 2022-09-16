@@ -1,7 +1,7 @@
-import { GetPokemonsListController } from '../get-pokemons-list.controller';
-import { IGetPokemonsList } from '../../../domain/usecases/pokemon';
-import { fakePokemonList } from './__mocks__/get-pokemons-list.mock';
-import { HttpRequest } from '../../protocols';
+import { GetPokemonsListController } from './get-pokemons-list.controller';
+import { IGetPokemonsList } from '../../../domain/usecases';
+import { fakePokemonList } from './get-pokemons-list.mock';
+import { IHttpRequest } from '../../protocols';
 import { failure, success } from '../../../domain/shared/utils/either';
 import { ok, serverError } from '../../helpers/http-helper';
 
@@ -15,19 +15,19 @@ const makeGetPokemonsList = (): IGetPokemonsList => {
   return new GetPokemonsListStub();
 };
 
-const makeFakeRequest = (): HttpRequest => ({
+const makeFakeRequest = (): IHttpRequest => ({
   query: {
     offset: '0',
     limit: '20',
   },
 });
 
-interface SutTypes {
+interface ISutTypes {
   sut: GetPokemonsListController,
   getPokemonsListStub: IGetPokemonsList
 }
 
-const makeSut = (): SutTypes => {
+const makeSut = (): ISutTypes => {
   const getPokemonsListStub = makeGetPokemonsList();
   const sut = new GetPokemonsListController(getPokemonsListStub);
   return {

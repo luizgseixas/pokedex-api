@@ -1,16 +1,8 @@
-<<<<<<< HEAD:src/data/usecases/pokemons/__tests__/map-family-tree.spec.ts
-import { IFamilyTreeRequester } from '../../../../domain/adapters';
-import { IEvolutionChain } from '../../../../domain/adapters/responses';
-import { failure, success } from '../../../../domain/shared/utils/either';
-import { IMapFamilyTree } from '../../../../domain/usecases/pokemon';
-import { MapFamilyTree } from '../map-family-tree';
-=======
 import { IFamilyTreeRequester } from '../../../domain/adapters';
 import { IEvolutionChain } from '../../../domain/adapters/responses';
 import { failure, success } from '../../../domain/shared/utils/either';
 import { IMapFamilyTree } from '../../../domain/usecases';
 import { MapFamilyTree } from './map-family-tree';
->>>>>>> master:src/data/usecases/map-family-tree/map-family-tree.spec.ts
 import {
   makeFamilyTreeOne,
   makeFamilyTreeTwo,

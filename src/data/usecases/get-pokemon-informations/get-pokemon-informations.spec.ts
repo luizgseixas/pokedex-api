@@ -1,14 +1,7 @@
-<<<<<<< HEAD:src/data/usecases/pokemons/__tests__/get-pokemon-informations.spec.ts
-import { IPokemonInformationsRequester } from '../../../../domain/adapters';
-import { IPokemonData } from '../../../../domain/adapters/responses';
-import { IGetPokemonInformations, IMapFamilyTree } from '../../../../domain/usecases/pokemon';
-import { failure, success } from '../../../../domain/shared/utils/either';
-=======
 import { IPokemonInformationsRequester } from '../../../domain/adapters';
 import { IPokemonData } from '../../../domain/adapters/responses';
 import { IGetPokemonInformations, IMapFamilyTree } from '../../../domain/usecases';
 import { failure, success } from '../../../domain/shared/utils/either';
->>>>>>> master:src/data/usecases/get-pokemon-informations/get-pokemon-informations.spec.ts
 
 import { makePokemonData, makePokemonInformations } from './get-pokemon-informations.mock';
 import { makeFamilyTreeThree } from '../map-family-tree/map-family-tree.mock';
@@ -27,11 +20,7 @@ const makeMapFamilyTree = (): IMapFamilyTree => {
 
 const makeApi = (): IPokemonInformationsRequester => {
   class PokemonInformationsRequesterStub implements IPokemonInformationsRequester {
-<<<<<<< HEAD:src/data/usecases/pokemons/__tests__/get-pokemon-informations.spec.ts
-    async informations (pokemon: string): Promise<IPokemonData> {
-=======
     async informations (id: string): Promise<IPokemonData> {
->>>>>>> master:src/data/usecases/get-pokemon-informations/get-pokemon-informations.spec.ts
       return new Promise((resolve) => resolve(makePokemonData()));
     }
   }

@@ -6,6 +6,6 @@ import { IController } from '@src/presentation/protocols';
 export const makeGetPokemonInformationsController = (): IController => {
   const api = new PokemonApiRequester();
   const mapPokemonFamilyTree = new MapFamilyTree(api);
-  const getPokemonInformation = new GetPokemonInformation(mapPokemonFamilyTree, api);
+  const getPokemonInformation = new GetPokemonInformation(api, mapPokemonFamilyTree);
   return new GetPokemonInformationsController(getPokemonInformation);
 };

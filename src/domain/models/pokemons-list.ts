@@ -3,7 +3,7 @@ interface IPokemon {
   url: string;
 }
 
-export interface PokemonsListModel {
+export interface IPokemonsListModel {
   count: number;
   next: string | null;
   previous: string | null;

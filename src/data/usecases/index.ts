@@ -1,3 +1,3 @@
-export * from './pokemons/get-pokemons-list';
-export * from './pokemons/get-pokemon-informations';
-export * from './pokemons/map-family-tree';
+export * from './get-pokemons-list/get-pokemons-list';
+export * from './get-pokemon-informations/get-pokemon-informations';
+export * from './map-family-tree/map-family-tree';

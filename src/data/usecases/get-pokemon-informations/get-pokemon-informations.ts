@@ -5,18 +5,12 @@ import { spritesFilter } from '@src/shared/utils/sprites-filter';
 import { IPokemonInformationsRequester } from '@src/domain/adapters';
 
 export class GetPokemonInformation implements IGetPokemonInformations {
-<<<<<<< HEAD:src/data/usecases/pokemons/get-pokemon-informations.ts
-  constructor (private readonly mapFamilyTree: IMapFamilyTree, private readonly api: IPokemonInformationsRequester) {}
-
-  async execute ({ pokemon }: IGetPokemonInformations.Params): IGetPokemonInformations.Result {
-=======
   constructor (
     private readonly api: IPokemonInformationsRequester,
     private readonly mapFamilyTree: IMapFamilyTree,
   ) {}
 
   async execute ({ id }: IGetPokemonInformations.Params): IGetPokemonInformations.Result {
->>>>>>> master:src/data/usecases/get-pokemon-informations/get-pokemon-informations.ts
     try {
       const data = await this.api.informations(id);
 
