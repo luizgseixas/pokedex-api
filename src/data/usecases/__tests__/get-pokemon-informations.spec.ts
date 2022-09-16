@@ -1,4 +1,4 @@
-import { PokemonInformationsRequester } from '../../../domain/adapters';
+import { IPokemonInformationsRequester } from '../../../domain/adapters';
 import { IPokemonData } from '../../../domain/adapters/responses';
 import { IGetPokemonInformations, IMapFamilyTree } from '../../../domain/usecases';
 import { failure, success } from '../../../domain/shared/utils/either';
@@ -17,8 +17,8 @@ const makeMapFamilyTree = (): IMapFamilyTree => {
   return new MapFamilyTreeStub();
 };
 
-const makeApi = (): PokemonInformationsRequester => {
-  class PokemonInformationsRequesterStub implements PokemonInformationsRequester {
+const makeApi = (): IPokemonInformationsRequester => {
+  class PokemonInformationsRequesterStub implements IPokemonInformationsRequester {
     async informations (pokemon: string): Promise<IPokemonData> {
       return new Promise((resolve) => resolve(makePokemonData()));
     }
@@ -27,13 +27,13 @@ const makeApi = (): PokemonInformationsRequester => {
   return new PokemonInformationsRequesterStub();
 };
 
-interface SutTypes {
+interface ISutTypes {
   sut: IGetPokemonInformations;
   mapFamilyTreeStub: IMapFamilyTree;
-  PokemonInformationsRequesterStub: PokemonInformationsRequester;
+  PokemonInformationsRequesterStub: IPokemonInformationsRequester;
 }
 
-const makeSut = (): SutTypes => {
+const makeSut = (): ISutTypes => {
   const mapFamilyTreeStub = makeMapFamilyTree();
   const PokemonInformationsRequesterStub = makeApi();
   const sut = new GetPokemonInformation(mapFamilyTreeStub, PokemonInformationsRequesterStub);

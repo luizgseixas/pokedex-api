@@ -1,5 +1,5 @@
 import { IPokemonListResponse } from './responses';
 
-export interface PokemonsListRequester {
+export interface IPokemonsListRequester {
   lists: (offset?: string, limit?: string) => Promise<IPokemonListResponse>;
 }
