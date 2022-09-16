@@ -29,7 +29,7 @@ interface ISutTypes {
   familyTreeRequesterStub: IFamilyTreeRequester;
 }
 
-const sutParam = { pokemonId: '1' };
+const sutParam = { id: '1' };
 
 const makeSut = (): ISutTypes => {
   const familyTreeRequesterStub = makeFamilyTreeRequester();

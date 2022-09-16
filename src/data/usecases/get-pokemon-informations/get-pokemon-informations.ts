@@ -14,7 +14,7 @@ export class GetPokemonInformation implements IGetPokemonInformations {
     try {
       const data = await this.api.informations(id);
 
-      const familyTree = await this.mapFamilyTree.execute({ pokemonId: data.id.toString() });
+      const familyTree = await this.mapFamilyTree.execute({ id: data.id.toString() });
 
       if (familyTree.isFailure()) {
         return failure(familyTree.value);
