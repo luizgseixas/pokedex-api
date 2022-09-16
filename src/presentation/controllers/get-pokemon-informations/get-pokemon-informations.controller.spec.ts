@@ -2,7 +2,7 @@ import { GetPokemonInformationsController } from './get-pokemon-informations.con
 import { IGetPokemonInformations } from '../../../domain/usecases';
 import { makePokemonInformations } from './get-pokemon-informations.mock';
 import { failure, success } from '../../../domain/shared/utils/either';
-import { HttpRequest } from '../../protocols';
+import { IHttpRequest } from '../../protocols';
 import { ok, serverError } from '../../helpers/http-helper';
 
 const makeGetPokemonInformations = () => {
@@ -15,7 +15,7 @@ const makeGetPokemonInformations = () => {
   return new GetPokemonInformationsStub();
 };
 
-const makeHttpRequest = (): HttpRequest => ({
+const makeHttpRequest = (): IHttpRequest => ({
   params: { pokemonId: '1' },
 });
 

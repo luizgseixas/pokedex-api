@@ -1,7 +1,7 @@
 import { GetFamilyTreeController } from './get-family-tree.controller';
 import { IMapFamilyTree } from '../../../domain/usecases/map-family-tree';
 import { makeFamilyTree } from './get-family-tree.mock';
-import { HttpRequest } from '../../protocols';
+import { IHttpRequest } from '../../protocols';
 import { failure, success } from '../../../domain/shared/utils/either';
 import { badRequest, ok, serverError } from '../../helpers/http-helper';
 import { MissingParamError } from '../../errors/missing-param-error';
@@ -16,7 +16,7 @@ const makeMapFamilyTree = (): IMapFamilyTree => {
   return new MapFamilyTreeStub();
 };
 
-const makeFakeRequest = (): HttpRequest => ({
+const makeFakeRequest = (): IHttpRequest => ({
   params: {
     pokemonId: '1',
   },

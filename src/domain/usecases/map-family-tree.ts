@@ -1,4 +1,4 @@
-import { FamilyTreeModel } from '../models/family-tree';
+import { IFamilyTreeModel } from '../models/family-tree';
 import { Either } from '../shared/utils/either';
 
 export interface IMapFamilyTree {
@@ -10,5 +10,5 @@ export namespace IMapFamilyTree {
     pokemonId: string;
   };
 
-  export type Result = Promise<Either<Error, FamilyTreeModel[]>>;
+  export type Result = Promise<Either<Error, IFamilyTreeModel[]>>;
 }
