@@ -1,11 +1,11 @@
 export interface IPokemonListResponse {
   count: number;
-  next: string;
-  previus: string;
-  results: IPokemonList[];
+  next: string | null;
+  previous: string | null;
+  results: IPokemon[];
 }
 
-export interface IPokemonList {
+export interface IPokemon {
   name: string;
   url: string;
 }

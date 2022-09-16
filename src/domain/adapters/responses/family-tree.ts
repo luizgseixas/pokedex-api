@@ -1,36 +1,41 @@
-export interface IFamilyTree {
-  id: string;
+export interface IEvolutionChain {
+  id: number;
   baby_trigger_item: any;
-  chain: IEvolutionChain;
+  chain: IChain;
 }
 
-interface IEvolutionChain {
+export interface IChain {
   species: { name: string; url: string };
-  evolves_to: IEvolutionChain[];
+  evolves_to: IChain[];
   is_baby: boolean;
-  evolution_details: IEvolution_detail[];
+  evolution_details: IEvolutionDetail[];
 }
 
-interface IEvolution_detail {
-  gender: string;
-  min_level: number;
-  min_happiness: number;
-  trade_species: boolean;
-  known_move: string;
-  known_move_type: string;
-  held_item: string;
-  item: string;
-  location: string;
-  min_affection: any;
-  min_beauty: any;
-  needs_overworld_rain: boolean;
-  party_species: any;
-  party_type: any;
-  relative_physical_stats: any;
-  time_of_day: string;
+interface IDetail {
+  name: string;
+  url: string;
+}
+
+export interface IEvolutionDetail {
+  gender: string | null;
+  min_level: number | null;
+  min_happiness: number | null;
+  trade_species: boolean | null;
+  known_move: string | null;
+  known_move_type: IDetail | null;
+  held_item: string | null;
+  item: IDetail | null;
+  location: IDetail | null;
+  min_affection: any | null;
+  min_beauty: any | null;
+  needs_overworld_rain: boolean | null;
+  party_species: any | null;
+  party_type: any | null;
+  relative_physical_stats: any | null;
+  time_of_day: string | null;
   trigger: {
-    name: string;
-    url: string;
+    name: string | null;
+    url: string | null;
   };
-  turn_upside_down: boolean;
+  turn_upside_down: boolean | null;
 }

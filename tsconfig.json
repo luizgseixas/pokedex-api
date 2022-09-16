@@ -17,6 +17,13 @@
     "strictNullChecks": true,
     "strictPropertyInitialization": false,
     "allowJs": true,
-    "resolveJsonModule": true
-  }
+    // "resolveJsonModule": true
+  },
+  "include": [
+    "./src"
+  ],
+  "exclude": [
+    "**/*.spec.ts",
+    "**/*.test.ts"
+  ]
 }

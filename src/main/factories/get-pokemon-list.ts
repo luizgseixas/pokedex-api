@@ -1,8 +1,10 @@
-import { GetPokemonsListFeature } from '@src/features';
+import { PokemonApiRequester } from '@src/adapters/poke-api/api';
+import { GetPokemonsList } from '@src/data/usecases';
 import { GetPokemonsListController } from '@src/presentation/controllers';
 import { IController } from '@src/presentation/protocols';
 
 export const makeGetPokemonListController = (): IController => {
-  const getPokemonListFeature = new GetPokemonsListFeature();
-  return new GetPokemonsListController(getPokemonListFeature);
+  const api = new PokemonApiRequester();
+  const getPokemonList = new GetPokemonsList(api);
+  return new GetPokemonsListController(getPokemonList);
 };

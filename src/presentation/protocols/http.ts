@@ -1,10 +1,10 @@
-export interface HttpResponse {
+export interface IHttpResponse {
   statusCode: number;
   body: any;
 }
 
-export interface HttpRequest {
+export interface IHttpRequest {
   body?: any;
   params?: any;
-  query: any;
+  query?: any;
 }

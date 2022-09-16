@@ -22,3 +22,8 @@ yarn-debug.log*
 yarn-error.log*
 
 .env
+
+request.http
+
+data
+!src/data
