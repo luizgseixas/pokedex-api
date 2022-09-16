@@ -1,5 +1,5 @@
 import { GetPokemonInformationsController } from './get-pokemon-informations.controller';
-import { IGetPokemonInformations } from '../../../domain/usecases';
+import { IGetPokemonInformations } from '../../../domain/usecases/pokemon';
 import { makePokemonInformations } from './get-pokemon-informations.mock';
 import { failure, success } from '../../../domain/shared/utils/either';
 import { IHttpRequest } from '../../protocols';

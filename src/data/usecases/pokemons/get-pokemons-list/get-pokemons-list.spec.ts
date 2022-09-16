@@ -1,18 +1,9 @@
-<<<<<<< HEAD:src/data/usecases/pokemons/__tests__/get-pokemons-list.spec.ts
 import { IPokemonListResponse } from '../../../../domain/adapters/responses';
 import { failure, success } from '../../../../domain/shared/utils/either';
 import { IGetPokemonsList } from '../../../../domain/usecases/pokemon';
 import { IPokemonsListRequester } from '../../../../domain/adapters';
-import { GetPokemonsList } from '../get-pokemons-list';
-import { makePokemonList, makePrimitivePokemonsList } from './__mocks__';
-=======
-import { IPokemonListResponse } from '../../../domain/adapters/responses';
-import { failure, success } from '../../../domain/shared/utils/either';
-import { IGetPokemonsList } from '../../../domain/usecases';
-import { IPokemonsListRequester } from '../../../domain/adapters';
 import { GetPokemonsList } from './get-pokemons-list';
 import { makePokemonList, makePrimitivePokemonsList } from './get-pokemons-list.mock';
->>>>>>> master:src/data/usecases/get-pokemons-list/get-pokemons-list.spec.ts
 
 const makePokemonsListRequester = (): IPokemonsListRequester => {
   class PokemonsListRequesterStub implements IPokemonsListRequester {

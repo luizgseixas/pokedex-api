@@ -1,7 +1,7 @@
-import { IPokemonInformationsRequester } from '../../../domain/adapters';
-import { IPokemonData } from '../../../domain/adapters/responses';
-import { IGetPokemonInformations, IMapFamilyTree } from '../../../domain/usecases';
-import { failure, success } from '../../../domain/shared/utils/either';
+import { IPokemonInformationsRequester } from '../../../../domain/adapters';
+import { IPokemonData } from '../../../../domain/adapters/responses';
+import { IGetPokemonInformations, IMapFamilyTree } from '../../../../domain/usecases/pokemon';
+import { failure, success } from '../../../../domain/shared/utils/either';
 
 import { makePokemonData, makePokemonInformations } from './get-pokemon-informations.mock';
 import { makeFamilyTreeThree } from '../map-family-tree/map-family-tree.mock';

@@ -1,5 +1,5 @@
 import { GetPokemonsListController } from './get-pokemons-list.controller';
-import { IGetPokemonsList } from '../../../domain/usecases';
+import { IGetPokemonsList } from '../../../domain/usecases/pokemon';
 import { fakePokemonList } from './get-pokemons-list.mock';
 import { IHttpRequest } from '../../protocols';
 import { failure, success } from '../../../domain/shared/utils/either';
