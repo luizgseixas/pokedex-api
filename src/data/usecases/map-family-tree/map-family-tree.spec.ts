@@ -64,7 +64,6 @@ describe('MapFamilyTree Usecase', () => {
       .spyOn(familyTreeRequesterStub, 'familyTree')
       .mockReturnValueOnce(new Promise((resolve) => resolve(makeOneEvolutionChain())));
     const familyTree = await sut.execute(sutParam);
-    console.log(familyTree);
     expect(familyTree).toEqual(
       success(makeFamilyTreeOne()),
     );

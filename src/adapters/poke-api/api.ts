@@ -12,13 +12,13 @@ export class PokemonApiRequester extends HttpClient implements IPokemonsListRequ
     return data;
   }
 
-  async informations (pokemon: string): Promise<IPokemonData> {
-    const { data } = await this.instance.get(`/pokemon/${pokemon}`);
+  async informations (id: string): Promise<IPokemonData> {
+    const { data } = await this.instance.get(`/pokemon/${id}`);
     return data;
   }
 
-  async familyTree (pokemonId: string): Promise<IEvolutionChain> {
-    const { data } = await this.instance.get(`/evolution-chain/${pokemonId}`);
+  async familyTree (id: string): Promise<IEvolutionChain> {
+    const { data } = await this.instance.get(`/evolution-chain/${id}`);
     return data;
   }
 }

@@ -7,7 +7,7 @@ export interface IMapFamilyTree {
 
 export namespace IMapFamilyTree {
   export type Params = {
-    pokemonId: string;
+    id: string;
   };
 
   export type Result = Promise<Either<Error, IFamilyTreeModel[]>>;

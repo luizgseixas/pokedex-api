@@ -6,13 +6,13 @@ import { IFamilyTreeRequester } from '@src/domain/adapters';
 export class MapFamilyTree implements IMapFamilyTree {
   constructor (private readonly api: IFamilyTreeRequester) {}
 
-  async execute ({ pokemonId }: IMapFamilyTree.Params): IMapFamilyTree.Result {
+  async execute ({ id }: IMapFamilyTree.Params): IMapFamilyTree.Result {
     try {
-      const data = await this.api.familyTree(pokemonId);
+      const data = await this.api.familyTree(id);
 
       return success(chainFilter(data.chain));
     } catch (err) {
-      console.error(err);
+      // console.error(err);
       return failure(err);
     }
   }

@@ -10,9 +10,9 @@ export class GetPokemonInformation implements IGetPokemonInformations {
     private readonly mapFamilyTree: IMapFamilyTree,
   ) {}
 
-  async execute ({ pokemon }: IGetPokemonInformations.Params): IGetPokemonInformations.Result {
+  async execute ({ id }: IGetPokemonInformations.Params): IGetPokemonInformations.Result {
     try {
-      const data = await this.api.informations(pokemon);
+      const data = await this.api.informations(id);
 
       const familyTree = await this.mapFamilyTree.execute({ pokemonId: data.id.toString() });
 
@@ -32,7 +32,7 @@ export class GetPokemonInformation implements IGetPokemonInformations {
 
       return success(information);
     } catch (err) {
-      console.error(err);
+      // console.error(err);
       return failure(err);
     }
   }

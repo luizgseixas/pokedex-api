@@ -7,7 +7,7 @@ export interface IGetPokemonInformations {
 
 export namespace IGetPokemonInformations {
   export type Params = {
-    pokemon: string;
+    id: string;
   };
 
   export type Result = Promise<Either<Error, IPokemonInformationsModel>>;
