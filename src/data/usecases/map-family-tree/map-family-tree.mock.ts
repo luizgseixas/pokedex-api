@@ -1,5 +1,5 @@
 import { IEvolutionChain } from '@src/domain/adapters/responses';
-import { FamilyTreeModel } from '@src/domain/models/family-tree';
+import { IFamilyTreeModel } from '@src/domain/models/family-tree';
 
 export const makeOneEvolutionChain = (): IEvolutionChain => ({
   baby_trigger_item: null,
@@ -670,7 +670,7 @@ export const makeAllEvolutionChain = (): IEvolutionChain => ({
   id: 67,
 });
 
-export const makeFamilyTreeOne = (): FamilyTreeModel[] => ([
+export const makeFamilyTreeOne = (): IFamilyTreeModel[] => ([
   {
     evolution_lvl: 1,
     name: 'any_name',
@@ -678,7 +678,7 @@ export const makeFamilyTreeOne = (): FamilyTreeModel[] => ([
   },
 ]);
 
-export const makeFamilyTreeTwo = (): FamilyTreeModel[] => ([
+export const makeFamilyTreeTwo = (): IFamilyTreeModel[] => ([
   {
     evolution_lvl: 1,
     name: 'any_name',
@@ -694,7 +694,7 @@ export const makeFamilyTreeTwo = (): FamilyTreeModel[] => ([
   },
 ]);
 
-export const makeFamilyTreeThree = (): FamilyTreeModel[] => ([
+export const makeFamilyTreeThree = (): IFamilyTreeModel[] => ([
   {
     evolution_lvl: 1,
     name: 'any_name',
@@ -718,7 +718,7 @@ export const makeFamilyTreeThree = (): FamilyTreeModel[] => ([
   },
 ]);
 
-export const makeFamilyTreeAll = (): FamilyTreeModel[] => ([
+export const makeFamilyTreeAll = (): IFamilyTreeModel[] => ([
   {
     evolution_lvl: 1,
     name: 'any_name',

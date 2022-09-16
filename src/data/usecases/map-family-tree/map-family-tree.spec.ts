@@ -2,7 +2,7 @@ import { IFamilyTreeRequester } from '../../../domain/adapters';
 import { IEvolutionChain } from '../../../domain/adapters/responses';
 import { failure, success } from '../../../domain/shared/utils/either';
 import { IMapFamilyTree } from '../../../domain/usecases';
-import { MapFamilyTree } from '../map-family-tree';
+import { MapFamilyTree } from './map-family-tree';
 import {
   makeFamilyTreeOne,
   makeFamilyTreeTwo,
@@ -12,7 +12,7 @@ import {
   makeTwoEvolutionChain,
   makeThreeEvolutionChain,
   makeAllEvolutionChain,
-} from './__mocks__';
+} from './map-family-tree.mock';
 
 const makeFamilyTreeRequester = (): IFamilyTreeRequester => {
   class FamilyTreeRequesterStub implements IFamilyTreeRequester {

@@ -1,6 +1,6 @@
-import { GetPokemonsListController } from '../get-pokemons-list.controller';
+import { GetPokemonsListController } from './get-pokemons-list.controller';
 import { IGetPokemonsList } from '../../../domain/usecases';
-import { fakePokemonList } from './__mocks__/get-pokemons-list.mock';
+import { fakePokemonList } from './get-pokemons-list.mock';
 import { HttpRequest } from '../../protocols';
 import { failure, success } from '../../../domain/shared/utils/either';
 import { ok, serverError } from '../../helpers/http-helper';
@@ -22,12 +22,12 @@ const makeFakeRequest = (): HttpRequest => ({
   },
 });
 
-interface SutTypes {
+interface ISutTypes {
   sut: GetPokemonsListController,
   getPokemonsListStub: IGetPokemonsList
 }
 
-const makeSut = (): SutTypes => {
+const makeSut = (): ISutTypes => {
   const getPokemonsListStub = makeGetPokemonsList();
   const sut = new GetPokemonsListController(getPokemonsListStub);
   return {

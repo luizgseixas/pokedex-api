@@ -1,6 +1,6 @@
-import { PokemonsListModel } from '@src/domain/models/pokemons-list';
+import { IPokemonsListModel } from '@src/domain/models/pokemons-list';
 
-export const fakePokemonList: PokemonsListModel = {
+export const fakePokemonList: IPokemonsListModel = {
   count: 1,
   next: 'next_url',
   previous: 'previous_url',

@@ -1,6 +1,6 @@
-import { GetFamilyTreeController } from '../get-family-tree.controller';
+import { GetFamilyTreeController } from './get-family-tree.controller';
 import { IMapFamilyTree } from '../../../domain/usecases/map-family-tree';
-import { makeFamilyTree } from './__mocks__/get-family-tree.mock';
+import { makeFamilyTree } from './get-family-tree.mock';
 import { HttpRequest } from '../../protocols';
 import { failure, success } from '../../../domain/shared/utils/either';
 import { badRequest, ok, serverError } from '../../helpers/http-helper';
@@ -22,12 +22,12 @@ const makeFakeRequest = (): HttpRequest => ({
   },
 });
 
-interface SutTypes {
+interface ISutTypes {
   sut: GetFamilyTreeController
   mapFamilyTreeStub: IMapFamilyTree
 }
 
-const makeSut = (): SutTypes => {
+const makeSut = (): ISutTypes => {
   const mapFamilyTreeStub = makeMapFamilyTree();
   const sut = new GetFamilyTreeController(mapFamilyTreeStub);
 

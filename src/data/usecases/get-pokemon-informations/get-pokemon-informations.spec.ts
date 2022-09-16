@@ -3,9 +3,10 @@ import { IPokemonData } from '../../../domain/adapters/responses';
 import { IGetPokemonInformations, IMapFamilyTree } from '../../../domain/usecases';
 import { failure, success } from '../../../domain/shared/utils/either';
 
-import { makeFamilyTreeThree, makePokemonData, makePokemonInformations } from './__mocks__';
+import { makePokemonData, makePokemonInformations } from './get-pokemon-informations.mock';
+import { makeFamilyTreeThree } from '../map-family-tree/map-family-tree.mock';
 
-import { GetPokemonInformation } from '../get-pokemon-informations';
+import { GetPokemonInformation } from './get-pokemon-informations';
 
 const makeMapFamilyTree = (): IMapFamilyTree => {
   class MapFamilyTreeStub implements IMapFamilyTree {
@@ -36,7 +37,7 @@ interface ISutTypes {
 const makeSut = (): ISutTypes => {
   const mapFamilyTreeStub = makeMapFamilyTree();
   const PokemonInformationsRequesterStub = makeApi();
-  const sut = new GetPokemonInformation(mapFamilyTreeStub, PokemonInformationsRequesterStub);
+  const sut = new GetPokemonInformation(PokemonInformationsRequesterStub, mapFamilyTreeStub);
 
   return {
     sut,

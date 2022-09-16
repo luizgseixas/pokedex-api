@@ -1,16 +1,16 @@
-import { FamilyTreeModel } from './family-tree';
+import { IFamilyTreeModel } from './family-tree';
 
-export interface PokemonInformationsModel {
+export interface IPokemonInformationsModel {
   id: number;
   name: string;
-  sprites: Sprite;
-  stats: Array<Stat>;
-  types: Array<Type>;
-  moves: Array<Move>;
-  familyTree: Array<FamilyTreeModel>;
+  sprites: ISprite;
+  stats: Array<IStat>;
+  types: Array<IType>;
+  moves: Array<IMove>;
+  familyTree: Array<IFamilyTreeModel>;
 }
 
-interface Sprite {
+interface ISprite {
   front_default: string;
   front_shiny: string;
   front_female?: string;
@@ -21,18 +21,18 @@ interface Sprite {
   back_shiny_female?: string;
 }
 
-interface Stat {
+interface IStat {
   base_stat: number;
   stat: { name: string };
 }
 
-interface Type {
+interface IType {
   type: {
     name: string;
   };
 }
 
-interface Move {
+interface IMove {
   name: string;
   url: string;
 }

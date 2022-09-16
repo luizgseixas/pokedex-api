@@ -1,6 +1,6 @@
 import { IPokemonData } from '@src/domain/adapters/responses';
-import { PokemonInformationsModel } from '@src/domain/models/pokemon-informations';
-import { makeFamilyTreeThree } from './map-family-tree.mock';
+import { IPokemonInformationsModel } from '@src/domain/models/pokemon-informations';
+import { makeFamilyTreeThree } from '../map-family-tree/map-family-tree.mock';
 
 export const makePokemonData = (): IPokemonData => ({
   id: 1,
@@ -34,7 +34,7 @@ export const makePokemonData = (): IPokemonData => ({
   ],
 });
 
-export const makePokemonInformations = (): PokemonInformationsModel => ({
+export const makePokemonInformations = (): IPokemonInformationsModel => ({
   id: 1,
   name: 'any_name',
   types: [{ type: { name: 'any_type' } }],

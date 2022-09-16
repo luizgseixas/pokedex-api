@@ -2,8 +2,8 @@ import { IPokemonListResponse } from '../../../domain/adapters/responses';
 import { failure, success } from '../../../domain/shared/utils/either';
 import { IGetPokemonsList } from '../../../domain/usecases';
 import { IPokemonsListRequester } from '../../../domain/adapters';
-import { GetPokemonsList } from '../get-pokemons-list';
-import { makePokemonList, makePrimitivePokemonsList } from './__mocks__';
+import { GetPokemonsList } from './get-pokemons-list';
+import { makePokemonList, makePrimitivePokemonsList } from './get-pokemons-list.mock';
 
 const makePokemonsListRequester = (): IPokemonsListRequester => {
   class PokemonsListRequesterStub implements IPokemonsListRequester {

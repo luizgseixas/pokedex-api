@@ -1,6 +1,6 @@
 import { IGetPokemonsList } from '@src/domain/usecases';
-import { HttpRequest, IController } from '../protocols';
-import { ok, serverError } from '../helpers/http-helper';
+import { HttpRequest, IController } from '../../protocols';
+import { ok, serverError } from '../../helpers/http-helper';
 
 export class GetPokemonsListController implements IController {
   constructor (private readonly getPokemonsList: IGetPokemonsList) {}
