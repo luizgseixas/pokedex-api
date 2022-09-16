@@ -1,8 +1,8 @@
-import { FamilyTreeRequester, PokemonInformationsRequester, PokemonsListRequester } from '@src/domain/adapters';
+import { IFamilyTreeRequester, IPokemonInformationsRequester, IPokemonsListRequester } from '@src/domain/adapters';
 import { IEvolutionChain, IPokemonData, IPokemonListResponse } from '@src/domain/adapters/responses';
 import { HttpClient } from '../http';
 
-export class PokemonApiRequester extends HttpClient implements PokemonsListRequester, FamilyTreeRequester, PokemonInformationsRequester {
+export class PokemonApiRequester extends HttpClient implements IPokemonsListRequester, IFamilyTreeRequester, IPokemonInformationsRequester {
   constructor () {
     super({ baseURL: 'https://pokeapi.co/api/v2' });
   }
@@ -12,13 +12,13 @@ export class PokemonApiRequester extends HttpClient implements PokemonsListReque
     return data;
   }
 
-  async informations (pokemon: string): Promise<IPokemonData> {
-    const { data } = await this.instance.get(`/pokemon/${pokemon}`);
+  async informations (id: string): Promise<IPokemonData> {
+    const { data } = await this.instance.get(`/pokemon/${id}`);
     return data;
   }
 
-  async familyTree (pokemonId: string): Promise<IEvolutionChain> {
-    const { data } = await this.instance.get(`/evolution-chain/${pokemonId}`);
+  async familyTree (id: string): Promise<IEvolutionChain> {
+    const { data } = await this.instance.get(`/evolution-chain/${id}`);
     return data;
   }
 }

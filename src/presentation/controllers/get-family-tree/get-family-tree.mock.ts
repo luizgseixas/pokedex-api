@@ -1,6 +1,6 @@
-import { FamilyTreeModel } from '@src/domain/models/family-tree';
+import { IFamilyTreeModel } from '@src/domain/models/family-tree';
 
-export const makeFamilyTree = (): FamilyTreeModel[] => ([
+export const makeFamilyTree = (): IFamilyTreeModel[] => ([
   {
     evolution_lvl: 1,
     name: 'any_name',

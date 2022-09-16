@@ -1,7 +1,7 @@
-import { GetFamilyTreeController } from '../get-family-tree.controller';
+import { GetFamilyTreeController } from './get-family-tree.controller';
 import { IMapFamilyTree } from '../../../domain/usecases/map-family-tree';
-import { makeFamilyTree } from './__mocks__/get-family-tree.mock';
-import { HttpRequest } from '../../protocols';
+import { makeFamilyTree } from './get-family-tree.mock';
+import { IHttpRequest } from '../../protocols';
 import { failure, success } from '../../../domain/shared/utils/either';
 import { badRequest, ok, serverError } from '../../helpers/http-helper';
 import { MissingParamError } from '../../errors/missing-param-error';
@@ -16,18 +16,18 @@ const makeMapFamilyTree = (): IMapFamilyTree => {
   return new MapFamilyTreeStub();
 };
 
-const makeFakeRequest = (): HttpRequest => ({
+const makeFakeRequest = (): IHttpRequest => ({
   params: {
     pokemonId: '1',
   },
 });
 
-interface SutTypes {
+interface ISutTypes {
   sut: GetFamilyTreeController
   mapFamilyTreeStub: IMapFamilyTree
 }
 
-const makeSut = (): SutTypes => {
+const makeSut = (): ISutTypes => {
   const mapFamilyTreeStub = makeMapFamilyTree();
   const sut = new GetFamilyTreeController(mapFamilyTreeStub);
 

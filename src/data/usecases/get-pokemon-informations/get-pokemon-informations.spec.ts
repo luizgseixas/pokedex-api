@@ -1,11 +1,12 @@
-import { PokemonInformationsRequester } from '../../../domain/adapters';
+import { IPokemonInformationsRequester } from '../../../domain/adapters';
 import { IPokemonData } from '../../../domain/adapters/responses';
 import { IGetPokemonInformations, IMapFamilyTree } from '../../../domain/usecases';
 import { failure, success } from '../../../domain/shared/utils/either';
 
-import { makeFamilyTreeThree, makePokemonData, makePokemonInformations } from './__mocks__';
+import { makePokemonData, makePokemonInformations } from './get-pokemon-informations.mock';
+import { makeFamilyTreeThree } from '../map-family-tree/map-family-tree.mock';
 
-import { GetPokemonInformation } from '../get-pokemon-informations';
+import { GetPokemonInformation } from './get-pokemon-informations';
 
 const makeMapFamilyTree = (): IMapFamilyTree => {
   class MapFamilyTreeStub implements IMapFamilyTree {
@@ -17,9 +18,9 @@ const makeMapFamilyTree = (): IMapFamilyTree => {
   return new MapFamilyTreeStub();
 };
 
-const makeApi = (): PokemonInformationsRequester => {
-  class PokemonInformationsRequesterStub implements PokemonInformationsRequester {
-    async informations (pokemon: string): Promise<IPokemonData> {
+const makeApi = (): IPokemonInformationsRequester => {
+  class PokemonInformationsRequesterStub implements IPokemonInformationsRequester {
+    async informations (id: string): Promise<IPokemonData> {
       return new Promise((resolve) => resolve(makePokemonData()));
     }
   }
@@ -27,16 +28,18 @@ const makeApi = (): PokemonInformationsRequester => {
   return new PokemonInformationsRequesterStub();
 };
 
-interface SutTypes {
+interface ISutTypes {
   sut: IGetPokemonInformations;
   mapFamilyTreeStub: IMapFamilyTree;
-  PokemonInformationsRequesterStub: PokemonInformationsRequester;
+  PokemonInformationsRequesterStub: IPokemonInformationsRequester;
 }
 
-const makeSut = (): SutTypes => {
+const sutParam = { id: '1' };
+
+const makeSut = (): ISutTypes => {
   const mapFamilyTreeStub = makeMapFamilyTree();
   const PokemonInformationsRequesterStub = makeApi();
-  const sut = new GetPokemonInformation(mapFamilyTreeStub, PokemonInformationsRequesterStub);
+  const sut = new GetPokemonInformation(PokemonInformationsRequesterStub, mapFamilyTreeStub);
 
   return {
     sut,
@@ -49,8 +52,8 @@ describe('GetPokemonInformations Usecase', () => {
   test('Should call MapFamilyTree usecase with correct values', async () => {
     const { sut, mapFamilyTreeStub } = makeSut();
     const familyTreeSpy = jest.spyOn(mapFamilyTreeStub, 'execute');
-    await sut.execute({ pokemon: '1' });
-    expect(familyTreeSpy).toHaveBeenCalledWith({ pokemonId: '1' });
+    await sut.execute(sutParam);
+    expect(familyTreeSpy).toHaveBeenCalledWith({ id: '1' });
   });
 
   test('Should return a failure error when MapFamilyTree usecase trowns', async () => {
@@ -58,14 +61,14 @@ describe('GetPokemonInformations Usecase', () => {
     jest
       .spyOn(mapFamilyTreeStub, 'execute')
       .mockReturnValueOnce(new Promise((resolve) => resolve(failure(Error()))));
-    const promise = sut.execute({ pokemon: '1' });
+    const promise = sut.execute(sutParam);
     await expect(promise).resolves.toEqual(failure(Error()));
   });
 
   test('Should call PokemonInformationsRequester with correct values', async () => {
     const { sut, PokemonInformationsRequesterStub } = makeSut();
     const informationsSpy = jest.spyOn(PokemonInformationsRequesterStub, 'informations');
-    await sut.execute({ pokemon: '1' });
+    await sut.execute(sutParam);
     expect(informationsSpy).toHaveBeenCalledWith('1');
   });
 
@@ -74,13 +77,13 @@ describe('GetPokemonInformations Usecase', () => {
     jest
       .spyOn(PokemonInformationsRequesterStub, 'informations')
       .mockReturnValueOnce(new Promise((resolve, reject) => reject(Error())));
-    const promise = sut.execute({ pokemon: '1' });
+    const promise = sut.execute(sutParam);
     await expect(promise).resolves.toEqual(failure(Error()));
   });
 
   test('Should GetPokemonInformation usecase return a pokemonInformations on success', async () => {
     const { sut } = makeSut();
-    const informations = await sut.execute({ pokemon: '1' });
+    const informations = await sut.execute(sutParam);
     expect(informations).toEqual(success(makePokemonInformations()));
   });
 });

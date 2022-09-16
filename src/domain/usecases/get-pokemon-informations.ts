@@ -1,4 +1,4 @@
-import { PokemonInformationsModel } from '../models/pokemon-informations';
+import { IPokemonInformationsModel } from '../models/pokemon-informations';
 import { Either } from '../shared/utils/either';
 
 export interface IGetPokemonInformations {
@@ -7,8 +7,8 @@ export interface IGetPokemonInformations {
 
 export namespace IGetPokemonInformations {
   export type Params = {
-    pokemon: string;
+    id: string;
   };
 
-  export type Result = Promise<Either<Error, PokemonInformationsModel>>;
+  export type Result = Promise<Either<Error, IPokemonInformationsModel>>;
 }

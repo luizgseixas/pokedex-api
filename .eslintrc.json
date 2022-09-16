@@ -18,20 +18,33 @@
   ],
   "rules": {
     "space-before-function-paren": ["error", "always"],
-    "arrow-body-style": "off",
     "import/prefer-default-export": "off",
-    "import/no-unresolved": "off",
-    "import/extensions": "off",
-    "no-unused-vars": "off",
-    "no-redeclare": "off",
+    "lines-between-class-members": "off",
     "no-promise-executor-return": "off",
     "class-methods-use-this": "off",
+    "no-useless-constructor": "off",
     "max-classes-per-file": "off",
+    "import/no-unresolved": "off",
     "no-use-before-define": "off",
+    "no-empty-function" : "off",
     "no-param-reassign": "off",
+    "import/extensions": "off",
+    "arrow-body-style": "off",
+    "no-unused-vars": "off",
+    "no-redeclare": "off",
     "prefer-const": "off",
-    "max-len": "off",
     "no-console": "off",
-    "lines-between-class-members": "off"
+    "max-len": "off",
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        "selector": "interface",
+        "format": ["PascalCase"],
+        "custom": {
+          "regex": "^I[A-Z]",
+          "match": true
+        }
+      }
+    ]
   }
 }

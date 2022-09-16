@@ -1,8 +1,8 @@
-import { FamilyTreeRequester } from '../../../domain/adapters';
+import { IFamilyTreeRequester } from '../../../domain/adapters';
 import { IEvolutionChain } from '../../../domain/adapters/responses';
 import { failure, success } from '../../../domain/shared/utils/either';
 import { IMapFamilyTree } from '../../../domain/usecases';
-import { MapFamilyTree } from '../map-family-tree';
+import { MapFamilyTree } from './map-family-tree';
 import {
   makeFamilyTreeOne,
   makeFamilyTreeTwo,
@@ -12,10 +12,10 @@ import {
   makeTwoEvolutionChain,
   makeThreeEvolutionChain,
   makeAllEvolutionChain,
-} from './__mocks__';
+} from './map-family-tree.mock';
 
-const makeFamilyTreeRequester = (): FamilyTreeRequester => {
-  class FamilyTreeRequesterStub implements FamilyTreeRequester {
+const makeFamilyTreeRequester = (): IFamilyTreeRequester => {
+  class FamilyTreeRequesterStub implements IFamilyTreeRequester {
     async familyTree (pokemonId: string): Promise<IEvolutionChain> {
       return new Promise((resolve) => resolve(makeThreeEvolutionChain()));
     }
@@ -24,14 +24,14 @@ const makeFamilyTreeRequester = (): FamilyTreeRequester => {
   return new FamilyTreeRequesterStub();
 };
 
-interface SutTypes {
+interface ISutTypes {
   sut: IMapFamilyTree;
-  familyTreeRequesterStub: FamilyTreeRequester;
+  familyTreeRequesterStub: IFamilyTreeRequester;
 }
 
-const sutParam = { pokemonId: '1' };
+const sutParam = { id: '1' };
 
-const makeSut = (): SutTypes => {
+const makeSut = (): ISutTypes => {
   const familyTreeRequesterStub = makeFamilyTreeRequester();
   const sut = new MapFamilyTree(familyTreeRequesterStub);
 
@@ -64,7 +64,6 @@ describe('MapFamilyTree Usecase', () => {
       .spyOn(familyTreeRequesterStub, 'familyTree')
       .mockReturnValueOnce(new Promise((resolve) => resolve(makeOneEvolutionChain())));
     const familyTree = await sut.execute(sutParam);
-    console.log(familyTree);
     expect(familyTree).toEqual(
       success(makeFamilyTreeOne()),
     );

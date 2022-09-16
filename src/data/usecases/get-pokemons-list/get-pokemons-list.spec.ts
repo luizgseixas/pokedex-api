@@ -1,12 +1,12 @@
 import { IPokemonListResponse } from '../../../domain/adapters/responses';
 import { failure, success } from '../../../domain/shared/utils/either';
 import { IGetPokemonsList } from '../../../domain/usecases';
-import { PokemonsListRequester } from '../../../domain/adapters';
-import { GetPokemonsList } from '../get-pokemons-list';
-import { makePokemonList, makePrimitivePokemonsList } from './__mocks__';
+import { IPokemonsListRequester } from '../../../domain/adapters';
+import { GetPokemonsList } from './get-pokemons-list';
+import { makePokemonList, makePrimitivePokemonsList } from './get-pokemons-list.mock';
 
-const makePokemonsListRequester = (): PokemonsListRequester => {
-  class PokemonsListRequesterStub implements PokemonsListRequester {
+const makePokemonsListRequester = (): IPokemonsListRequester => {
+  class PokemonsListRequesterStub implements IPokemonsListRequester {
     async lists (
       offset?: string | undefined,
       limit?: string | undefined,
@@ -18,14 +18,14 @@ const makePokemonsListRequester = (): PokemonsListRequester => {
   return new PokemonsListRequesterStub();
 };
 
-interface SutTypes {
+interface ISutTypes {
   sut: IGetPokemonsList;
-  pokemonsListRequesterStub: PokemonsListRequester;
+  pokemonsListRequesterStub: IPokemonsListRequester;
 }
 
 const sutParam = { offset: '1', limit: '20' };
 
-const makeSut = (): SutTypes => {
+const makeSut = (): ISutTypes => {
   const pokemonsListRequesterStub = makePokemonsListRequester();
   const sut = new GetPokemonsList(pokemonsListRequesterStub);
 

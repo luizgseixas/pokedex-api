@@ -1,8 +1,8 @@
-import { GetPokemonInformationsController } from '../get-pokemon-informations.controller';
+import { GetPokemonInformationsController } from './get-pokemon-informations.controller';
 import { IGetPokemonInformations } from '../../../domain/usecases';
-import { makePokemonInformations } from './__mocks__/get-pokemon-informations.mock';
+import { makePokemonInformations } from './get-pokemon-informations.mock';
 import { failure, success } from '../../../domain/shared/utils/either';
-import { HttpRequest } from '../../protocols';
+import { IHttpRequest } from '../../protocols';
 import { ok, serverError } from '../../helpers/http-helper';
 
 const makeGetPokemonInformations = () => {
@@ -15,16 +15,16 @@ const makeGetPokemonInformations = () => {
   return new GetPokemonInformationsStub();
 };
 
-const makeHttpRequest = (): HttpRequest => ({
+const makeHttpRequest = (): IHttpRequest => ({
   params: { pokemonId: '1' },
 });
 
-interface SutTypes {
+interface ISutTypes {
   sut: GetPokemonInformationsController,
   getPokemonInformationsStub: IGetPokemonInformations
 }
 
-const makeSut = (): SutTypes => {
+const makeSut = (): ISutTypes => {
   const getPokemonInformationsStub = makeGetPokemonInformations();
   const sut = new GetPokemonInformationsController(getPokemonInformationsStub);
 

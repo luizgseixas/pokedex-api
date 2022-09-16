@@ -1,5 +1,5 @@
 import { IPokemonListResponse } from '@src/domain/adapters/responses';
-import { PokemonsListModel } from '@src/domain/models/pokemons-list';
+import { IPokemonsListModel } from '@src/domain/models/pokemons-list';
 
 export const makePrimitivePokemonsList = (): IPokemonListResponse => ({
   count: 1154,
@@ -89,7 +89,7 @@ export const makePrimitivePokemonsList = (): IPokemonListResponse => ({
   ],
 });
 
-export const makePokemonList = (): PokemonsListModel => ({
+export const makePokemonList = (): IPokemonsListModel => ({
   count: 1154,
   next: 'http://localhost:3333?offset=40&limit=20',
   previous: 'http://localhost:3333?offset=0&limit=20',

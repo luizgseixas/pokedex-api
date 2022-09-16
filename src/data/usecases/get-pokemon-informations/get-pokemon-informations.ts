@@ -2,23 +2,19 @@ import { IGetPokemonInformations, IMapFamilyTree } from '@src/domain/usecases';
 import { failure, success } from '@src/domain/shared/utils/either';
 import { movesFilter } from '@src/shared/utils/moves-filter';
 import { spritesFilter } from '@src/shared/utils/sprites-filter';
-import { PokemonInformationsRequester } from '@src/domain/adapters';
+import { IPokemonInformationsRequester } from '@src/domain/adapters';
 
 export class GetPokemonInformation implements IGetPokemonInformations {
-  private readonly api: PokemonInformationsRequester;
+  constructor (
+    private readonly api: IPokemonInformationsRequester,
+    private readonly mapFamilyTree: IMapFamilyTree,
+  ) {}
 
-  private readonly mapFamilyTree: IMapFamilyTree;
-
-  constructor (mapFamilyTree: IMapFamilyTree, api: PokemonInformationsRequester) {
-    this.api = api;
-    this.mapFamilyTree = mapFamilyTree;
-  }
-
-  async execute ({ pokemon }: IGetPokemonInformations.Params): IGetPokemonInformations.Result {
+  async execute ({ id }: IGetPokemonInformations.Params): IGetPokemonInformations.Result {
     try {
-      const data = await this.api.informations(pokemon);
+      const data = await this.api.informations(id);
 
-      const familyTree = await this.mapFamilyTree.execute({ pokemonId: data.id.toString() });
+      const familyTree = await this.mapFamilyTree.execute({ id: data.id.toString() });
 
       if (familyTree.isFailure()) {
         return failure(familyTree.value);
@@ -36,7 +32,7 @@ export class GetPokemonInformation implements IGetPokemonInformations {
 
       return success(information);
     } catch (err) {
-      console.error(err);
+      // console.error(err);
       return failure(err);
     }
   }

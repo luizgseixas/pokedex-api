@@ -1,7 +1,7 @@
-import { PokemonInformationsModel } from '@src/domain/models/pokemon-informations';
-import { makeFamilyTree } from './get-family-tree.mock';
+import { IPokemonInformationsModel } from '@src/domain/models/pokemon-informations';
+import { makeFamilyTree } from '../get-family-tree/get-family-tree.mock';
 
-export const makePokemonInformations = (): PokemonInformationsModel => ({
+export const makePokemonInformations = (): IPokemonInformationsModel => ({
   id: 1,
   name: 'any_name',
   stats: [{
