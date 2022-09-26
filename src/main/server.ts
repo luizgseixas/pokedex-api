@@ -1,16 +1,16 @@
 import 'reflect-metadata';
+import 'module-alias/register';
 import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
-import swaggerUi from 'swagger-ui-express';
+import morgan from 'morgan';
 
 import routes from './routes';
 import { connection } from '../infra/typeorm/connection';
 
-// import swaggerDocs from '../swagger.json';
-
 const app = express();
 
+app.use(morgan('dev'));
 // bodyParser
 app.use(express.json());
 app.use(cors());
