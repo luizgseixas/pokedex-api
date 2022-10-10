@@ -5,7 +5,7 @@ import { IMapFamilyTree } from '@src/domain/usecases';
 export const mockMapFamilyTree = (): IMapFamilyTree => {
   class MapFamilyTreeStub implements IMapFamilyTree {
     async execute (params: IMapFamilyTree.Params): IMapFamilyTree.Result {
-      return new Promise((resolve) => resolve(success(mockFamilyTreeThree())));
+      return Promise.resolve(success(mockFamilyTreeThree()));
     }
   }
 

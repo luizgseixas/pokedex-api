@@ -8,7 +8,7 @@ export const mockPokemonsListRequester = (): IPokemonsListRequester => {
       offset?: string | undefined,
       limit?: string | undefined,
     ): Promise<IPokemonListResponse> {
-      return new Promise((resolve) => resolve(mockPrimitivePokemonsList()));
+      return Promise.resolve(mockPrimitivePokemonsList());
     }
   }
 

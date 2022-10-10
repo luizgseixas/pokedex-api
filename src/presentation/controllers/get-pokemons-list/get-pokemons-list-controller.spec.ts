@@ -37,7 +37,7 @@ describe('GetPokemonsList Controller', () => {
 
   test('Should return 500 if GetPokemonsList return a failure error', async () => {
     const { sut, getPokemonsListStub } = makeSut();
-    jest.spyOn(getPokemonsListStub, 'execute').mockReturnValue(new Promise((resolve) => resolve(failure(new Error()))));
+    jest.spyOn(getPokemonsListStub, 'execute').mockReturnValue(Promise.resolve(failure(new Error())));
     const httpResponse = await sut.handle(mockHttpRequest());
     expect(httpResponse).toEqual(serverError(new Error()));
   });

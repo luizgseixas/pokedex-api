@@ -1,13 +1,14 @@
 import { GetFamilyTreeController } from './get-family-tree.controller';
 import { IHttpRequest } from '../../protocols';
 import { IMapFamilyTree } from '../../../domain/usecases/map-family-tree';
-import { mockFamilyTreeThree, throwError } from '../../../domain/tests';
+import { mockFamilyTreeThree } from '../../../domain/tests';
 import { ok, serverError } from '../../helpers/http-helper';
 import { mockMapFamilyTree } from '../../test';
+import { failure } from '../../../domain/shared/utils/either';
 
 const mockHttpRequest = (): IHttpRequest => ({
   params: {
-    pokemonId: '1',
+    id: '1',
   },
 });
 
@@ -31,14 +32,14 @@ describe('GetFamilyTree Controller', () => {
     const { sut, mapFamilyTreeStub } = makeSut();
     const mapSpy = jest.spyOn(mapFamilyTreeStub, 'execute');
     await sut.handle(mockHttpRequest());
-    expect(mapSpy).toHaveBeenCalledWith('1');
+    expect(mapSpy).toHaveBeenCalledWith({ id: '1' });
   });
 
-  test.skip('Should return 500 if mapFamilyTree returns a failure error', async () => {
+  test('Should return 500 if mapFamilyTree returns a failure error', async () => {
     const { sut, mapFamilyTreeStub } = makeSut();
-    jest.spyOn(mapFamilyTreeStub, 'execute').mockImplementationOnce(throwError);
-    const httpResponse = await sut.handle(mockHttpRequest());
-    expect(httpResponse).toEqual(serverError(new Error()));
+    jest.spyOn(mapFamilyTreeStub, 'execute').mockReturnValueOnce(Promise.resolve(failure(new Error())));
+    const httpResponse = sut.handle(mockHttpRequest());
+    expect(httpResponse).resolves.toEqual(serverError(new Error()));
   });
 
   test('Sould return 200 on success', async () => {

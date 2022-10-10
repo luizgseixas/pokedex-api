@@ -5,7 +5,7 @@ import { mockPrimitiveThreeEvolutionChain } from '@src/domain/tests';
 export const mockFamilyTreeRequester = (): IFamilyTreeRequester => {
   class FamilyTreeRequesterStub implements IFamilyTreeRequester {
     async familyTree (pokemonId: string): Promise<IEvolutionChain> {
-      return new Promise((resolve) => resolve(mockPrimitiveThreeEvolutionChain()));
+      return Promise.resolve(mockPrimitiveThreeEvolutionChain());
     }
   }
 

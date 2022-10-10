@@ -12,7 +12,6 @@ export class MapFamilyTree implements IMapFamilyTree {
 
       return success(chainFilter(data.chain));
     } catch (err) {
-      // console.error(err);
       return failure(err);
     }
   }

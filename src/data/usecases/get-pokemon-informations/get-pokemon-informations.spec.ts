@@ -37,7 +37,7 @@ describe('GetPokemonInformations Usecase', () => {
     const { sut, mapFamilyTreeStub } = makeSut();
     jest
       .spyOn(mapFamilyTreeStub, 'execute')
-      .mockReturnValueOnce(new Promise((resolve) => resolve(failure(Error()))));
+      .mockReturnValueOnce(Promise.resolve(failure(Error())));
     const promise = sut.execute(sutParam);
     await expect(promise).resolves.toEqual(failure(Error()));
   });
@@ -53,7 +53,7 @@ describe('GetPokemonInformations Usecase', () => {
     const { sut, PokemonInformationsRequesterStub } = makeSut();
     jest
       .spyOn(PokemonInformationsRequesterStub, 'informations')
-      .mockReturnValueOnce(new Promise((resolve, reject) => reject(Error())));
+      .mockReturnValueOnce(Promise.reject(Error()));
     const promise = sut.execute(sutParam);
     await expect(promise).resolves.toEqual(failure(Error()));
   });
