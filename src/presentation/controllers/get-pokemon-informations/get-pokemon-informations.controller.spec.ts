@@ -1,10 +1,10 @@
 import { GetPokemonInformationsController } from './get-pokemon-informations.controller';
 import { IGetPokemonInformations } from '../../../domain/usecases';
-import { makePokemonInformations } from './get-pokemon-informations.mock';
 import { failure, success } from '../../../domain/shared/utils/either';
 import { IHttpRequest } from '../../protocols';
 import { ok, serverError } from '../../helpers/http-helper';
 import { mockGetPokemonInformations } from '../../test';
+import { mockPokemonInformations } from '../../../domain/tests';
 
 const mockHttpRequest = (): IHttpRequest => ({
   params: { pokemonId: '1' },
@@ -45,6 +45,6 @@ describe('GetPokemonInformations Controller', () => {
   test('Should return 200 on success', async () => {
     const { sut } = makeSut();
     const httpResponse = await sut.handle(mockHttpRequest());
-    expect(httpResponse).toEqual(ok(makePokemonInformations()));
+    expect(httpResponse).toEqual(ok(mockPokemonInformations()));
   });
 });

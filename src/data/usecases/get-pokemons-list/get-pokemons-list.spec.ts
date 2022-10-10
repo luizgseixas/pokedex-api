@@ -1,10 +1,9 @@
 import { IPokemonsListRequester } from '../../../domain/adapters';
 import { failure, success } from '../../../domain/shared/utils/either';
-import { throwError } from '../../../domain/tests';
+import { mockPokemonList, throwError } from '../../../domain/tests';
 import { IGetPokemonsList } from '../../../domain/usecases';
 import { mockPokemonsListRequester } from '../../test';
 import { GetPokemonsList } from './get-pokemons-list';
-import { makePokemonList } from './get-pokemons-list.mock';
 
 type SutTypes = {
   sut: IGetPokemonsList;
@@ -50,6 +49,6 @@ describe('GetPokemonsList Usecase', () => {
   test('Should return a success PokemonsList with success', async () => {
     const { sut } = makeSut();
     const list = await sut.execute({});
-    expect(list).toEqual(success(makePokemonList()));
+    expect(list).toEqual(success(mockPokemonList()));
   });
 });

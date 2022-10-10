@@ -1,13 +1,12 @@
 import { IFamilyTreeRequester } from '../../../domain/adapters';
 import { failure, success } from '../../../domain/shared/utils/either';
-import { throwError } from '../../../domain/tests';
+import {
+  mockFamilyTreeAll,
+  mockFamilyTreeOne, mockFamilyTreeThree, mockFamilyTreeTwo, mockPrimitiveAllEvolutionChain, mockPrimitiveOneEvolutionChain, mockPrimitiveTwoEvolutionChain, throwError,
+} from '../../../domain/tests';
 import { IMapFamilyTree } from '../../../domain/usecases';
 import { mockFamilyTreeRequester } from '../../test';
 import { MapFamilyTree } from './map-family-tree';
-import {
-  makeAllEvolutionChain, makeFamilyTreeAll, makeFamilyTreeOne, makeFamilyTreeThree, makeFamilyTreeTwo, makeOneEvolutionChain,
-  makeTwoEvolutionChain,
-} from './map-family-tree.mock';
 
 type SutTypes = {
   sut: IMapFamilyTree;
@@ -47,10 +46,10 @@ describe('MapFamilyTree Usecase', () => {
     const { sut, familyTreeRequesterStub } = makeSut();
     jest
       .spyOn(familyTreeRequesterStub, 'familyTree')
-      .mockReturnValueOnce(new Promise((resolve) => resolve(makeOneEvolutionChain())));
+      .mockReturnValueOnce(new Promise((resolve) => resolve(mockPrimitiveOneEvolutionChain())));
     const familyTree = await sut.execute(sutParam);
     expect(familyTree).toEqual(
-      success(makeFamilyTreeOne()),
+      success(mockFamilyTreeOne()),
     );
   });
 
@@ -58,10 +57,10 @@ describe('MapFamilyTree Usecase', () => {
     const { sut, familyTreeRequesterStub } = makeSut();
     jest
       .spyOn(familyTreeRequesterStub, 'familyTree')
-      .mockReturnValueOnce(new Promise((resolve) => resolve(makeTwoEvolutionChain())));
+      .mockReturnValueOnce(new Promise((resolve) => resolve(mockPrimitiveTwoEvolutionChain())));
     const familyTree = await sut.execute(sutParam);
     expect(familyTree).toEqual(
-      success(makeFamilyTreeTwo()),
+      success(mockFamilyTreeTwo()),
     );
   });
 
@@ -69,7 +68,7 @@ describe('MapFamilyTree Usecase', () => {
     const { sut } = makeSut();
     const familyTree = await sut.execute(sutParam);
     expect(familyTree).toEqual(
-      success(makeFamilyTreeThree()),
+      success(mockFamilyTreeThree()),
     );
   });
 
@@ -77,10 +76,10 @@ describe('MapFamilyTree Usecase', () => {
     const { sut, familyTreeRequesterStub } = makeSut();
     jest
       .spyOn(familyTreeRequesterStub, 'familyTree')
-      .mockReturnValueOnce(new Promise((resolve) => resolve(makeAllEvolutionChain())));
+      .mockReturnValueOnce(new Promise((resolve) => resolve(mockPrimitiveAllEvolutionChain())));
     const familyTree = await sut.execute(sutParam);
     expect(familyTree).toEqual(
-      success(makeFamilyTreeAll()),
+      success(mockFamilyTreeAll()),
     );
   });
 });

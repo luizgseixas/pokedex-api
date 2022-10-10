@@ -1,11 +1,11 @@
 import { IEvolutionChain } from '@src/domain/adapters/responses';
 import { IFamilyTreeRequester } from '@src/domain/adapters';
-import { makeThreeEvolutionChain } from '../usecases/map-family-tree/map-family-tree.mock';
+import { mockPrimitiveThreeEvolutionChain } from '@src/domain/tests';
 
 export const mockFamilyTreeRequester = (): IFamilyTreeRequester => {
   class FamilyTreeRequesterStub implements IFamilyTreeRequester {
     async familyTree (pokemonId: string): Promise<IEvolutionChain> {
-      return new Promise((resolve) => resolve(makeThreeEvolutionChain()));
+      return new Promise((resolve) => resolve(mockPrimitiveThreeEvolutionChain()));
     }
   }
 

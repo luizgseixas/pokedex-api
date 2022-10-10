@@ -1,6 +1,6 @@
 import { IPokemonsListRequester } from '@src/domain/adapters';
 import { IPokemonListResponse } from '@src/domain/adapters/responses';
-import { makePrimitivePokemonsList } from '../usecases/get-pokemons-list/get-pokemons-list.mock';
+import { mockPrimitivePokemonsList } from '@src/domain/tests';
 
 export const mockPokemonsListRequester = (): IPokemonsListRequester => {
   class PokemonsListRequesterStub implements IPokemonsListRequester {
@@ -8,7 +8,7 @@ export const mockPokemonsListRequester = (): IPokemonsListRequester => {
       offset?: string | undefined,
       limit?: string | undefined,
     ): Promise<IPokemonListResponse> {
-      return new Promise((resolve) => resolve(makePrimitivePokemonsList()));
+      return new Promise((resolve) => resolve(mockPrimitivePokemonsList()));
     }
   }
 

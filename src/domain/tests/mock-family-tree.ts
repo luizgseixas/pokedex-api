@@ -1,7 +1,8 @@
-import { IEvolutionChain } from '@src/domain/adapters/responses';
 import { IFamilyTreeModel } from '@src/domain/models/family-tree';
 
-export const makeOneEvolutionChain = (): IEvolutionChain => ({
+import { IEvolutionChain } from '@src/domain/adapters/responses';
+
+export const mockPrimitiveOneEvolutionChain = (): IEvolutionChain => ({
   baby_trigger_item: null,
   chain: {
     evolution_details: [],
@@ -15,7 +16,7 @@ export const makeOneEvolutionChain = (): IEvolutionChain => ({
   id: 1,
 });
 
-export const makeTwoEvolutionChain = (): IEvolutionChain => ({
+export const mockPrimitiveTwoEvolutionChain = (): IEvolutionChain => ({
   baby_trigger_item: null,
   chain: {
     evolution_details: [],
@@ -63,7 +64,7 @@ export const makeTwoEvolutionChain = (): IEvolutionChain => ({
   id: 1,
 });
 
-export const makeThreeEvolutionChain = (): IEvolutionChain => ({
+export const mockPrimitiveThreeEvolutionChain = (): IEvolutionChain => ({
   baby_trigger_item: null,
   chain: {
     evolution_details: [],
@@ -145,7 +146,7 @@ export const makeThreeEvolutionChain = (): IEvolutionChain => ({
   id: 1,
 });
 
-export const makeAllEvolutionChain = (): IEvolutionChain => ({
+export const mockPrimitiveAllEvolutionChain = (): IEvolutionChain => ({
   baby_trigger_item: null,
   chain: {
     evolution_details: [],
@@ -670,7 +671,7 @@ export const makeAllEvolutionChain = (): IEvolutionChain => ({
   id: 67,
 });
 
-export const makeFamilyTreeOne = (): IFamilyTreeModel[] => ([
+export const mockFamilyTreeOne = (): IFamilyTreeModel[] => ([
   {
     evolution_lvl: 1,
     name: 'any_name',
@@ -678,7 +679,7 @@ export const makeFamilyTreeOne = (): IFamilyTreeModel[] => ([
   },
 ]);
 
-export const makeFamilyTreeTwo = (): IFamilyTreeModel[] => ([
+export const mockFamilyTreeTwo = (): IFamilyTreeModel[] => ([
   {
     evolution_lvl: 1,
     name: 'any_name',
@@ -694,7 +695,7 @@ export const makeFamilyTreeTwo = (): IFamilyTreeModel[] => ([
   },
 ]);
 
-export const makeFamilyTreeThree = (): IFamilyTreeModel[] => ([
+export const mockFamilyTreeThree = (): IFamilyTreeModel[] => ([
   {
     evolution_lvl: 1,
     name: 'any_name',
@@ -718,7 +719,7 @@ export const makeFamilyTreeThree = (): IFamilyTreeModel[] => ([
   },
 ]);
 
-export const makeFamilyTreeAll = (): IFamilyTreeModel[] => ([
+export const mockFamilyTreeAll = (): IFamilyTreeModel[] => ([
   {
     evolution_lvl: 1,
     name: 'any_name',

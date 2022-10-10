@@ -1,17 +1,17 @@
 import { GetPokemonInformation } from './get-pokemon-informations';
-import { makePokemonInformations } from './get-pokemon-informations.mock';
 import { IGetPokemonInformations, IMapFamilyTree } from '../../../domain/usecases';
 import { IPokemonInformationsRequester } from '../../../domain/adapters';
 import { failure, success } from '../../../domain/shared/utils/either';
 import { mockMapFamilyTree, mockPokemonInformationsRequester } from '../../test';
+import { mockPokemonInformations } from '../../../domain/tests';
+
+const sutParam = { id: '1' };
 
 type SutTypes = {
   sut: IGetPokemonInformations;
   mapFamilyTreeStub: IMapFamilyTree;
   PokemonInformationsRequesterStub: IPokemonInformationsRequester;
 }
-
-const sutParam = { id: '1' };
 
 const makeSut = (): SutTypes => {
   const mapFamilyTreeStub = mockMapFamilyTree();
@@ -61,6 +61,6 @@ describe('GetPokemonInformations Usecase', () => {
   test('Should GetPokemonInformation usecase return a pokemonInformations on success', async () => {
     const { sut } = makeSut();
     const informations = await sut.execute(sutParam);
-    expect(informations).toEqual(success(makePokemonInformations()));
+    expect(informations).toEqual(success(mockPokemonInformations()));
   });
 });
