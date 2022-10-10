@@ -1,6 +1,6 @@
 import { IPokemonsListRequester } from '../../../domain/adapters';
 import { failure, success } from '../../../domain/shared/utils/either';
-import { mockPokemonList, throwError } from '../../../domain/tests';
+import { mockPokemonList, throwError } from '../../../domain/test';
 import { IGetPokemonsList } from '../../../domain/usecases';
 import { mockPokemonsListRequester } from '../../test';
 import { GetPokemonsList } from './get-pokemons-list';

@@ -4,7 +4,7 @@ import { failure, success } from '../../../domain/shared/utils/either';
 import { IHttpRequest } from '../../protocols';
 import { ok, serverError } from '../../helpers/http-helper';
 import { mockGetPokemonInformations } from '../../test';
-import { mockPokemonInformations } from '../../../domain/tests';
+import { mockPokemonInformations } from '../../../domain/test';
 
 const mockHttpRequest = (): IHttpRequest => ({
   params: { pokemonId: '1' },

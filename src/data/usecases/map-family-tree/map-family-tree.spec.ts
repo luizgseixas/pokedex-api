@@ -3,7 +3,7 @@ import { failure, success } from '../../../domain/shared/utils/either';
 import {
   mockFamilyTreeAll,
   mockFamilyTreeOne, mockFamilyTreeThree, mockFamilyTreeTwo, mockPrimitiveAllEvolutionChain, mockPrimitiveOneEvolutionChain, mockPrimitiveTwoEvolutionChain, throwError,
-} from '../../../domain/tests';
+} from '../../../domain/test';
 import { IMapFamilyTree } from '../../../domain/usecases';
 import { mockFamilyTreeRequester } from '../../test';
 import { MapFamilyTree } from './map-family-tree';
