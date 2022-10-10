@@ -1,32 +1,9 @@
-import { IPokemonInformationsRequester } from '../../../domain/adapters';
-import { IPokemonData } from '../../../domain/adapters/responses';
-import { IGetPokemonInformations, IMapFamilyTree } from '../../../domain/usecases';
-import { failure, success } from '../../../domain/shared/utils/either';
-
-import { makePokemonData, makePokemonInformations } from './get-pokemon-informations.mock';
-import { makeFamilyTreeThree } from '../map-family-tree/map-family-tree.mock';
-
 import { GetPokemonInformation } from './get-pokemon-informations';
-
-const makeMapFamilyTree = (): IMapFamilyTree => {
-  class MapFamilyTreeStub implements IMapFamilyTree {
-    async execute (params: IMapFamilyTree.Params): IMapFamilyTree.Result {
-      return new Promise((resolve) => resolve(success(makeFamilyTreeThree())));
-    }
-  }
-
-  return new MapFamilyTreeStub();
-};
-
-const makeApi = (): IPokemonInformationsRequester => {
-  class PokemonInformationsRequesterStub implements IPokemonInformationsRequester {
-    async informations (id: string): Promise<IPokemonData> {
-      return new Promise((resolve) => resolve(makePokemonData()));
-    }
-  }
-
-  return new PokemonInformationsRequesterStub();
-};
+import { makePokemonInformations } from './get-pokemon-informations.mock';
+import { IGetPokemonInformations, IMapFamilyTree } from '../../../domain/usecases';
+import { IPokemonInformationsRequester } from '../../../domain/adapters';
+import { failure, success } from '../../../domain/shared/utils/either';
+import { mockMapFamilyTree, mockPokemonInformationsRequester } from '../../test';
 
 type SutTypes = {
   sut: IGetPokemonInformations;
@@ -37,8 +14,8 @@ type SutTypes = {
 const sutParam = { id: '1' };
 
 const makeSut = (): SutTypes => {
-  const mapFamilyTreeStub = makeMapFamilyTree();
-  const PokemonInformationsRequesterStub = makeApi();
+  const mapFamilyTreeStub = mockMapFamilyTree();
+  const PokemonInformationsRequesterStub = mockPokemonInformationsRequester();
   const sut = new GetPokemonInformation(PokemonInformationsRequesterStub, mapFamilyTreeStub);
 
   return {

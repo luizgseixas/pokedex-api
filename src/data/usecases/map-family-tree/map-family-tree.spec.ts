@@ -1,29 +1,13 @@
-import { MapFamilyTree } from './map-family-tree';
-import { failure, success } from '../../../domain/shared/utils/either';
-import { IEvolutionChain } from '../../../domain/adapters/responses';
 import { IFamilyTreeRequester } from '../../../domain/adapters';
-import { IMapFamilyTree } from '../../../domain/usecases';
+import { failure, success } from '../../../domain/shared/utils/either';
 import { throwError } from '../../../domain/tests';
+import { IMapFamilyTree } from '../../../domain/usecases';
+import { mockFamilyTreeRequester } from '../../test';
+import { MapFamilyTree } from './map-family-tree';
 import {
-  makeFamilyTreeOne,
-  makeFamilyTreeTwo,
-  makeFamilyTreeThree,
-  makeFamilyTreeAll,
-  makeOneEvolutionChain,
+  makeAllEvolutionChain, makeFamilyTreeAll, makeFamilyTreeOne, makeFamilyTreeThree, makeFamilyTreeTwo, makeOneEvolutionChain,
   makeTwoEvolutionChain,
-  makeThreeEvolutionChain,
-  makeAllEvolutionChain,
 } from './map-family-tree.mock';
-
-const makeFamilyTreeRequester = (): IFamilyTreeRequester => {
-  class FamilyTreeRequesterStub implements IFamilyTreeRequester {
-    async familyTree (pokemonId: string): Promise<IEvolutionChain> {
-      return new Promise((resolve) => resolve(makeThreeEvolutionChain()));
-    }
-  }
-
-  return new FamilyTreeRequesterStub();
-};
 
 type SutTypes = {
   sut: IMapFamilyTree;
@@ -33,7 +17,7 @@ type SutTypes = {
 const sutParam = { id: '1' };
 
 const makeSut = (): SutTypes => {
-  const familyTreeRequesterStub = makeFamilyTreeRequester();
+  const familyTreeRequesterStub = mockFamilyTreeRequester();
   const sut = new MapFamilyTree(familyTreeRequesterStub);
 
   return {

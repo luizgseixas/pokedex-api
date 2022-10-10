@@ -7,7 +7,7 @@
     "build": "rm -r dist && tsc",
     "dev": "ts-node-dev -r tsconfig-paths/register --transpile-only --no-notify src/main/server.ts",
     "start": "node dist/main/server.js",
-    "test": "jest --passWithNoTests --noStackTrace --runInBand --detectOpenHandles",
+    "test": "jest --passWithNoTests --noStackTrace --runInBand --detectOpenHandles --no-cache",
     "test:verbose": "jest --passWithNoTests --runInBand --verbose",
     "test:unit": "npm test -- --watch -c jest-unit-config.js",
     "test:integration": "npm test -- --watch -c jest-integration-config.js",

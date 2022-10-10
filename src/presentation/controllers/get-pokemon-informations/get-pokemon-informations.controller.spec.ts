@@ -6,7 +6,7 @@ import { IHttpRequest } from '../../protocols';
 import { ok, serverError } from '../../helpers/http-helper';
 import { mockGetPokemonInformations } from '../../test';
 
-const makeHttpRequest = (): IHttpRequest => ({
+const mockHttpRequest = (): IHttpRequest => ({
   params: { pokemonId: '1' },
 });
 
@@ -29,7 +29,7 @@ describe('GetPokemonInformations Controller', () => {
   test('Should call GetPokemonInformations with correct value', async () => {
     const { sut, getPokemonInformationsStub } = makeSut();
     const infoSpy = jest.spyOn(getPokemonInformationsStub, 'execute');
-    await sut.handle(makeHttpRequest());
+    await sut.handle(mockHttpRequest());
     expect(infoSpy).toHaveBeenCalledWith('1');
   });
 
@@ -38,13 +38,13 @@ describe('GetPokemonInformations Controller', () => {
     jest.spyOn(getPokemonInformationsStub, 'execute').mockReturnValueOnce(
       new Promise(((resolve) => resolve(failure(new Error())))),
     );
-    const promise = sut.handle(makeHttpRequest());
+    const promise = sut.handle(mockHttpRequest());
     await expect(promise).resolves.toEqual(serverError(new Error()));
   });
 
   test('Should return 200 on success', async () => {
     const { sut } = makeSut();
-    const httpResponse = await sut.handle(makeHttpRequest());
+    const httpResponse = await sut.handle(mockHttpRequest());
     expect(httpResponse).toEqual(ok(makePokemonInformations()));
   });
 });

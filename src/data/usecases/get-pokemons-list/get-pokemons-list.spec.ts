@@ -1,23 +1,10 @@
-import { GetPokemonsList } from './get-pokemons-list';
-import { makePokemonList, makePrimitivePokemonsList } from './get-pokemons-list.mock';
-import { IPokemonListResponse } from '../../../domain/adapters/responses';
-import { failure, success } from '../../../domain/shared/utils/either';
 import { IPokemonsListRequester } from '../../../domain/adapters';
-import { IGetPokemonsList } from '../../../domain/usecases';
+import { failure, success } from '../../../domain/shared/utils/either';
 import { throwError } from '../../../domain/tests';
-
-const makePokemonsListRequester = (): IPokemonsListRequester => {
-  class PokemonsListRequesterStub implements IPokemonsListRequester {
-    async lists (
-      offset?: string | undefined,
-      limit?: string | undefined,
-    ): Promise<IPokemonListResponse> {
-      return new Promise((resolve) => resolve(makePrimitivePokemonsList()));
-    }
-  }
-
-  return new PokemonsListRequesterStub();
-};
+import { IGetPokemonsList } from '../../../domain/usecases';
+import { mockPokemonsListRequester } from '../../test';
+import { GetPokemonsList } from './get-pokemons-list';
+import { makePokemonList } from './get-pokemons-list.mock';
 
 type SutTypes = {
   sut: IGetPokemonsList;
@@ -27,7 +14,7 @@ type SutTypes = {
 const sutParam = { offset: '1', limit: '20' };
 
 const makeSut = (): SutTypes => {
-  const pokemonsListRequesterStub = makePokemonsListRequester();
+  const pokemonsListRequesterStub = mockPokemonsListRequester();
   const sut = new GetPokemonsList(pokemonsListRequesterStub);
 
   return {
