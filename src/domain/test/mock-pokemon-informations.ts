@@ -1,5 +1,5 @@
 import { IPokemonInformationsModel } from '@src/domain/models/pokemon-informations';
-import { mockFamilyTreeThree } from '@src/domain/tests';
+import { mockFamilyTreeThree } from '@src/domain/test';
 import { IPokemonData } from '../adapters/responses';
 
 export const mockPokemonInformations = (): IPokemonInformationsModel => ({

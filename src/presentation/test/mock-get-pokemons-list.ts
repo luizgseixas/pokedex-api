@@ -1,5 +1,5 @@
 import { success } from '@src/domain/shared/utils/either';
-import { mockPokemonList } from '@src/domain/tests';
+import { mockPokemonList } from '@src/domain/test';
 import { IGetPokemonsList } from '@src/domain/usecases';
 
 export const mockGetPokemonsList = (): IGetPokemonsList => {

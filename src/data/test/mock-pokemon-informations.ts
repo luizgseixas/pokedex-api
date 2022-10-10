@@ -1,7 +1,7 @@
 import { IPokemonInformationsRequester } from '@src/domain/adapters';
 import { IPokemonData } from '@src/domain/adapters/responses';
 import { success } from '@src/domain/shared/utils/either';
-import { mockFamilyTreeThree, mockPrimitivePokemonInformations } from '@src/domain/tests';
+import { mockFamilyTreeThree, mockPrimitivePokemonInformations } from '@src/domain/test';
 import { IMapFamilyTree } from '@src/domain/usecases';
 
 export const mockMapFamilyTree = (): IMapFamilyTree => {

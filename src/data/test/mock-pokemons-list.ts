@@ -1,6 +1,6 @@
 import { IPokemonsListRequester } from '@src/domain/adapters';
 import { IPokemonListResponse } from '@src/domain/adapters/responses';
-import { mockPrimitivePokemonsList } from '@src/domain/tests';
+import { mockPrimitivePokemonsList } from '@src/domain/test';
 
 export const mockPokemonsListRequester = (): IPokemonsListRequester => {
   class PokemonsListRequesterStub implements IPokemonsListRequester {

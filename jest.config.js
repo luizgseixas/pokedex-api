@@ -2,11 +2,11 @@ module.exports = {
   roots: ['<rootDir>/src'],
   collectCoverageFrom: [
     '<rootDir>/src/**/*.ts',
-    '!<rootoDir>/src/main/**',
     '!**/protocols/**',
     '!**/test/**',
   ],
   coverageDirectory: 'coverage',
+  coverageProvider: 'babel',
   testEnvironment: 'node',
   transform: {
     '.+\\.ts$': 'ts-jest',
@@ -15,5 +15,8 @@ module.exports = {
   moduleNameMapper: {
     '^@src/(.*)$': '<rootDir>/src/$1',
   },
-  modulePathIgnorePatterns: ['__mocks__'],
+  modulePathIgnorePatterns: [
+    'src/main/',
+    '**/test/',
+  ],
 };

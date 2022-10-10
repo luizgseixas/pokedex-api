@@ -1,5 +1,5 @@
 import { success } from '@src/domain/shared/utils/either';
-import { mockFamilyTreeThree } from '@src/domain/tests';
+import { mockFamilyTreeThree } from '@src/domain/test';
 import { IMapFamilyTree } from '@src/domain/usecases';
 
 export const mockMapFamilyTree = (): IMapFamilyTree => {
