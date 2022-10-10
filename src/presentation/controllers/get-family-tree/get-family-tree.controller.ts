@@ -1,16 +1,15 @@
 import { IMapFamilyTree } from '@src/domain/usecases';
 import { IController } from '@src/presentation/protocols/controller';
-import { MissingParamError } from '../../errors/missing-param-error';
-import { badRequest, ok, serverError } from '../../helpers/http-helper';
+import { ok, serverError } from '../../helpers/http-helper';
 import { IHttpRequest } from '../../protocols';
 
 export class GetFamilyTreeController implements IController {
-  constructor (private readonly getFamilyTree: IMapFamilyTree) {}
+  constructor (private readonly mapFamilyTree: IMapFamilyTree) {}
 
   async handle (httpRequest: IHttpRequest) {
-    const { pokemonId } = httpRequest.params;
+    const { id } = httpRequest.params;
 
-    const result = await this.getFamilyTree.execute(pokemonId);
+    const result = await this.mapFamilyTree.execute({ id });
 
     if (result.isFailure()) {
       return serverError(result.value);
