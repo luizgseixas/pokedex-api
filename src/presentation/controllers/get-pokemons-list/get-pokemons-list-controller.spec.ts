@@ -22,12 +22,12 @@ const makeFakeRequest = (): IHttpRequest => ({
   },
 });
 
-interface ISutTypes {
+type SutTypes = {
   sut: GetPokemonsListController,
   getPokemonsListStub: IGetPokemonsList
 }
 
-const makeSut = (): ISutTypes => {
+const makeSut = (): SutTypes => {
   const getPokemonsListStub = makeGetPokemonsList();
   const sut = new GetPokemonsListController(getPokemonsListStub);
   return {

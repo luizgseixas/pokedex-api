@@ -28,7 +28,7 @@ const makeApi = (): IPokemonInformationsRequester => {
   return new PokemonInformationsRequesterStub();
 };
 
-interface ISutTypes {
+type SutTypes = {
   sut: IGetPokemonInformations;
   mapFamilyTreeStub: IMapFamilyTree;
   PokemonInformationsRequesterStub: IPokemonInformationsRequester;
@@ -36,7 +36,7 @@ interface ISutTypes {
 
 const sutParam = { id: '1' };
 
-const makeSut = (): ISutTypes => {
+const makeSut = (): SutTypes => {
   const mapFamilyTreeStub = makeMapFamilyTree();
   const PokemonInformationsRequesterStub = makeApi();
   const sut = new GetPokemonInformation(PokemonInformationsRequesterStub, mapFamilyTreeStub);

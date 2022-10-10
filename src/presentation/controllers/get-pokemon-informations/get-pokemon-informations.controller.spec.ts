@@ -19,12 +19,12 @@ const makeHttpRequest = (): IHttpRequest => ({
   params: { pokemonId: '1' },
 });
 
-interface ISutTypes {
+type SutTypes = {
   sut: GetPokemonInformationsController,
   getPokemonInformationsStub: IGetPokemonInformations
 }
 
-const makeSut = (): ISutTypes => {
+const makeSut = (): SutTypes => {
   const getPokemonInformationsStub = makeGetPokemonInformations();
   const sut = new GetPokemonInformationsController(getPokemonInformationsStub);
 

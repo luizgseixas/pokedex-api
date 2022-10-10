@@ -1,10 +1,10 @@
 import { GetFamilyTreeController } from './get-family-tree.controller';
-import { IMapFamilyTree } from '../../../domain/usecases/map-family-tree';
 import { makeFamilyTree } from './get-family-tree.mock';
 import { IHttpRequest } from '../../protocols';
-import { failure, success } from '../../../domain/shared/utils/either';
-import { badRequest, ok, serverError } from '../../helpers/http-helper';
-import { MissingParamError } from '../../errors/missing-param-error';
+import { IMapFamilyTree } from '../../../domain/usecases/map-family-tree';
+import { success } from '../../../domain/shared/utils/either';
+import { throwError } from '../../../domain/tests';
+import { ok, serverError } from '../../helpers/http-helper';
 
 const makeMapFamilyTree = (): IMapFamilyTree => {
   class MapFamilyTreeStub implements IMapFamilyTree {
@@ -22,12 +22,12 @@ const mockRequest = (): IHttpRequest => ({
   },
 });
 
-interface ISutTypes {
+type SutTypes = {
   sut: GetFamilyTreeController
   mapFamilyTreeStub: IMapFamilyTree
 }
 
-const makeSut = (): ISutTypes => {
+const makeSut = (): SutTypes => {
   const mapFamilyTreeStub = makeMapFamilyTree();
   const sut = new GetFamilyTreeController(mapFamilyTreeStub);
 
@@ -47,7 +47,7 @@ describe('GetFamilyTree Controller', () => {
 
   test('Should return 500 if mapFamilyTree returns a failure error', async () => {
     const { sut, mapFamilyTreeStub } = makeSut();
-    jest.spyOn(mapFamilyTreeStub, 'execute').mockReturnValueOnce(new Promise((resolve) => resolve(failure(new Error()))));
+    jest.spyOn(mapFamilyTreeStub, 'execute').mockImplementationOnce(throwError);
     const httpResponse = await sut.handle(mockRequest());
     expect(httpResponse).toEqual(serverError(new Error()));
   });

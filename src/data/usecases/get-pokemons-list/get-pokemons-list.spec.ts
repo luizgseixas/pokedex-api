@@ -1,9 +1,10 @@
-import { IPokemonListResponse } from '../../../domain/adapters/responses';
-import { failure, success } from '../../../domain/shared/utils/either';
-import { IGetPokemonsList } from '../../../domain/usecases';
-import { IPokemonsListRequester } from '../../../domain/adapters';
 import { GetPokemonsList } from './get-pokemons-list';
 import { makePokemonList, makePrimitivePokemonsList } from './get-pokemons-list.mock';
+import { IPokemonListResponse } from '../../../domain/adapters/responses';
+import { failure, success } from '../../../domain/shared/utils/either';
+import { IPokemonsListRequester } from '../../../domain/adapters';
+import { IGetPokemonsList } from '../../../domain/usecases';
+import { throwError } from '../../../domain/tests';
 
 const makePokemonsListRequester = (): IPokemonsListRequester => {
   class PokemonsListRequesterStub implements IPokemonsListRequester {
@@ -18,14 +19,14 @@ const makePokemonsListRequester = (): IPokemonsListRequester => {
   return new PokemonsListRequesterStub();
 };
 
-interface ISutTypes {
+type SutTypes = {
   sut: IGetPokemonsList;
   pokemonsListRequesterStub: IPokemonsListRequester;
 }
 
 const sutParam = { offset: '1', limit: '20' };
 
-const makeSut = (): ISutTypes => {
+const makeSut = (): SutTypes => {
   const pokemonsListRequesterStub = makePokemonsListRequester();
   const sut = new GetPokemonsList(pokemonsListRequesterStub);
 
@@ -54,7 +55,7 @@ describe('GetPokemonsList Usecase', () => {
     const { sut, pokemonsListRequesterStub } = makeSut();
     jest
       .spyOn(pokemonsListRequesterStub, 'lists')
-      .mockReturnValueOnce(new Promise((resolve, rejects) => rejects(new Error())));
+      .mockImplementationOnce(throwError);
     const promise = sut.execute({});
     await expect(promise).resolves.toEqual(failure(Error()));
   });

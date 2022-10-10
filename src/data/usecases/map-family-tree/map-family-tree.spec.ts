@@ -1,8 +1,9 @@
-import { IFamilyTreeRequester } from '../../../domain/adapters';
-import { IEvolutionChain } from '../../../domain/adapters/responses';
-import { failure, success } from '../../../domain/shared/utils/either';
-import { IMapFamilyTree } from '../../../domain/usecases';
 import { MapFamilyTree } from './map-family-tree';
+import { failure, success } from '../../../domain/shared/utils/either';
+import { IEvolutionChain } from '../../../domain/adapters/responses';
+import { IFamilyTreeRequester } from '../../../domain/adapters';
+import { IMapFamilyTree } from '../../../domain/usecases';
+import { throwError } from '../../../domain/tests';
 import {
   makeFamilyTreeOne,
   makeFamilyTreeTwo,
@@ -24,14 +25,14 @@ const makeFamilyTreeRequester = (): IFamilyTreeRequester => {
   return new FamilyTreeRequesterStub();
 };
 
-interface ISutTypes {
+type SutTypes = {
   sut: IMapFamilyTree;
   familyTreeRequesterStub: IFamilyTreeRequester;
 }
 
 const sutParam = { id: '1' };
 
-const makeSut = (): ISutTypes => {
+const makeSut = (): SutTypes => {
   const familyTreeRequesterStub = makeFamilyTreeRequester();
   const sut = new MapFamilyTree(familyTreeRequesterStub);
 
@@ -53,7 +54,7 @@ describe('MapFamilyTree Usecase', () => {
     const { sut, familyTreeRequesterStub } = makeSut();
     jest
       .spyOn(familyTreeRequesterStub, 'familyTree')
-      .mockReturnValueOnce(new Promise((resolve, rejects) => rejects(new Error())));
+      .mockImplementationOnce(throwError);
     const promise = sut.execute(sutParam);
     expect(promise).resolves.toEqual(failure(Error()));
   });
