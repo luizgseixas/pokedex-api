@@ -16,7 +16,8 @@ module.exports = {
     '^@src/(.*)$': '<rootDir>/src/$1',
   },
   modulePathIgnorePatterns: [
-    // '<rootDir>/src/main/**',
-    // '<rootDir>/**/test/**',
+    'main',
+    'test',
+    'migrations',
   ],
 };
