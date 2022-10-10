@@ -14,11 +14,11 @@ services:
     volumes:
       - ./data:/data/db
 
-  adminer:
-    image: adminer
-    restart: always
-    environment:
-      ADMINER_DESIGN: dracula
-    ports:
-      - 8080:8080
+  # adminer:
+  #   image: adminer
+  #   restart: always
+  #   environment:
+  #     ADMINER_DESIGN: dracula
+  #   ports:
+  #     - 8080:8080
 
