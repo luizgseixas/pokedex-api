@@ -8,8 +8,9 @@ export class GetFamilyTreeController implements IController {
   constructor (private readonly getFamilyTree: IMapFamilyTree) {}
 
   async handle (httpRequest: IHttpRequest) {
-    if (!httpRequest.params) return badRequest(new MissingParamError('pokemonId'));
-    const result = await this.getFamilyTree.execute(httpRequest.params);
+    const { pokemonId } = httpRequest.params;
+
+    const result = await this.getFamilyTree.execute(pokemonId);
 
     if (result.isFailure()) {
       return serverError(result.value);

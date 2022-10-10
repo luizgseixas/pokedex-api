@@ -16,7 +16,7 @@ const makeMapFamilyTree = (): IMapFamilyTree => {
   return new MapFamilyTreeStub();
 };
 
-const makeFakeRequest = (): IHttpRequest => ({
+const mockRequest = (): IHttpRequest => ({
   params: {
     pokemonId: '1',
   },
@@ -38,29 +38,23 @@ const makeSut = (): ISutTypes => {
 };
 
 describe('GetFamilyTree Controller', () => {
-  test('Should return 400 if pokemonId param is not provided', async () => {
-    const { sut } = makeSut();
-    const httpResponse = await sut.handle({});
-    expect(httpResponse).toEqual(badRequest(new MissingParamError('pokemonId')));
-  });
-
   test('Should call mapFamilyTree with correct value', async () => {
     const { sut, mapFamilyTreeStub } = makeSut();
     const mapSpy = jest.spyOn(mapFamilyTreeStub, 'execute');
-    await sut.handle(makeFakeRequest());
-    expect(mapSpy).toHaveBeenCalledWith({ pokemonId: '1' });
+    await sut.handle(mockRequest());
+    expect(mapSpy).toHaveBeenCalledWith('1');
   });
 
   test('Should return 500 if mapFamilyTree returns a failure error', async () => {
     const { sut, mapFamilyTreeStub } = makeSut();
     jest.spyOn(mapFamilyTreeStub, 'execute').mockReturnValueOnce(new Promise((resolve) => resolve(failure(new Error()))));
-    const httpResponse = await sut.handle(makeFakeRequest());
+    const httpResponse = await sut.handle(mockRequest());
     expect(httpResponse).toEqual(serverError(new Error()));
   });
 
   test('Sould return 200 on success', async () => {
     const { sut } = makeSut();
-    const httpResponse = await sut.handle(makeFakeRequest());
+    const httpResponse = await sut.handle(mockRequest());
     expect(httpResponse).toEqual(ok(makeFamilyTree()));
   });
 });

@@ -6,7 +6,9 @@ export class GetPokemonsListController implements IController {
   constructor (private readonly getPokemonsList: IGetPokemonsList) {}
 
   async handle (httpRequest: IHttpRequest) {
-    const result = await this.getPokemonsList.execute(httpRequest?.query);
+    const { offset, limit } = httpRequest.query;
+
+    const result = await this.getPokemonsList.execute({ offset, limit });
 
     if (result.isFailure()) {
       return serverError(result.value);

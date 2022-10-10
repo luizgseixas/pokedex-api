@@ -91,8 +91,8 @@ export const makePrimitivePokemonsList = (): IPokemonListResponse => ({
 
 export const makePokemonList = (): IPokemonsListModel => ({
   count: 1154,
-  next: 'http://localhost:3333?offset=40&limit=20',
-  previous: 'http://localhost:3333?offset=0&limit=20',
+  next: 'http://localhost:4444?offset=40&limit=20',
+  previous: 'http://localhost:4444?offset=0&limit=20',
   results: [
     {
       name: 'any_name',

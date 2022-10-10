@@ -39,7 +39,7 @@ describe('GetPokemonInformations Controller', () => {
     const { sut, getPokemonInformationsStub } = makeSut();
     const infoSpy = jest.spyOn(getPokemonInformationsStub, 'execute');
     await sut.handle(makeHttpRequest());
-    expect(infoSpy).toHaveBeenCalledWith({ pokemonId: '1' });
+    expect(infoSpy).toHaveBeenCalledWith('1');
   });
 
   test('Should returns 500 if GetPokemonInformations throws', async () => {

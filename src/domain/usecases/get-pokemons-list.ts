@@ -2,7 +2,7 @@ import { Either } from '../shared/utils/either';
 import { IPokemonsListModel } from '../models/pokemons-list';
 
 export interface IGetPokemonsList {
-  execute: (params?: IGetPokemonsList.Params) => IGetPokemonsList.Result;
+  execute: (params: IGetPokemonsList.Params) => IGetPokemonsList.Result;
 }
 
 export namespace IGetPokemonsList {

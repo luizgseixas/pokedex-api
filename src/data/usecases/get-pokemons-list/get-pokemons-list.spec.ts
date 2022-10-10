@@ -39,7 +39,7 @@ describe('GetPokemonsList Usecase', () => {
   test('Should call PokemonsListRequester if parameters are not provided', async () => {
     const { sut, pokemonsListRequesterStub } = makeSut();
     const pokemonsListRequesterSpy = jest.spyOn(pokemonsListRequesterStub, 'lists');
-    await sut.execute();
+    await sut.execute({});
     expect(pokemonsListRequesterSpy).toHaveBeenCalled();
   });
 
@@ -55,13 +55,13 @@ describe('GetPokemonsList Usecase', () => {
     jest
       .spyOn(pokemonsListRequesterStub, 'lists')
       .mockReturnValueOnce(new Promise((resolve, rejects) => rejects(new Error())));
-    const promise = sut.execute();
+    const promise = sut.execute({});
     await expect(promise).resolves.toEqual(failure(Error()));
   });
 
   test('Should return a success PokemonsList with success', async () => {
     const { sut } = makeSut();
-    const list = await sut.execute();
+    const list = await sut.execute({});
     expect(list).toEqual(success(makePokemonList()));
   });
 });
