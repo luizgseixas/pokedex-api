@@ -2,18 +2,9 @@ import { GetPokemonsListController } from './get-pokemons-list.controller';
 import { IGetPokemonsList } from '../../../domain/usecases';
 import { fakePokemonList } from './get-pokemons-list.mock';
 import { IHttpRequest } from '../../protocols';
-import { failure, success } from '../../../domain/shared/utils/either';
+import { failure } from '../../../domain/shared/utils/either';
 import { ok, serverError } from '../../helpers/http-helper';
-
-const makeGetPokemonsList = (): IGetPokemonsList => {
-  class GetPokemonsListStub implements IGetPokemonsList {
-    async execute (params?: IGetPokemonsList.Params | undefined): IGetPokemonsList.Result {
-      return new Promise((resolve) => resolve(success(fakePokemonList)));
-    }
-  }
-
-  return new GetPokemonsListStub();
-};
+import { mockGetPokemonsList } from '../../test';
 
 const makeFakeRequest = (): IHttpRequest => ({
   query: {
@@ -28,7 +19,7 @@ type SutTypes = {
 }
 
 const makeSut = (): SutTypes => {
-  const getPokemonsListStub = makeGetPokemonsList();
+  const getPokemonsListStub = mockGetPokemonsList();
   const sut = new GetPokemonsListController(getPokemonsListStub);
   return {
     sut,
@@ -54,6 +45,6 @@ describe('GetPokemonsList Controller', () => {
   test('Sould return 200 on success', async () => {
     const { sut } = makeSut();
     const httpResponse = await sut.handle(makeFakeRequest());
-    expect(httpResponse).toEqual(ok(fakePokemonList));
+    expect(httpResponse).toEqual(ok(fakePokemonList()));
   });
 });

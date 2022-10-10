@@ -4,16 +4,7 @@ import { makePokemonInformations } from './get-pokemon-informations.mock';
 import { failure, success } from '../../../domain/shared/utils/either';
 import { IHttpRequest } from '../../protocols';
 import { ok, serverError } from '../../helpers/http-helper';
-
-const makeGetPokemonInformations = () => {
-  class GetPokemonInformationsStub implements IGetPokemonInformations {
-    async execute (params: IGetPokemonInformations.Params): IGetPokemonInformations.Result {
-      return new Promise((resolve) => resolve(success(makePokemonInformations())));
-    }
-  }
-
-  return new GetPokemonInformationsStub();
-};
+import { mockGetPokemonInformations } from '../../test';
 
 const makeHttpRequest = (): IHttpRequest => ({
   params: { pokemonId: '1' },
@@ -25,7 +16,7 @@ type SutTypes = {
 }
 
 const makeSut = (): SutTypes => {
-  const getPokemonInformationsStub = makeGetPokemonInformations();
+  const getPokemonInformationsStub = mockGetPokemonInformations();
   const sut = new GetPokemonInformationsController(getPokemonInformationsStub);
 
   return {
