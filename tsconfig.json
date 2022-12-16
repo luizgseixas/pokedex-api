@@ -13,17 +13,10 @@
 
     "sourceMap": true,
     "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "strictNullChecks": true,
+    "strict": true,
     "strictPropertyInitialization": false,
-    "allowJs": true,
-    // "resolveJsonModule": true
+    "allowJs": true
   },
-  "include": [
-    "./src"
-  ],
-  "exclude": [
-    "**/*.spec.ts",
-    "**/*.test.ts"
-  ]
+  "include": ["./src"],
+  "exclude": ["**/*.spec.ts", "**/*.test.ts"]
 }
