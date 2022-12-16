@@ -4,8 +4,9 @@
     "target": "es2021",
     "rootDir": "src",
     "outDir": "./dist",
+    "esModuleInterop": true,
     "paths": {
-      "@/*": ["./src/*"]
+      "@src/*": ["./src/*"]
     },
 
     "emitDecoratorMetadata": true,
@@ -13,7 +14,7 @@
 
     "sourceMap": true,
     "allowSyntheticDefaultImports": true,
-    "strict": true,
+    // "strict": true,
     "strictPropertyInitialization": false,
     "allowJs": true
   },

@@ -5,12 +5,9 @@ import { spritesFilter } from '@src/shared/utils/sprites-filter';
 import { IPokemonInformationsRequester } from '@src/domain/adapters';
 
 export class GetPokemonInformation implements IGetPokemonInformations {
-  constructor (
-    private readonly api: IPokemonInformationsRequester,
-    private readonly mapFamilyTree: IMapFamilyTree,
-  ) {}
+  constructor(private readonly api: IPokemonInformationsRequester, private readonly mapFamilyTree: IMapFamilyTree) {}
 
-  async execute ({ id }: IGetPokemonInformations.Params): IGetPokemonInformations.Result {
+  async execute({ id }: IGetPokemonInformations.Params): IGetPokemonInformations.Result {
     try {
       const data = await this.api.informations(id);
 
@@ -33,7 +30,7 @@ export class GetPokemonInformation implements IGetPokemonInformations {
       return success(information);
     } catch (err) {
       // console.error(err);
-      return failure(err);
+      return failure(new Error());
     }
   }
 }

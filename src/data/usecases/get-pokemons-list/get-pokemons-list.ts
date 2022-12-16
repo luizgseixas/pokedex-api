@@ -3,9 +3,9 @@ import { failure, success } from '@src/domain/shared/utils/either';
 import { IPokemonsListRequester } from '@src/domain/adapters/pokemon-list';
 
 export class GetPokemonsList implements IGetPokemonsList {
-  constructor (private readonly api: IPokemonsListRequester) {}
+  constructor(private readonly api: IPokemonsListRequester) {}
 
-  public async execute (params?: IGetPokemonsList.Params): IGetPokemonsList.Result {
+  public async execute(params?: IGetPokemonsList.Params): IGetPokemonsList.Result {
     try {
       const data = await this.api.lists(params?.offset, params?.limit);
 
@@ -17,7 +17,7 @@ export class GetPokemonsList implements IGetPokemonsList {
 
       return success(data);
     } catch (err) {
-      return failure(err);
+      return failure(new Error());
     }
   }
 }
