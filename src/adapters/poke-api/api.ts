@@ -8,7 +8,7 @@ export class PokemonApiRequester extends HttpClient implements IPokemonsListRequ
   }
 
   async lists (offset?: string, limit?: string): Promise<IPokemonListResponse> {
-    const { data } = await this.instance.get(`/pokemon?offset=${offset}&limit=${limit}`);
+    const { data } = await this.instance.get(`/pokemon?offset=${offset ?? 1}&limit=${limit ?? 20}`);
     return data;
   }
 
