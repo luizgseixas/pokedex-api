@@ -12,13 +12,32 @@ services:
       POSTGRES_USER: pguser
       POSTGRES_PASSWORD: pgpassword
     volumes:
-      - ./data:/data/db
+      - ./pgdata:/data/postgres
+    depends_on:
+      - pgadmin
+    networks:
+      - postgres-network
 
-  # adminer:
-  #   image: adminer
-  #   restart: always
-  #   environment:
-  #     ADMINER_DESIGN: dracula
-  #   ports:
-  #     - 8080:8080
+    pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "ticolucas7@gmail.com"
+      PGADMIN_DEFAULT_PASSWORD: "PgAdmin2022!"
+    ports:
+      - "16543:80"
+    networks:
+      - postgres-network
 
+  adminer:
+    image: adminer
+    restart: always
+    environment:
+      ADMINER_DESIGN: dracula
+    ports:
+      - 8080:8080
+    networks:
+      - postgres-network
+
+networks:
+  postgres-network:
+    driver: bridge

@@ -1,6 +1,7 @@
 import 'reflect-metadata';
 import 'module-alias/register';
 import 'dotenv/config';
+import './config/module-alias';
 import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
@@ -20,6 +21,4 @@ app.use(routes);
 // app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 // connection();
 
-app.listen(process.env.NODE_PORT, () =>
-  console.log(`🔥 Server running on host http://localhost:${process.env.NODE_PORT} 🚀 `),
-);
+app.listen(process.env.NODE_PORT, () => console.log(`🔥 Server running on host http://localhost:${process.env.NODE_PORT} 🚀 `));

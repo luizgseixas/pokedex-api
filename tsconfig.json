@@ -2,9 +2,10 @@
   "compilerOptions": {
     "module": "commonjs",
     "target": "es2021",
-    "rootDir": "src",
     "outDir": "./dist",
     "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "baseUrl": "./",
     "paths": {
       "@src/*": ["./src/*"]
     },
