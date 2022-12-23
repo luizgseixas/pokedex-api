@@ -2,7 +2,9 @@
   "compilerOptions": {
     "module": "commonjs",
     "target": "es2021",
-    "outDir": "./dist",
+    "outDir": "dist",
+    "rootDir": "src",
+    "moduleResolution": "node",
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "baseUrl": "./",
@@ -19,6 +21,6 @@
     "strictPropertyInitialization": false,
     "allowJs": true
   },
-  "include": ["./src"],
+  "include": ["src"],
   "exclude": ["**/*.spec.ts", "**/*.test.ts"]
 }

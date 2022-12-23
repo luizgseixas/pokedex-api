@@ -3,13 +3,13 @@ module.exports = {
   coverageDirectory: 'coverage',
   coverageProvider: 'babel',
   moduleNameMapper: {
-    '@src/(.+)': '<rootDir>/src/$1'
+    '@src/(.+)': '<rootDir>/src/$1',
   },
   roots: [
-    '<rootDir>/src'
+    '<rootDir>/src',
   ],
   transform: {
-    '\\.ts$': 'ts-jest'
+    '\\.ts$': 'ts-jest',
   },
-  clearMocks: true
-}
+  clearMocks: true,
+};

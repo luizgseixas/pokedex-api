@@ -1,4 +1,6 @@
 import { addAlias } from 'module-alias';
 import { resolve } from 'path';
 
-addAlias('@src', resolve('dist'));
+const ENVIRONMENT = process.env.NODE_ENV === 'PRODUCTION' ? 'dist' : 'src';
+
+addAlias('@src', resolve(ENVIRONMENT));

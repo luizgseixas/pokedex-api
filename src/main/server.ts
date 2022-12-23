@@ -1,7 +1,6 @@
-import 'reflect-metadata';
-import 'module-alias/register';
-import 'dotenv/config';
 import './config/module-alias';
+import 'dotenv/config';
+import 'reflect-metadata';
 import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
