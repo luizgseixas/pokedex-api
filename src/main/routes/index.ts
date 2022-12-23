@@ -6,8 +6,8 @@ import { makeGetPokemonListController } from '../factories/get-pokemon-list';
 
 const router = Router();
 
-router.get('/list', adaptRouteExpress(makeGetPokemonListController()));
-router.get('/pokemon/:id', adaptRouteExpress(makeGetPokemonInformationsController()));
+router.get('/pokemon/list', adaptRouteExpress(makeGetPokemonListController()));
+router.get('/pokemon/:id/informations', adaptRouteExpress(makeGetPokemonInformationsController()));
 router.get('/pokemon/:id/tree', adaptRouteExpress(makeGetFamilyTreeController()));
 
 export default router;
