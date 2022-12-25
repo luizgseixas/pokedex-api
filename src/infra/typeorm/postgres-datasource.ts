@@ -6,6 +6,7 @@ export const config: DataSourceOptions = {
   type: 'postgres',
   ...Environment.PG_CONFIG,
   entities: [...entities],
+  migrations: ['./dist/infra/typeorm/migrations/*.js'],
 };
 
 const datasource = new DataSource(config);
