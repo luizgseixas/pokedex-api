@@ -4,7 +4,7 @@ import { HttpClient } from '../http';
 
 export class PokemonApiRequester extends HttpClient implements IPokemonsListRequester, IFamilyTreeRequester, IPokemonInformationsRequester {
   constructor () {
-    super({ baseURL: 'https://pokeapi.co/api/v2' });
+    super({ baseURL: 'https://pokeapi.co/api/v2', headers: { 'Accept-Encoding': '*' } });
   }
 
   async lists (offset?: string, limit?: string): Promise<IPokemonListResponse> {
