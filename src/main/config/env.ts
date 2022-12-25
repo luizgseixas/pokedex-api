@@ -23,5 +23,3 @@ export class Environment {
     };
   }
 }
-
-// git credential test
