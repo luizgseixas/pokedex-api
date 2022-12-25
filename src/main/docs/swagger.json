@@ -40,7 +40,7 @@
         "tags": ["Pokemon"]
       }
     },
-    "/tree/:pokemonId": {
+    "/tree/:id": {
       "get": {
         "summary": "Pokemon evolutions",
         "description": "Get all pokemon evolutions",

@@ -7,7 +7,7 @@ import { mockGetPokemonInformations } from '../../test';
 import { mockPokemonInformations } from '../../../domain/test';
 
 const mockHttpRequest = (): IHttpRequest => ({
-  params: { pokemonId: '1' },
+  params: { id: '1' },
 });
 
 type SutTypes = {
@@ -30,7 +30,7 @@ describe('GetPokemonInformations Controller', () => {
     const { sut, getPokemonInformationsStub } = makeSut();
     const infoSpy = jest.spyOn(getPokemonInformationsStub, 'execute');
     await sut.handle(mockHttpRequest());
-    expect(infoSpy).toHaveBeenCalledWith('1');
+    expect(infoSpy).toHaveBeenCalledWith({ id: '1' });
   });
 
   test('Should returns 500 if GetPokemonInformations throws', async () => {

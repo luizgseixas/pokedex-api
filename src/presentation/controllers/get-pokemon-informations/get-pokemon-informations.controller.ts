@@ -7,9 +7,11 @@ export class GetPokemonInformationsController implements IController {
   constructor (private readonly getPokemonInformation: IGetPokemonInformations) {}
 
   async handle (httpRequest: IHttpRequest): Promise<IHttpResponse> {
-    const { pokemonId } = httpRequest.params;
+    const { id } = httpRequest.params;
 
-    const result = await this.getPokemonInformation.execute(pokemonId);
+    const result = await this.getPokemonInformation.execute({ id });
+
+    console.log(result);
 
     if (result.isFailure()) {
       return serverError(result.value);
