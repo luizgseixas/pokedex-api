@@ -3,10 +3,10 @@ import {
 } from 'typeorm';
 
 import { Move } from '@src/domain/typeorm/entities';
-import { PokemonEntity } from './pokemon';
+import { PokemonsEntity } from './pokemons';
 
-@Entity('tb_move')
-export class MoveEntity {
+@Entity('tb_moves')
+export class MovesEntity {
   @PrimaryGeneratedColumn('uuid')
     id: string;
 
@@ -16,8 +16,8 @@ export class MoveEntity {
   @Column()
     url: string;
 
-  @ManyToMany(() => PokemonEntity, (pokemon) => pokemon.move, { nullable: false })
-    pokemon: PokemonEntity[];
+  @ManyToMany(() => PokemonsEntity, (pokemon) => pokemon.move, { nullable: false })
+    pokemon: PokemonsEntity[];
 
   public toPlainClass (): Move {
     return new Move(

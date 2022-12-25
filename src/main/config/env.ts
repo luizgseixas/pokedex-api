@@ -1,3 +1,5 @@
+import 'dotenv/config';
+
 type PostgresConfig = { host: string, port: number, username: string, password: string, database: string }
 
 export class Environment {

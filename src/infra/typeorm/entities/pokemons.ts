@@ -2,12 +2,12 @@ import { Pokemon } from '@src/domain/typeorm/entities/pokemon';
 import {
   Column, CreateDateColumn, Entity, JoinTable, ManyToMany, PrimaryColumn,
 } from 'typeorm';
-import { MoveEntity } from './move';
-import { TypeEntity } from './types';
+import { MovesEntity } from './moves';
+import { TypesEntity } from './types';
 
-@Entity('tb_pokemon')
-export class PokemonEntity {
-  constructor (data: Partial<PokemonEntity | Pokemon>) {
+@Entity('tb_pokemons')
+export class PokemonsEntity {
+  constructor (data: Partial<PokemonsEntity | Pokemon>) {
     if (data) Object.assign(this, data);
   }
 
@@ -71,13 +71,13 @@ export class PokemonEntity {
   @CreateDateColumn()
     created_at?: Date;
 
-  @ManyToMany(() => MoveEntity, (move) => move.pokemon, { nullable: false })
+  @ManyToMany(() => MovesEntity, (move) => move.pokemon, { nullable: false })
   @JoinTable()
-    move: MoveEntity[];
+    move: MovesEntity[];
 
-  @ManyToMany(() => TypeEntity, (type) => type.pokemon, { nullable: false })
+  @ManyToMany(() => TypesEntity, (type) => type.pokemon, { nullable: false })
   @JoinTable()
-    type: TypeEntity[];
+    type: TypesEntity[];
 
   public toPlainClass (): Pokemon {
     return new Pokemon(

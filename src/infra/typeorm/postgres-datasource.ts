@@ -1,10 +1,11 @@
 import { DataSource, DataSourceOptions } from 'typeorm';
 import { Environment } from '@src/main/config/env';
+import { entities } from './entities';
 
-const config: DataSourceOptions = {
+export const config: DataSourceOptions = {
   type: 'postgres',
   ...Environment.PG_CONFIG,
-  entities: [],
+  entities: [...entities],
 };
 
 const datasource = new DataSource(config);
