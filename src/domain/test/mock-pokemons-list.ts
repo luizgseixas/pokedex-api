@@ -1,4 +1,4 @@
-import { IPokemonsListModel } from '@src/domain/models/pokemons-list';
+import { IPokemonsListModel } from '@src/domain/models/pokemon/pokemons-list';
 
 import { IPokemonListResponse } from '@src/domain/adapters/responses';
 

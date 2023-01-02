@@ -1,4 +1,4 @@
-import { Pokemon } from '@src/domain/typeorm/entities/pokemon';
+import { Pokemon } from '@src/domain/models/pokemon';
 
 export interface IPokemonRepository {
   registerPokemon: () => Pokemon;

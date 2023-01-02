@@ -1,4 +1,4 @@
-import { IPokemonInformationsModel } from '../models/pokemon-informations';
+import { IPokemonInformationsModel } from '../models/pokemon/pokemon-informations';
 import { Either } from '../shared/utils/either';
 
 export interface IGetPokemonInformations {

@@ -1,4 +1,4 @@
-import { IFamilyTreeModel } from '@src/domain/models/family-tree';
+import { IFamilyTreeModel } from '@src/domain/models/pokemon/family-tree';
 
 import { IEvolutionChain } from '@src/domain/adapters/responses';
 

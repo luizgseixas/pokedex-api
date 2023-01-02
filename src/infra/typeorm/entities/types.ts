@@ -1,7 +1,7 @@
 import {
   Column, Entity, ManyToMany, PrimaryGeneratedColumn,
 } from 'typeorm';
-import { Type } from '@src/domain/typeorm/entities';
+import { Type } from '@src/domain/models/pokemon';
 import { PokemonsEntity } from './pokemons';
 
 @Entity('tb_pokemon_types')

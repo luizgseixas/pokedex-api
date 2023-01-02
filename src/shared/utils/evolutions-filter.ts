@@ -1,5 +1,5 @@
 import { IChain } from '@src/domain/adapters/responses';
-import { IFamilyTreeModel } from '@src/domain/models/family-tree';
+import { IFamilyTreeModel } from '@src/domain/models/pokemon/family-tree';
 
 export const evolutionsDetailsFilter = (arr: Array<any>): any => {
   if (arr.length === 0) return null;

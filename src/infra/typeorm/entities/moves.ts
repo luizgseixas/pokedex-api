@@ -2,7 +2,7 @@ import {
   Column, Entity, ManyToMany, PrimaryGeneratedColumn,
 } from 'typeorm';
 
-import { Move } from '@src/domain/typeorm/entities';
+import { Move } from '@src/domain/models/pokemon';
 import { PokemonsEntity } from './pokemons';
 
 @Entity('tb_moves')

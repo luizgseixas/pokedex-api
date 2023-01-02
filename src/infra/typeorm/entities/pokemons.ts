@@ -1,4 +1,4 @@
-import { Pokemon } from '@src/domain/typeorm/entities/pokemon';
+import { Pokemon } from '@src/domain/models/pokemon';
 import {
   Column, CreateDateColumn, Entity, JoinTable, ManyToMany, PrimaryColumn,
 } from 'typeorm';

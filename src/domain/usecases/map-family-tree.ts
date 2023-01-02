@@ -1,4 +1,4 @@
-import { IFamilyTreeModel } from '../models/family-tree';
+import { IFamilyTreeModel } from '../models/pokemon/family-tree';
 import { Either } from '../shared/utils/either';
 
 export interface IMapFamilyTree {

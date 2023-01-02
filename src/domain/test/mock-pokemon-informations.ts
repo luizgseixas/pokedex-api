@@ -1,4 +1,4 @@
-import { IPokemonInformationsModel } from '@src/domain/models/pokemon-informations';
+import { IPokemonInformationsModel } from '@src/domain/models/pokemon/pokemon-informations';
 import { mockFamilyTreeThree } from '@src/domain/test';
 import { IPokemonData } from '../adapters/responses';
 
