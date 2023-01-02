@@ -1,5 +1,5 @@
-import { IChain } from '@src/domain/adapters/responses';
-import { IFamilyTreeModel } from '@src/domain/models/pokemon/family-tree';
+import { Chain } from '@src/domain/adapters/responses';
+import { FamilyTreeModel } from '@src/domain/models/pokemon/family-tree';
 
 export const evolutionsDetailsFilter = (arr: Array<any>): any => {
   if (arr.length === 0) return null;
@@ -19,8 +19,8 @@ export const evolutionsDetailsFilter = (arr: Array<any>): any => {
   return evolutions;
 };
 
-export const chainFilter = (chain: IChain, count: number = 1): IFamilyTreeModel[] => {
-  let evolutions: IFamilyTreeModel[] = [];
+export const chainFilter = (chain: Chain, count: number = 1): FamilyTreeModel[] => {
+  let evolutions: FamilyTreeModel[] = [];
 
   evolutions.push({
     evolution_lvl: count,

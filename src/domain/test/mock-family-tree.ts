@@ -1,8 +1,8 @@
-import { IFamilyTreeModel } from '@src/domain/models/pokemon/family-tree';
+import { FamilyTreeModel } from '@src/domain/models/pokemon/family-tree';
 
-import { IEvolutionChain } from '@src/domain/adapters/responses';
+import { EvolutionChain } from '@src/domain/adapters/responses';
 
-export const mockPrimitiveOneEvolutionChain = (): IEvolutionChain => ({
+export const mockPrimitiveOneEvolutionChain = (): EvolutionChain => ({
   baby_trigger_item: null,
   chain: {
     evolution_details: [],
@@ -16,7 +16,7 @@ export const mockPrimitiveOneEvolutionChain = (): IEvolutionChain => ({
   id: 1,
 });
 
-export const mockPrimitiveTwoEvolutionChain = (): IEvolutionChain => ({
+export const mockPrimitiveTwoEvolutionChain = (): EvolutionChain => ({
   baby_trigger_item: null,
   chain: {
     evolution_details: [],
@@ -64,7 +64,7 @@ export const mockPrimitiveTwoEvolutionChain = (): IEvolutionChain => ({
   id: 1,
 });
 
-export const mockPrimitiveThreeEvolutionChain = (): IEvolutionChain => ({
+export const mockPrimitiveThreeEvolutionChain = (): EvolutionChain => ({
   baby_trigger_item: null,
   chain: {
     evolution_details: [],
@@ -146,7 +146,7 @@ export const mockPrimitiveThreeEvolutionChain = (): IEvolutionChain => ({
   id: 1,
 });
 
-export const mockPrimitiveAllEvolutionChain = (): IEvolutionChain => ({
+export const mockPrimitiveAllEvolutionChain = (): EvolutionChain => ({
   baby_trigger_item: null,
   chain: {
     evolution_details: [],
@@ -671,7 +671,7 @@ export const mockPrimitiveAllEvolutionChain = (): IEvolutionChain => ({
   id: 67,
 });
 
-export const mockFamilyTreeOne = (): IFamilyTreeModel[] => ([
+export const mockFamilyTreeOne = (): FamilyTreeModel[] => ([
   {
     evolution_lvl: 1,
     name: 'any_name',
@@ -679,7 +679,7 @@ export const mockFamilyTreeOne = (): IFamilyTreeModel[] => ([
   },
 ]);
 
-export const mockFamilyTreeTwo = (): IFamilyTreeModel[] => ([
+export const mockFamilyTreeTwo = (): FamilyTreeModel[] => ([
   {
     evolution_lvl: 1,
     name: 'any_name',
@@ -695,7 +695,7 @@ export const mockFamilyTreeTwo = (): IFamilyTreeModel[] => ([
   },
 ]);
 
-export const mockFamilyTreeThree = (): IFamilyTreeModel[] => ([
+export const mockFamilyTreeThree = (): FamilyTreeModel[] => ([
   {
     evolution_lvl: 1,
     name: 'any_name',
@@ -719,7 +719,7 @@ export const mockFamilyTreeThree = (): IFamilyTreeModel[] => ([
   },
 ]);
 
-export const mockFamilyTreeAll = (): IFamilyTreeModel[] => ([
+export const mockFamilyTreeAll = (): FamilyTreeModel[] => ([
   {
     evolution_lvl: 1,
     name: 'any_name',

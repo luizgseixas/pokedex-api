@@ -1,31 +1,31 @@
-export interface IEvolutionChain {
+export type EvolutionChain = {
   id: number;
   baby_trigger_item: any;
-  chain: IChain;
+  chain: Chain;
 }
 
-export interface IChain {
+export type Chain = {
   species: { name: string; url: string };
-  evolves_to: IChain[];
+  evolves_to: Chain[];
   is_baby: boolean;
-  evolution_details: IEvolutionDetail[];
+  evolution_details: EvolutionDetail[];
 }
 
-interface IDetail {
+type Detail = {
   name: string;
   url: string;
 }
 
-export interface IEvolutionDetail {
+export type EvolutionDetail = {
   gender: string | null;
   min_level: number | null;
   min_happiness: number | null;
   trade_species: boolean | null;
   known_move: string | null;
-  known_move_type: IDetail | null;
+  known_move_type: Detail | null;
   held_item: string | null;
-  item: IDetail | null;
-  location: IDetail | null;
+  item: Detail | null;
+  location: Detail | null;
   min_affection: any | null;
   min_beauty: any | null;
   needs_overworld_rain: boolean | null;

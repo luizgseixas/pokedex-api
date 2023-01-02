@@ -1,12 +1,12 @@
 import { GetPokemonInformationsController } from './get-pokemon-informations.controller';
 import { IGetPokemonInformations } from '../../../domain/usecases';
 import { failure, success } from '../../../domain/shared/utils/either';
-import { IHttpRequest } from '../../protocols';
+import { HttpRequest } from '../../protocols';
 import { ok, serverError } from '../../helpers/http-helper';
 import { mockGetPokemonInformations } from '../../test';
 import { mockPokemonInformations } from '../../../domain/test';
 
-const mockHttpRequest = (): IHttpRequest => ({
+const mockHttpRequest = (): HttpRequest => ({
   params: { id: '1' },
 });
 

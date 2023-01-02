@@ -1,8 +1,8 @@
-import { IPokemonInformationsModel } from '@src/domain/models/pokemon/pokemon-informations';
+import { PokemonInformationsModel } from '@src/domain/models/pokemon/pokemon-informations';
 import { mockFamilyTreeThree } from '@src/domain/test';
-import { IPokemonData } from '../adapters/responses';
+import { PokemonData } from '../adapters/responses';
 
-export const mockPokemonInformations = (): IPokemonInformationsModel => ({
+export const mockPokemonInformations = (): PokemonInformationsModel => ({
   id: 1,
   name: 'any_name',
   stats: [{
@@ -27,7 +27,7 @@ export const mockPokemonInformations = (): IPokemonInformationsModel => ({
   familyTree: mockFamilyTreeThree(),
 });
 
-export const mockPrimitivePokemonInformations = (): IPokemonData => ({
+export const mockPrimitivePokemonInformations = (): PokemonData => ({
   id: 1,
   name: 'any_name',
   height: 1,

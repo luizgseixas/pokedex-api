@@ -1,11 +1,11 @@
-export interface IPokemonListResponse {
+export type PokemonListResponse = {
   count: number;
   next: string | null;
   previous: string | null;
-  results: IPokemon[];
+  results: Pokemon[];
 }
 
-export interface IPokemon {
+export type Pokemon = {
   name: string;
   url: string;
 }

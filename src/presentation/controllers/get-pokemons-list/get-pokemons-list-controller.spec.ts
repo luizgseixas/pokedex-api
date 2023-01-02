@@ -1,12 +1,12 @@
 import { GetPokemonsListController } from './get-pokemons-list.controller';
 import { IGetPokemonsList } from '../../../domain/usecases';
-import { IHttpRequest } from '../../protocols';
+import { HttpRequest } from '../../protocols';
 import { failure } from '../../../domain/shared/utils/either';
 import { ok, serverError } from '../../helpers/http-helper';
 import { mockGetPokemonsList } from '../../test';
 import { mockPokemonList } from '../../../domain/test';
 
-const mockHttpRequest = (): IHttpRequest => ({
+const mockHttpRequest = (): HttpRequest => ({
   query: {
     offset: '0',
     limit: '20',

@@ -1,15 +1,15 @@
-export interface IPokemonData {
+export type PokemonData = {
   id: number;
   name: string;
   height: number;
   weight: number;
-  types: IType[];
-  stats: IStat[];
-  sprites: ISprite;
-  moves: IMove[];
+  types: Type[];
+  stats: Stat[];
+  sprites: Sprite;
+  moves: Move[];
 }
 
-export interface ISprite {
+export type Sprite = {
   front_default: string;
   front_shiny: string;
   front_female?: string;
@@ -20,20 +20,20 @@ export interface ISprite {
   back_shiny_female?: string;
 }
 
-export interface IMove {
+export type Move = {
   move: {
     name: string;
     url: string;
   };
 }
 
-export interface IType {
+export type Type = {
   type: {
     name: string;
   };
 }
 
-export interface IStat {
+export type Stat = {
   base_stat: number;
   stat: { name: string };
 }

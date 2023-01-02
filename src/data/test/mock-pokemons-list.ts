@@ -1,5 +1,5 @@
 import { IPokemonsListRequester } from '@src/domain/adapters';
-import { IPokemonListResponse } from '@src/domain/adapters/responses';
+import { PokemonListResponse } from '@src/domain/adapters/responses';
 import { mockPrimitivePokemonsList } from '@src/domain/test';
 
 export const mockPokemonsListRequester = (): IPokemonsListRequester => {
@@ -7,7 +7,7 @@ export const mockPokemonsListRequester = (): IPokemonsListRequester => {
     async lists (
       offset?: string | undefined,
       limit?: string | undefined,
-    ): Promise<IPokemonListResponse> {
+    ): Promise<PokemonListResponse> {
       return Promise.resolve(mockPrimitivePokemonsList());
     }
   }

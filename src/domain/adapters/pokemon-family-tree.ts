@@ -1,5 +1,5 @@
-import { IEvolutionChain } from './responses';
+import { EvolutionChain } from './responses';
 
 export interface IFamilyTreeRequester {
-  familyTree: (id: string) => Promise<IEvolutionChain>;
+  familyTree: (id: string) => Promise<EvolutionChain>;
 }

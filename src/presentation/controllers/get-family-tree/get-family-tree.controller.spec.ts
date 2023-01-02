@@ -1,12 +1,12 @@
 import { GetFamilyTreeController } from './get-family-tree.controller';
-import { IHttpRequest } from '../../protocols';
+import { HttpRequest } from '../../protocols';
 import { IMapFamilyTree } from '../../../domain/usecases/map-family-tree';
 import { mockFamilyTreeThree } from '../../../domain/test';
 import { ok, serverError } from '../../helpers/http-helper';
 import { mockMapFamilyTree } from '../../test';
 import { failure } from '../../../domain/shared/utils/either';
 
-const mockHttpRequest = (): IHttpRequest => ({
+const mockHttpRequest = (): HttpRequest => ({
   params: {
     id: '1',
   },

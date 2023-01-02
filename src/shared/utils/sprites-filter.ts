@@ -1,6 +1,6 @@
-import { ISprite } from '@src/domain/adapters/responses';
+import { Sprite } from '@src/domain/adapters/responses';
 
-export const spritesFilter = (sprites: ISprite) => {
+export const spritesFilter = (sprites: Sprite) => {
   return {
     back_default: sprites.back_default,
     back_female: sprites.back_female,

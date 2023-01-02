@@ -1,5 +1,5 @@
 import { Either } from '../shared/utils/either';
-import { IPokemonsListModel } from '../models/pokemon/pokemons-list';
+import { PokemonsListModel } from '../models/pokemon/pokemons-list';
 
 export interface IGetPokemonsList {
   execute: (params: IGetPokemonsList.Params) => IGetPokemonsList.Result;
@@ -11,5 +11,5 @@ export namespace IGetPokemonsList {
     limit?: string;
   };
 
-  export type Result = Promise<Either<Error, IPokemonsListModel>>;
+  export type Result = Promise<Either<Error, PokemonsListModel>>;
 }

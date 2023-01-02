@@ -1,4 +1,4 @@
-import { IController, IHttpRequest } from '@src/presentation/protocols';
+import { IController, HttpRequest } from '@src/presentation/protocols';
 import { Request, Response } from 'express';
 
 // adapter para qualquer controller ser aceito pelo express, caso seja necessário
@@ -6,7 +6,7 @@ import { Request, Response } from 'express';
 
 export const adaptRouteExpress = (controller: IController) => {
   return async (req: Request, res: Response) => {
-    const httpRequest: IHttpRequest = {
+    const httpRequest: HttpRequest = {
       body: req.body,
       params: req.params,
       query: req.query,
