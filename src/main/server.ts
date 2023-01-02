@@ -2,6 +2,7 @@ import './config/module-alias';
 import 'dotenv/config';
 import 'reflect-metadata';
 import express from 'express';
+import http from 'http';
 import cors from 'cors';
 import morgan from 'morgan';
 
@@ -11,6 +12,7 @@ import { setupTypeorm } from '../infra/typeorm';
 class Application {
   static async bootstrap (): Promise<void> {
     const app = express();
+    const server = http.createServer(app);
     app.use(morgan('dev'));
     app.use(express.json());
     app.use(cors());
@@ -18,7 +20,7 @@ class Application {
 
     await setupTypeorm();
 
-    app.listen(process.env.NODE_PORT, () => console.log(`🔥 Server running on host http://localhost:${process.env.NODE_PORT} 🚀 `));
+    server.listen(process.env.NODE_PORT, () => console.log(`🔥 Server running on host http://localhost:${process.env.NODE_PORT} 🚀 `));
   }
 }
 
