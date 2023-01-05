@@ -1,4 +1,4 @@
-import { PokemonApiRequester } from '@src/infra/http/poke-api';
+import { PokemonApiRequester } from '@src/infra/api';
 import { GetPokemonInformation, MapFamilyTree } from '@src/data/usecases';
 import { GetPokemonInformationsController } from '@src/presentation/controllers';
 import { IController } from '@src/presentation/protocols';

@@ -1,7 +1,7 @@
 import { GetFamilyTreeController } from '@src/presentation/controllers';
 import { MapFamilyTree } from '@src/data/usecases';
 import { IController } from '@src/presentation/protocols';
-import { PokemonApiRequester } from '@src/infra/http/poke-api';
+import { PokemonApiRequester } from '@src/infra/api';
 
 export const makeGetFamilyTreeController = (): IController => {
   const api = new PokemonApiRequester();
