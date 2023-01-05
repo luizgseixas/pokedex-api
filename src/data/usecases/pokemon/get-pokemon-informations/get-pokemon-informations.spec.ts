@@ -1,6 +1,6 @@
 import { failure, success } from '@src/domain/shared/utils/either';
 import { IGetPokemonInformations, IMapFamilyTree } from '@src/domain/usecases';
-import { IPokemonInformationsRequester } from '@src/domain/adapters';
+import { IPokemonInformationsRequester } from '@src/data/contracts/apis';
 import { mockMapFamilyTree, mockPokemonInformationsRequester } from '@src/data/test';
 import { mockPokemonInformations } from '@src/domain/test';
 import { GetPokemonInformation } from './get-pokemon-informations';

@@ -1,6 +1,6 @@
 import { PokemonsListModel } from '@src/domain/models/pokemon/pokemons-list';
 
-import { PokemonListResponse } from '@src/domain/adapters/responses';
+import { PokemonListResponse } from '@src/data/contracts/apis/responses';
 
 export const mockPokemonList = (): PokemonsListModel => ({
   count: 2,

@@ -1,5 +1,5 @@
-import { IPokemonInformationsRequester } from '@src/domain/adapters';
-import { PokemonData } from '@src/domain/adapters/responses';
+import { IPokemonInformationsRequester } from '@src/data/contracts/apis';
+import { PokemonData } from '@src/data/contracts/apis/responses';
 import { success } from '@src/domain/shared/utils/either';
 import { mockFamilyTreeThree, mockPrimitivePokemonInformations } from '@src/domain/test';
 import { IMapFamilyTree } from '@src/domain/usecases';

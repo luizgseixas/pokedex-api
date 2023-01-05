@@ -1,5 +1,5 @@
-import { IPokemonsListRequester } from '@src/domain/adapters';
-import { PokemonListResponse } from '@src/domain/adapters/responses';
+import { IPokemonsListRequester } from '@src/data/contracts/apis';
+import { PokemonListResponse } from '@src/data/contracts/apis/responses';
 import { mockPrimitivePokemonsList } from '@src/domain/test';
 
 export const mockPokemonsListRequester = (): IPokemonsListRequester => {

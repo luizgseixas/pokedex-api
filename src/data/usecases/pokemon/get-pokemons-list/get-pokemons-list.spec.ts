@@ -1,4 +1,4 @@
-import { IPokemonsListRequester } from '@src/domain/adapters';
+import { IPokemonsListRequester } from '@src/data/contracts/apis';
 import { failure, success } from '@src/domain/shared/utils/either';
 import { mockPokemonList, throwError } from '@src/domain/test';
 import { IGetPokemonsList } from '@src/domain/usecases';

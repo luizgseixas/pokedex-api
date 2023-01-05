@@ -1,5 +1,5 @@
-import { IFamilyTreeRequester, IPokemonInformationsRequester, IPokemonsListRequester } from '@src/domain/adapters';
-import { EvolutionChain, PokemonData, PokemonListResponse } from '@src/domain/adapters/responses';
+import { IFamilyTreeRequester, IPokemonInformationsRequester, IPokemonsListRequester } from '@src/data/contracts/apis';
+import { EvolutionChain, PokemonData, PokemonListResponse } from '@src/data/contracts/apis/responses';
 import { AxiosHttpClient } from '../http/axios-adapter';
 
 export class PokemonApiRequester extends AxiosHttpClient implements IPokemonsListRequester, IFamilyTreeRequester, IPokemonInformationsRequester {

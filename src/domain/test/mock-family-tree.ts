@@ -1,6 +1,6 @@
 import { FamilyTreeModel } from '@src/domain/models/pokemon/family-tree';
 
-import { EvolutionChain } from '@src/domain/adapters/responses';
+import { EvolutionChain } from '@src/data/contracts/apis/responses';
 
 export const mockPrimitiveOneEvolutionChain = (): EvolutionChain => ({
   baby_trigger_item: null,

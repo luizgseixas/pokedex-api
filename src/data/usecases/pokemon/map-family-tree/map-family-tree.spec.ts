@@ -1,4 +1,4 @@
-import { IFamilyTreeRequester } from '@src/domain/adapters';
+import { IFamilyTreeRequester } from '@src/data/contracts/apis';
 import { failure, success } from '@src/domain/shared/utils/either';
 import {
   mockFamilyTreeAll,

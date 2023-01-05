@@ -1,6 +1,6 @@
 import { PokemonInformationsModel } from '@src/domain/models/pokemon/pokemon-informations';
 import { mockFamilyTreeThree } from '@src/domain/test';
-import { PokemonData } from '../adapters/responses';
+import { PokemonData } from '../../data/contracts/apis/responses';
 
 export const mockPokemonInformations = (): PokemonInformationsModel => ({
   id: 1,

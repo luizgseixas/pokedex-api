@@ -1,4 +1,4 @@
-import { Chain } from '@src/domain/adapters/responses';
+import { Chain } from '@src/data/contracts/apis/responses';
 import { FamilyTreeModel } from '@src/domain/models/pokemon/family-tree';
 
 export const evolutionsDetailsFilter = (arr: Array<any>): any => {

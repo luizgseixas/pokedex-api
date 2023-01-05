@@ -1,4 +1,4 @@
-import { Sprite } from '@src/domain/adapters/responses';
+import { Sprite } from '@src/data/contracts/apis/responses';
 
 export const spritesFilter = (sprites: Sprite) => {
   return {

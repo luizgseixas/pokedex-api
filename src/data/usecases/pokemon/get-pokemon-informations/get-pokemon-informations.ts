@@ -2,7 +2,7 @@ import { IGetPokemonInformations, IMapFamilyTree } from '@src/domain/usecases';
 import { failure, success } from '@src/domain/shared/utils/either';
 import { movesFilter } from '@src/shared/utils/moves-filter';
 import { spritesFilter } from '@src/shared/utils/sprites-filter';
-import { IPokemonInformationsRequester } from '@src/domain/adapters';
+import { IPokemonInformationsRequester } from '@src/data/contracts/apis';
 
 export class GetPokemonInformation implements IGetPokemonInformations {
   constructor (private readonly api: IPokemonInformationsRequester, private readonly mapFamilyTree: IMapFamilyTree) {}

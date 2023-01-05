@@ -1,5 +1,5 @@
-import { EvolutionChain } from '@src/domain/adapters/responses';
-import { IFamilyTreeRequester } from '@src/domain/adapters';
+import { EvolutionChain } from '@src/data/contracts/apis/responses';
+import { IFamilyTreeRequester } from '@src/data/contracts/apis';
 import { mockPrimitiveThreeEvolutionChain } from '@src/domain/test';
 
 export const mockFamilyTreeRequester = (): IFamilyTreeRequester => {
