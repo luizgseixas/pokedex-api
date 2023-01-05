@@ -1,11 +1,11 @@
-import { IFamilyTreeRequester } from '../../../domain/adapters';
-import { failure, success } from '../../../domain/shared/utils/either';
+import { IFamilyTreeRequester } from '@src/domain/adapters';
+import { failure, success } from '@src/domain/shared/utils/either';
 import {
   mockFamilyTreeAll,
   mockFamilyTreeOne, mockFamilyTreeThree, mockFamilyTreeTwo, mockPrimitiveAllEvolutionChain, mockPrimitiveOneEvolutionChain, mockPrimitiveTwoEvolutionChain, throwError,
-} from '../../../domain/test';
-import { IMapFamilyTree } from '../../../domain/usecases';
-import { mockFamilyTreeRequester } from '../../test';
+} from '@src/domain/test';
+import { IMapFamilyTree } from '@src/domain/usecases';
+import { mockFamilyTreeRequester } from '@src/data/test';
 import { MapFamilyTree } from './map-family-tree';
 
 type SutTypes = {

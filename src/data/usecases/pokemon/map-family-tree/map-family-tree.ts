@@ -4,9 +4,9 @@ import { chainFilter } from '@src/shared/utils/evolutions-filter';
 import { IFamilyTreeRequester } from '@src/domain/adapters';
 
 export class MapFamilyTree implements IMapFamilyTree {
-  constructor(private readonly api: IFamilyTreeRequester) {}
+  constructor (private readonly api: IFamilyTreeRequester) {}
 
-  async execute({ id }: IMapFamilyTree.Params): IMapFamilyTree.Result {
+  async execute ({ id }: IMapFamilyTree.Params): IMapFamilyTree.Result {
     try {
       const data = await this.api.familyTree(id);
 

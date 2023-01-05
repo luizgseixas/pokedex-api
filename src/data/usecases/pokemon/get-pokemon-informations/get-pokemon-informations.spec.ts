@@ -1,9 +1,9 @@
+import { failure, success } from '@src/domain/shared/utils/either';
+import { IGetPokemonInformations, IMapFamilyTree } from '@src/domain/usecases';
+import { IPokemonInformationsRequester } from '@src/domain/adapters';
+import { mockMapFamilyTree, mockPokemonInformationsRequester } from '@src/data/test';
+import { mockPokemonInformations } from '@src/domain/test';
 import { GetPokemonInformation } from './get-pokemon-informations';
-import { IGetPokemonInformations, IMapFamilyTree } from '../../../domain/usecases';
-import { IPokemonInformationsRequester } from '../../../domain/adapters';
-import { failure, success } from '../../../domain/shared/utils/either';
-import { mockMapFamilyTree, mockPokemonInformationsRequester } from '../../test';
-import { mockPokemonInformations } from '../../../domain/test';
 
 const sutParam = { id: '1' };
 

@@ -7,9 +7,9 @@
     "moduleResolution": "node",
     "esModuleInterop": true,
     "resolveJsonModule": true,
-    "baseUrl": "./",
+    "baseUrl": "src",
     "paths": {
-      "@src/*": ["./src/*"]
+      "@src/*": ["*"]
     },
 
     "emitDecoratorMetadata": true,
@@ -20,6 +20,5 @@
     "strictPropertyInitialization": false,
     "allowJs": true
   },
-  "include": ["src"],
-  "exclude": ["**/*.spec.ts", "**/*.test.ts"]
+  "include": ["src"]
 }

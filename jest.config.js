@@ -14,7 +14,7 @@ module.exports = {
     '<rootDir>/src',
   ],
   transform: {
-    '\\.ts$': 'ts-jest',
+    '^.+\\.(t|j)s$': 'ts-jest',
   },
   setupFiles: ['dotenv/config'],
   clearMocks: true,
