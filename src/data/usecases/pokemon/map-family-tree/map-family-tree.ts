@@ -12,7 +12,7 @@ export class MapFamilyTree implements IMapFamilyTree {
 
       return success(this.chainFilter(data.chain));
     } catch (err) {
-      return failure(new Error());
+      return failure(err);
     }
   }
 

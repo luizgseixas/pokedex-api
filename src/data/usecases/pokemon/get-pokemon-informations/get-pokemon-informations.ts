@@ -27,8 +27,7 @@ export class GetPokemonInformation implements IGetPokemonInformations {
 
       return success(information);
     } catch (err) {
-      // console.error(err);
-      return failure(new Error());
+      return failure(err);
     }
   }
 

@@ -20,7 +20,7 @@ export class GetPokemonsList implements IGetPokemonsList {
     } catch (err) {
       // TODO: criar erro especifico e melhor tratativa
       console.error(err);
-      return failure(new Error());
+      return failure(err);
     }
   }
 }
