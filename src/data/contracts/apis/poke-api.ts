@@ -1,5 +1,5 @@
 import {
-  PokemonDataResponse, EvolutionChainResponse, PokemonListResponse,
+  PokemonDataResponse, EvolutionChainResponse, PokemonListResponse, SpeciesResponse,
 } from './responses';
 
 export interface IPokemonsListRequester {
@@ -7,6 +7,10 @@ export interface IPokemonsListRequester {
 }
 export interface IPokemonInformationsRequester {
   informations: (pokemon: string) => Promise<PokemonDataResponse>;
+}
+
+export interface ISpeciesRequester {
+  species: (id: string) => Promise<SpeciesResponse>;
 }
 
 export interface IFamilyTreeRequester {
