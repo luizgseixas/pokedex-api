@@ -2,7 +2,7 @@
 
 > ## Caso de sucesso
 
-1. ⛔ Recebe uma requisição do tipo **POST** na rota **/pokedex/:trainerId/catch**
+1. ⛔ Recebe uma requisição do tipo **POST** na rota **/pokedex/catch** com token do trainer no header
 2. ⛔ Valida se o treinador já capiturou esse pokemon
 6. ⛔ **Atualiza** pokedex do usuário com o pokemon
 7. ⛔ Retorna **200** com dados básicos do pokemon
