@@ -1,8 +1,6 @@
 import { IGetPokemonInformations, IMapFamilyTree } from '@src/domain/usecases';
 import { failure, success } from '@src/domain/shared/utils/either';
-import { movesFilter } from '@src/shared/utils/moves-filter';
-import { spritesFilter } from '@src/shared/utils/sprites-filter';
-import { IPokemonInformationsRequester } from '@src/data/contracts/apis';
+import { IPokemonInformationsRequester, Move, Sprite } from '@src/data/contracts/apis';
 
 export class GetPokemonInformation implements IGetPokemonInformations {
   constructor (private readonly api: IPokemonInformationsRequester, private readonly mapFamilyTree: IMapFamilyTree) {}
@@ -22,8 +20,8 @@ export class GetPokemonInformation implements IGetPokemonInformations {
         name: data.name,
         stats: data.stats,
         types: data.types,
-        sprites: spritesFilter(data.sprites),
-        moves: movesFilter(data.moves),
+        sprites: this.spritesFilter(data.sprites),
+        moves: this.movesFilter(data.moves),
         familyTree: familyTree.value,
       };
 
@@ -33,4 +31,22 @@ export class GetPokemonInformation implements IGetPokemonInformations {
       return failure(new Error());
     }
   }
+
+  private movesFilter = (moves: Move[]) => {
+    const filteredMoves = moves.map((move) => move.move);
+    return filteredMoves;
+  };
+
+  private spritesFilter = (sprites: Sprite) => {
+    return {
+      back_default: sprites.back_default,
+      back_female: sprites.back_female,
+      back_shiny: sprites.back_shiny,
+      back_shiny_female: sprites.back_shiny_female,
+      front_default: sprites.front_default,
+      front_female: sprites.front_female,
+      front_shiny: sprites.front_shiny,
+      front_shiny_female: sprites.front_shiny_female,
+    };
+  };
 }
