@@ -3,11 +3,14 @@ import { failure, success } from '@src/domain/shared/utils/either';
 import { IPokemonInformationsRequester, Move, Sprite } from '@src/data/contracts/apis';
 
 export class GetPokemonInformation implements IGetPokemonInformations {
-  constructor (private readonly api: IPokemonInformationsRequester, private readonly mapFamilyTree: IMapFamilyTree) {}
+  constructor (
+    private readonly informationsRequester: IPokemonInformationsRequester,
+    private readonly mapFamilyTree: IMapFamilyTree,
+  ) {}
 
   async execute ({ id }: IGetPokemonInformations.Params): IGetPokemonInformations.Result {
     try {
-      const data = await this.api.informations(id);
+      const data = await this.informationsRequester.informations(id);
 
       const familyTree = await this.mapFamilyTree.execute({ id: data.id.toString() });
 

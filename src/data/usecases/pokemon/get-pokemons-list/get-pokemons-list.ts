@@ -4,11 +4,11 @@ import { IPokemonsListRequester } from '@src/data/contracts/apis';
 import { Environment } from '@src/main/config/env';
 
 export class GetPokemonsList implements IGetPokemonsList {
-  constructor (private readonly api: IPokemonsListRequester) {}
+  constructor (private readonly listRequester: IPokemonsListRequester) {}
 
   public async execute (params?: IGetPokemonsList.Params): IGetPokemonsList.Result {
     try {
-      const data = await this.api.lists(params?.offset, params?.limit);
+      const data = await this.listRequester.lists(params?.offset, params?.limit);
 
       const next = data.next ? data.next.split('?')[1] : null;
       const previous = data.previous ? data.previous.split('?')[1] : null;

@@ -1,18 +1,22 @@
 import { IMapFamilyTree } from '@src/domain/usecases/map-family-tree';
 import { failure, success } from '@src/domain/shared/utils/either';
-import { Chain, IFamilyTreeRequester, EvolutionDetail } from '@src/data/contracts/apis';
+import {
+  Chain, IFamilyTreeRequester, EvolutionDetail, ISpeciesRequester,
+} from '@src/data/contracts/apis';
 import { FamilyTreeModel } from '@src/domain/models/pokemon';
 
 export class MapFamilyTree implements IMapFamilyTree {
-  constructor (private readonly api: IFamilyTreeRequester) {}
+  constructor (
+    private readonly speciesRequester: ISpeciesRequester,
+    private readonly familyTreeRequester: IFamilyTreeRequester,
+  ) {}
 
   async execute ({ id }: IMapFamilyTree.Params): IMapFamilyTree.Result {
     try {
-      const data = await this.api.familyTree(id);
-
-      console.log(this.chainFilter(data.chain));
-
-      return success(this.chainFilter(data.chain));
+      const species = await this.speciesRequester.species(id);
+      const familyTreeId = species.evolution_chain.url.split('evolution-chain/');
+      const tree = await this.familyTreeRequester.familyTree(familyTreeId[1]);
+      return success(this.chainFilter(tree.chain));
     } catch (err) {
       return failure(err);
     }
