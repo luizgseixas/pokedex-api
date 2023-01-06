@@ -1,8 +1,8 @@
 import { FamilyTreeModel } from '@src/domain/models/pokemon/family-tree';
 
-import { EvolutionChain } from '@src/data/contracts/apis/responses';
+import { EvolutionChainResponse } from '@src/data/contracts/apis/responses';
 
-export const mockPrimitiveOneEvolutionChain = (): EvolutionChain => ({
+export const mockPrimitiveOneEvolutionChain = (): EvolutionChainResponse => ({
   baby_trigger_item: null,
   chain: {
     evolution_details: [],
@@ -16,7 +16,7 @@ export const mockPrimitiveOneEvolutionChain = (): EvolutionChain => ({
   id: 1,
 });
 
-export const mockPrimitiveTwoEvolutionChain = (): EvolutionChain => ({
+export const mockPrimitiveTwoEvolutionChain = (): EvolutionChainResponse => ({
   baby_trigger_item: null,
   chain: {
     evolution_details: [],
@@ -64,7 +64,7 @@ export const mockPrimitiveTwoEvolutionChain = (): EvolutionChain => ({
   id: 1,
 });
 
-export const mockPrimitiveThreeEvolutionChain = (): EvolutionChain => ({
+export const mockPrimitiveThreeEvolutionChain = (): EvolutionChainResponse => ({
   baby_trigger_item: null,
   chain: {
     evolution_details: [],
@@ -146,7 +146,7 @@ export const mockPrimitiveThreeEvolutionChain = (): EvolutionChain => ({
   id: 1,
 });
 
-export const mockPrimitiveAllEvolutionChain = (): EvolutionChain => ({
+export const mockPrimitiveAllEvolutionChain = (): EvolutionChainResponse => ({
   baby_trigger_item: null,
   chain: {
     evolution_details: [],

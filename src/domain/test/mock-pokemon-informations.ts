@@ -1,6 +1,6 @@
 import { PokemonInformationsModel } from '@src/domain/models/pokemon/pokemon-informations';
 import { mockFamilyTreeThree } from '@src/domain/test';
-import { PokemonData } from '../../data/contracts/apis/responses';
+import { PokemonDataResponse } from '../../data/contracts/apis/responses';
 
 export const mockPokemonInformations = (): PokemonInformationsModel => ({
   id: 1,
@@ -27,7 +27,7 @@ export const mockPokemonInformations = (): PokemonInformationsModel => ({
   familyTree: mockFamilyTreeThree(),
 });
 
-export const mockPrimitivePokemonInformations = (): PokemonData => ({
+export const mockPrimitivePokemonInformations = (): PokemonDataResponse => ({
   id: 1,
   name: 'any_name',
   height: 1,

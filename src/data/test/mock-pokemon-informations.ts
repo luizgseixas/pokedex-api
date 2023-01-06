@@ -1,5 +1,5 @@
 import { IPokemonInformationsRequester } from '@src/data/contracts/apis';
-import { PokemonData } from '@src/data/contracts/apis/responses';
+import { PokemonDataResponse } from '@src/data/contracts/apis/responses';
 import { success } from '@src/domain/shared/utils/either';
 import { mockFamilyTreeThree, mockPrimitivePokemonInformations } from '@src/domain/test';
 import { IMapFamilyTree } from '@src/domain/usecases';
@@ -16,7 +16,7 @@ export const mockMapFamilyTree = (): IMapFamilyTree => {
 
 export const mockPokemonInformationsRequester = (): IPokemonInformationsRequester => {
   class PokemonInformationsRequesterStub implements IPokemonInformationsRequester {
-    async informations (id: string): Promise<PokemonData> {
+    async informations (id: string): Promise<PokemonDataResponse> {
       return Promise.resolve(mockPrimitivePokemonInformations());
     }
   }

@@ -1,13 +1,14 @@
-import { PokemonData, EvolutionChain, PokemonListResponse } from './responses';
-
-export interface IPokemonInformationsRequester {
-  informations: (pokemon: string) => Promise<PokemonData>;
-}
-
-export interface IFamilyTreeRequester {
-  familyTree: (id: string) => Promise<EvolutionChain>;
-}
+import {
+  PokemonDataResponse, EvolutionChainResponse, PokemonListResponse,
+} from './responses';
 
 export interface IPokemonsListRequester {
   lists: (offset?: string, limit?: string) => Promise<PokemonListResponse>;
+}
+export interface IPokemonInformationsRequester {
+  informations: (pokemon: string) => Promise<PokemonDataResponse>;
+}
+
+export interface IFamilyTreeRequester {
+  familyTree: (id: string) => Promise<EvolutionChainResponse>;
 }

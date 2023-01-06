@@ -1,4 +1,4 @@
-export type EvolutionChain = {
+export type EvolutionChainResponse = {
   id: number;
   baby_trigger_item: any;
   chain: Chain;

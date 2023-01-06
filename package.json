@@ -8,7 +8,7 @@
     "dev": "cross-env NODE_ENV=DEVELOP ts-node-dev --transpile-only --respawn --watch src src/main/server.ts",
     "start": "cross-env NODE_ENV=PRODUCTION node dist/main/server.js",
     "test": "jest --passWithNoTests --detectOpenHandles --no-cache",
-    "test:verbose": "jest --passWithNoTests --silent --verbose",
+    "test:verbose": "jest --passWithNoTests --verbose --silent",
     "test:unit": "npm test -- --watch -c jest-unit-config.js",
     "test:integration": "npm test -- --watch -c jest-integration-config.js",
     "test:staged": "yarn test --findRelatedTests ./src",
