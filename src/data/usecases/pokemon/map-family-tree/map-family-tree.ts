@@ -1,6 +1,6 @@
 import { IMapFamilyTree } from '@src/domain/usecases/map-family-tree';
 import { failure, success } from '@src/domain/shared/utils/either';
-import { Chain, IFamilyTreeRequester } from '@src/data/contracts/apis';
+import { Chain, IFamilyTreeRequester, EvolutionDetail } from '@src/data/contracts/apis';
 import { FamilyTreeModel } from '@src/domain/models/pokemon';
 
 export class MapFamilyTree implements IMapFamilyTree {
@@ -10,27 +10,28 @@ export class MapFamilyTree implements IMapFamilyTree {
     try {
       const data = await this.api.familyTree(id);
 
+      console.log(this.chainFilter(data.chain));
+
       return success(this.chainFilter(data.chain));
     } catch (err) {
       return failure(err);
     }
   }
 
-  private evolutionsDetailsFilter = (arr: Array<any>): any => {
+  private evolutionsDetailsFilter = (arr: Array<EvolutionDetail>): any => {
     if (arr.length === 0) return null;
-
-    const evolutions = arr.map((datail) => Object.keys(datail).reduce((newObj, key) => {
-      const value = datail[key];
-      if (value !== null && value !== false && value !== '') {
-        if (key === 'trigger') {
-          newObj[key] = value.name;
-        } else {
-          newObj[key] = value;
+    const evolutions = arr.map((datail) => {
+      return Object.entries(datail).reduce((newObj, [key, value]) => {
+        if (value !== null && value !== false && value !== '') {
+          if (key === 'trigger') {
+            newObj[key] = value.name;
+          } else {
+            newObj[key] = value;
+          }
         }
-      }
-      return newObj;
-    }, {}))[0];
-
+        return newObj;
+      }, {});
+    });
     return evolutions;
   };
 

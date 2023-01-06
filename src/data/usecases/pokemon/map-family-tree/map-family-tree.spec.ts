@@ -33,7 +33,7 @@ describe('MapFamilyTree Usecase', () => {
     expect(familyTreeRequesterSpy).toHaveBeenCalledWith('1');
   });
 
-  test('Should return familyTreeRequester a failure error if familyTreeRequester thword', async () => {
+  test('Should return familyTreeRequester a failure error if familyTreeRequester throws', async () => {
     const { sut, familyTreeRequesterStub } = makeSut();
     jest
       .spyOn(familyTreeRequesterStub, 'familyTree')
@@ -78,6 +78,8 @@ describe('MapFamilyTree Usecase', () => {
       .spyOn(familyTreeRequesterStub, 'familyTree')
       .mockReturnValueOnce(Promise.resolve(mockPrimitiveAllEvolutionChain()));
     const familyTree = await sut.execute(sutParam);
+    console.log('[familyTree on test', familyTree);
+    console.log('[familyTreeMock on test', mockFamilyTreeAll());
     expect(familyTree).toEqual(
       success(mockFamilyTreeAll()),
     );

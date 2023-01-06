@@ -688,10 +688,10 @@ export const mockFamilyTreeTwo = (): FamilyTreeModel[] => ([
   {
     evolution_lvl: 2,
     name: 'any_name',
-    evolution_details: {
+    evolution_details: [{
       min_level: 16,
       trigger: 'level-up',
-    },
+    }],
   },
 ]);
 
@@ -704,18 +704,18 @@ export const mockFamilyTreeThree = (): FamilyTreeModel[] => ([
   {
     evolution_lvl: 2,
     name: 'any_name',
-    evolution_details: {
+    evolution_details: [{
       min_level: 16,
       trigger: 'level-up',
-    },
+    }],
   },
   {
     evolution_lvl: 3,
     name: 'any_name',
-    evolution_details: {
+    evolution_details: [{
       min_level: 32,
       trigger: 'level-up',
-    },
+    }],
   },
 ]);
 
@@ -728,86 +728,148 @@ export const mockFamilyTreeAll = (): FamilyTreeModel[] => ([
   {
     evolution_lvl: 2,
     name: 'any_name',
-    evolution_details: {
+    evolution_details: [{
       item: {
         name: 'any_item',
         url: 'any_url',
       },
       trigger: 'any_trigger',
-    },
+    }],
   },
   {
     evolution_lvl: 3,
     name: 'any_name',
-    evolution_details: {
+    evolution_details: [{
       item: {
         name: 'any_item',
         url: 'any_url',
       },
       trigger: 'any_trigger',
-    },
+    }],
   },
   {
     evolution_lvl: 4,
     name: 'any_name',
-    evolution_details: {
+    evolution_details: [{
       item: {
         name: 'any_item',
         url: 'any_url',
       },
       trigger: 'any_trigger',
-    },
+    }],
   },
   {
     evolution_lvl: 5,
     name: 'any_name',
-    evolution_details: {
+    evolution_details: [{
       min_happiness: 160,
       time_of_day: 'day',
       trigger: 'any_trigger',
-    },
+    }],
   },
   {
     evolution_lvl: 6,
     name: 'any_name',
-    evolution_details: {
+    evolution_details: [{
       min_happiness: 160,
       time_of_day: 'night',
       trigger: 'any_trigger',
-    },
+    }],
   },
   {
     evolution_lvl: 7,
     name: 'any_name',
-    evolution_details: {
-      location: {
-        name: 'any_location',
-        url: 'any_url',
+    evolution_details: [
+      {
+        location: {
+          name: 'any_location',
+          url: 'any_url',
+        },
+        trigger: 'any_trigger',
       },
-      trigger: 'any_trigger',
-    },
+      {
+        location: {
+          name: 'any_location',
+          url: 'any_url',
+        },
+        trigger: 'any_trigger',
+      },
+      {
+        location: {
+          name: 'any_location',
+          url: 'any_url',
+        },
+        trigger: 'any_trigger',
+      },
+      {
+        trigger: 'any_trigger',
+      },
+      {
+        item: {
+          name: 'any_item',
+          url: 'any_url',
+        },
+        trigger: 'any_trigger',
+      },
+    ],
   },
   {
     evolution_lvl: 8,
     name: 'any_name',
-    evolution_details: {
-      location: {
-        name: 'any_location',
-        url: 'any_url',
+    evolution_details: [
+      {
+        location: {
+          name: 'any_location',
+          url: 'any_url',
+        },
+        trigger: 'any_trigger',
       },
-      trigger: 'any_trigger',
-    },
+      {
+        location: {
+          name: 'any_location',
+          url: 'any_url',
+        },
+        trigger: 'any_trigger',
+      },
+      {
+        location: {
+          name: 'any_location',
+          url: 'any_url',
+        },
+        trigger: 'any_trigger',
+      },
+      {
+        trigger: 'any_trigger',
+      },
+      {
+        item: {
+          name: 'any_item',
+          url: 'any_url',
+        },
+        trigger: 'any_trigger',
+      },
+    ],
   },
   {
     evolution_lvl: 9,
     name: 'any_name',
-    evolution_details: {
-      known_move_type: {
-        name: 'any_move',
-        url: 'any_url',
+    evolution_details: [
+      {
+        known_move_type: {
+          name: 'any_move',
+          url: 'any_url',
+        },
+        min_affection: 2,
+        trigger: 'any_trigger',
       },
-      min_affection: 2,
-      trigger: 'any_trigger',
-    },
+      {
+        known_move_type: {
+          name: 'any_move',
+          url: 'any_url',
+        },
+        min_happiness: 160,
+        trigger: 'any_trigger',
+      },
+    ],
   },
 ]);
