@@ -6,7 +6,7 @@ import {
 } from '@src/domain/test';
 import { IMapFamilyTree } from '@src/domain/usecases';
 import { mockFamilyTreeRequester, mockSpeciesRequester } from '@src/data/test';
-import { MapFamilyTree } from './map-family-tree';
+import { MapFamilyTreeUseCase } from './map-family-tree';
 
 type SutTypes = {
   sut: IMapFamilyTree;
@@ -19,7 +19,7 @@ const sutParam = { id: '1' };
 const makeSut = (): SutTypes => {
   const familyTreeRequesterStub = mockFamilyTreeRequester();
   const speciesRequesterStub = mockSpeciesRequester();
-  const sut = new MapFamilyTree(speciesRequesterStub, familyTreeRequesterStub);
+  const sut = new MapFamilyTreeUseCase(speciesRequesterStub, familyTreeRequesterStub);
 
   return {
     sut,

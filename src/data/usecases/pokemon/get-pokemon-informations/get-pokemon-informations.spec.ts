@@ -3,7 +3,7 @@ import { IGetPokemonInformations, IMapFamilyTree } from '@src/domain/usecases';
 import { IPokemonInformationsRequester } from '@src/data/contracts/apis';
 import { mockMapFamilyTree, mockPokemonInformationsRequester } from '@src/data/test';
 import { mockPokemonInformations } from '@src/domain/test';
-import { GetPokemonInformation } from './get-pokemon-informations';
+import { GetPokemonInformationUseCase } from './get-pokemon-informations';
 
 const sutParam = { id: '1' };
 
@@ -16,7 +16,7 @@ type SutTypes = {
 const makeSut = (): SutTypes => {
   const mapFamilyTreeStub = mockMapFamilyTree();
   const PokemonInformationsRequesterStub = mockPokemonInformationsRequester();
-  const sut = new GetPokemonInformation(PokemonInformationsRequesterStub, mapFamilyTreeStub);
+  const sut = new GetPokemonInformationUseCase(PokemonInformationsRequesterStub, mapFamilyTreeStub);
 
   return {
     sut,

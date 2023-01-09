@@ -3,7 +3,7 @@ import { failure, success } from '@src/domain/shared/utils/either';
 import { mockPokemonList, throwError } from '@src/domain/test';
 import { IGetPokemonsList } from '@src/domain/usecases';
 import { mockPokemonsListRequester } from '@src/data/test';
-import { GetPokemonsList } from './get-pokemons-list';
+import { GetPokemonsListUseCase } from './get-pokemons-list';
 
 type SutTypes = {
   sut: IGetPokemonsList;
@@ -14,7 +14,7 @@ const sutParam = { offset: '1', limit: '20' };
 
 const makeSut = (): SutTypes => {
   const pokemonsListRequesterStub = mockPokemonsListRequester();
-  const sut = new GetPokemonsList(pokemonsListRequesterStub);
+  const sut = new GetPokemonsListUseCase(pokemonsListRequesterStub);
 
   return {
     sut,

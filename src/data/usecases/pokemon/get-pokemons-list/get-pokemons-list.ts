@@ -3,7 +3,7 @@ import { failure, success } from '@src/domain/shared/utils/either';
 import { IPokemonsListRequester } from '@src/data/contracts/apis';
 import { Environment } from '@src/main/config/env';
 
-export class GetPokemonsList implements IGetPokemonsList {
+export class GetPokemonsListUseCase implements IGetPokemonsList {
   constructor (private readonly listRequester: IPokemonsListRequester) {}
 
   public async execute (params?: IGetPokemonsList.Params): IGetPokemonsList.Result {

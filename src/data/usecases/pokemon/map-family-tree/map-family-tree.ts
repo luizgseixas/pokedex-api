@@ -5,7 +5,7 @@ import {
 } from '@src/data/contracts/apis';
 import { FamilyTreeModel } from '@src/domain/models/pokemon';
 
-export class MapFamilyTree implements IMapFamilyTree {
+export class MapFamilyTreeUseCase implements IMapFamilyTree {
   constructor (
     private readonly speciesRequester: ISpeciesRequester,
     private readonly familyTreeRequester: IFamilyTreeRequester,
