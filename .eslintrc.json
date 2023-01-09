@@ -28,6 +28,7 @@
     "no-use-before-define": "off",
     "no-empty-function" : "off",
     "no-param-reassign": "off",
+    "consistent-return": "off",
     "import/extensions": "off",
     "arrow-body-style": "off",
     "no-unused-vars": "off",

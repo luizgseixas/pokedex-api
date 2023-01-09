@@ -1,4 +1,4 @@
-import { IGetPokemonInformations } from '@src/domain/usecases';
+import { IGetPokemonInformations } from '@src/domain/usecases/pokemon';
 import { ok, serverError } from '../../helpers/http-helper';
 import { HttpRequest, HttpResponse, IController } from '../../protocols';
 

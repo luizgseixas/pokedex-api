@@ -1,5 +1,5 @@
-import { FamilyTreeModel } from '../models/pokemon/family-tree';
-import { Either } from '../shared/utils/either';
+import { FamilyTreeModel } from '../../models/pokemon/family-tree';
+import { Either } from '../../shared/utils/either';
 
 export interface IMapFamilyTree {
   execute: (params: IMapFamilyTree.Params) => IMapFamilyTree.Result;

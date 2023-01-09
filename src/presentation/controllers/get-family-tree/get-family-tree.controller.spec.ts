@@ -1,6 +1,6 @@
 import { GetFamilyTreeController } from './get-family-tree.controller';
 import { HttpRequest } from '../../protocols';
-import { IMapFamilyTree } from '../../../domain/usecases/map-family-tree';
+import { IMapFamilyTree } from '../../../domain/usecases/pokemon/map-family-tree';
 import { mockFamilyTreeThree } from '../../../domain/test';
 import { ok, serverError } from '../../helpers/http-helper';
 import { mockMapFamilyTree } from '../../test';

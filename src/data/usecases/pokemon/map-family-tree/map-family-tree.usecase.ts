@@ -1,4 +1,4 @@
-import { IMapFamilyTree } from '@src/domain/usecases/map-family-tree';
+import { IMapFamilyTree } from '@src/domain/usecases/pokemon';
 import { failure, success } from '@src/domain/shared/utils/either';
 import {
   Chain, IFamilyTreeRequester, EvolutionDetail, ISpeciesRequester,

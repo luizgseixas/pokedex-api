@@ -4,7 +4,7 @@ import {
   mockFamilyTreeAll,
   mockFamilyTreeOne, mockFamilyTreeThree, mockFamilyTreeTwo, mockPrimitiveAllEvolutionChain, mockPrimitiveOneEvolutionChain, mockPrimitiveTwoEvolutionChain, mockSpecies, throwError,
 } from '@src/domain/test';
-import { IMapFamilyTree } from '@src/domain/usecases';
+import { IMapFamilyTree } from '@src/domain/usecases/pokemon';
 import { mockFamilyTreeRequester, mockSpeciesRequester } from '@src/data/test';
 import { MapFamilyTreeUseCase } from './map-family-tree.usecase';
 

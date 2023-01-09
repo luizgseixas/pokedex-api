@@ -1,6 +1,6 @@
 import { failure } from '../../../domain/shared/utils/either';
 import { mockPokemonInformations } from '../../../domain/test';
-import { IGetPokemonInformations } from '../../../domain/usecases';
+import { IGetPokemonInformations } from '../../../domain/usecases/pokemon';
 import { ok, serverError } from '../../helpers/http-helper';
 import { HttpRequest } from '../../protocols';
 import { mockGetPokemonInformations } from '../../test';

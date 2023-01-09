@@ -1,4 +1,4 @@
-import { IMapFamilyTree } from '@src/domain/usecases';
+import { IMapFamilyTree } from '@src/domain/usecases/pokemon';
 import { IController } from '@src/presentation/protocols/controller';
 import { ok, serverError } from '../../helpers/http-helper';
 import { HttpRequest } from '../../protocols';

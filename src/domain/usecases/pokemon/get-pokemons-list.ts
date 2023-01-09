@@ -1,5 +1,5 @@
-import { Either } from '../shared/utils/either';
-import { PokemonsListModel } from '../models/pokemon/pokemons-list';
+import { Either } from '../../shared/utils/either';
+import { PokemonsListModel } from '../../models/pokemon/pokemons-list';
 
 export interface IGetPokemonsList {
   execute: (params: IGetPokemonsList.Params) => IGetPokemonsList.Result;

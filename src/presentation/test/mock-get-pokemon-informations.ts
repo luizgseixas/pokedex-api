@@ -1,6 +1,6 @@
 import { success } from '@src/domain/shared/utils/either';
 import { mockPokemonInformations } from '@src/domain/test';
-import { IGetPokemonInformations } from '@src/domain/usecases';
+import { IGetPokemonInformations } from '@src/domain/usecases/pokemon';
 
 export const mockGetPokemonInformations = () => {
   class GetPokemonInformationsStub implements IGetPokemonInformations {
