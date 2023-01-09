@@ -1,7 +1,6 @@
 import { IGetPokemonInformations } from '@src/domain/usecases';
-import { MissingParamError } from '@src/presentation/errors/missing-param-error';
+import { ok, serverError } from '../../helpers/http-helper';
 import { HttpRequest, HttpResponse, IController } from '../../protocols';
-import { badRequest, ok, serverError } from '../../helpers/http-helper';
 
 export class GetPokemonInformationsController implements IController {
   constructor (private readonly getPokemonInformation: IGetPokemonInformations) {}
