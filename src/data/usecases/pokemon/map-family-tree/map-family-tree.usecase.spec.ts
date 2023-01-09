@@ -6,7 +6,7 @@ import {
 } from '@src/domain/test';
 import { IMapFamilyTree } from '@src/domain/usecases';
 import { mockFamilyTreeRequester, mockSpeciesRequester } from '@src/data/test';
-import { MapFamilyTreeUseCase } from './map-family-tree';
+import { MapFamilyTreeUseCase } from './map-family-tree.usecase';
 
 type SutTypes = {
   sut: IMapFamilyTree;

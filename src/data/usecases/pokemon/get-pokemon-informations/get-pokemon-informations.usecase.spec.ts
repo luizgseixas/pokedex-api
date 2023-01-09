@@ -3,7 +3,7 @@ import { IGetPokemonInformations, IMapFamilyTree } from '@src/domain/usecases';
 import { IPokemonInformationsRequester } from '@src/data/contracts/apis';
 import { mockMapFamilyTree, mockPokemonInformationsRequester } from '@src/data/test';
 import { mockPokemonInformations } from '@src/domain/test';
-import { GetPokemonInformationUseCase } from './get-pokemon-informations';
+import { GetPokemonInformationUseCase } from './get-pokemon-informations.usecase';
 
 const sutParam = { id: '1' };
 

@@ -3,7 +3,7 @@ import { failure, success } from '@src/domain/shared/utils/either';
 import { mockPokemonList, throwError } from '@src/domain/test';
 import { IGetPokemonsList } from '@src/domain/usecases';
 import { mockPokemonsListRequester } from '@src/data/test';
-import { GetPokemonsListUseCase } from './get-pokemons-list';
+import { GetPokemonsListUseCase } from './get-pokemons-list.usecase';
 
 type SutTypes = {
   sut: IGetPokemonsList;
