@@ -1,5 +1,7 @@
 import { ISavePokemonRepository } from '@src/data/contracts/db/pokemon/save-pokemon';
 import { PokemonModel } from '@src/domain/models/pokemon';
+import { failure } from '@src/domain/shared/utils/either';
+import { throwError } from '@src/domain/test';
 
 class SavePokemonRepositoryStub {
   async save (params: ISavePokemonRepository.Params): Promise<void> {
@@ -10,8 +12,13 @@ class SavePokemonRepositoryStub {
 class SavePokemonUseCase {
   constructor (private readonly pokemonRepository: SavePokemonRepositoryStub) {}
 
+  // eslint-disable-next-line consistent-return
   async execute (params: ISavePokemonRepository.Params) {
-    await this.pokemonRepository.save(params);
+    try {
+      await this.pokemonRepository.save(params);
+    } catch (err) {
+      return failure(err);
+    }
   }
 }
 
@@ -47,5 +54,15 @@ describe('SavePokemonUseCase', () => {
     await sut.execute(mockPokemon());
 
     expect(saveSpy).toHaveBeenCalledWith(mockPokemon());
+  });
+
+  it('should return a failure error if SavePokemonRepository throws', async () => {
+    const savePokemonRepo = new SavePokemonRepositoryStub();
+    const sut = new SavePokemonUseCase(savePokemonRepo);
+    jest.spyOn(savePokemonRepo, 'save').mockImplementationOnce(throwError);
+
+    const promise = sut.execute(mockPokemon());
+
+    expect(promise).resolves.toEqual(failure(Error()));
   });
 });
