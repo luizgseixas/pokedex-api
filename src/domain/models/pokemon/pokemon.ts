@@ -25,8 +25,8 @@ export class PokemonModel {
   special_attack: number;
   special_defense: number;
   speed: number;
-  created_at?: Date;
-  updated_at?: Date;
   types: TypeModel[];
   moves?: MoveModel[];
+  created_at?: Date;
+  updated_at?: Date;
 }

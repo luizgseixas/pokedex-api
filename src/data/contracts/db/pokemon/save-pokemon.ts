@@ -26,5 +26,5 @@ export namespace ISavePokemonRepository {
     types: TypeModel[];
   }
 
-  export type Result = Promise<PokemonModel>;
+  export type Result = Promise<void>;
 }
