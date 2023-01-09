@@ -1,14 +1,16 @@
-export class Pokemon {
-  constructor (data?: Omit<Pokemon, 'id'>, id?: string) {
+import { MoveModel } from './move';
+import { TypeModel } from './type';
+
+export class PokemonModel {
+  constructor (data?: Omit<PokemonModel, 'id'>, id?: string) {
     if (data) Object.assign(this, data);
     if (id) this.id = id;
   }
 
-  id: string;
+  id?: string;
   name: string;
   heigth: number;
   weight: number;
-  location_area: string;
   sprite_front_default: string;
   sprite_front_female: string;
   sprite_front_shiny: string;
@@ -24,4 +26,7 @@ export class Pokemon {
   special_defense: number;
   speed: number;
   created_at?: Date;
+  updated_at?: Date;
+  types: TypeModel[];
+  moves?: MoveModel[];
 }

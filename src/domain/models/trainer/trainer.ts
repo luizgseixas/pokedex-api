@@ -1,5 +1,5 @@
-export class PokemonModel {
-  constructor (data?: Omit<PokemonModel, 'id'>, id?: string) {
+export class TrainerModel {
+  constructor (data?: Omit<TrainerModel, 'id'>, id?: string) {
     if (data) Object.assign(this, data);
     if (id) this.id = id;
   }

@@ -6,8 +6,7 @@ export class TypeModel {
     if (id) this.id = id;
   }
 
-  id: string;
+  id?: string;
   name: string;
-  url: string;
   pokemon?: Pokemon[];
 }
