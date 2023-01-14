@@ -13,8 +13,8 @@ export class GetPokemonsListUseCase implements IGetPokemonsList {
       const next = data.next ? data.next.split('?')[1] : null;
       const previous = data.previous ? data.previous.split('?')[1] : null;
 
-      data.next = next != null ? `${Environment.API_URL}?${next}` : null;
-      data.previous = previous != null ? `${Environment.API_URL}?${previous}` : null;
+      data.next = next != null ? `${Environment.API_URL}/pokemon/list?${next}` : null;
+      data.previous = previous != null ? `${Environment.API_URL}/pokemon/list?${previous}` : null;
 
       return success(data);
     } catch (err) {
