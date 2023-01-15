@@ -20,7 +20,7 @@ class Application {
 
     // await setupTypeorm();
 
-    server.listen(process.env.NODE_PORT, () => console.log(`🔥 Server running on host http://localhost:${process.env.NODE_PORT} 🚀 `));
+    server.listen(4444, () => console.log(`🔥 Server running on host http://localhost:${4444} 🚀 `));
   }
 }
 
