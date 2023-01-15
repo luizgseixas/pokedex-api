@@ -7,7 +7,7 @@ import cors from 'cors';
 import morgan from 'morgan';
 
 import routes from './routes';
-import { setupTypeorm } from '../infra/typeorm';
+// import { setupTypeorm } from '../infra/typeorm';
 
 class Application {
   static async bootstrap (): Promise<void> {
@@ -18,7 +18,7 @@ class Application {
     app.use(cors());
     app.use(routes);
 
-    await setupTypeorm();
+    // await setupTypeorm();
 
     server.listen(process.env.NODE_PORT, () => console.log(`🔥 Server running on host http://localhost:${process.env.NODE_PORT} 🚀 `));
   }

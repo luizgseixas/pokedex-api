@@ -1,4 +1,4 @@
-import { Pokemon } from './pokemon';
+import { PokemonModel } from './pokemon';
 
 export class MoveModel {
   constructor (data?: Omit<MoveModel, 'id'>, id?: string) {
@@ -8,5 +8,5 @@ export class MoveModel {
 
   id?: string;
   name: string;
-  pokemon?: Pokemon[];
+  pokemon?: PokemonModel[];
 }

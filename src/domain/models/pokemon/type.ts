@@ -1,4 +1,4 @@
-import { Pokemon } from './pokemon';
+import { PokemonModel } from './pokemon';
 
 export class TypeModel {
   constructor (data?: Omit<TypeModel, 'id'>, id?: string) {
@@ -8,5 +8,5 @@ export class TypeModel {
 
   id?: string;
   name: string;
-  pokemon?: Pokemon[];
+  pokemon?: PokemonModel[];
 }
