@@ -1,31 +1,27 @@
-// import {
-//   Column, Entity, ManyToMany, PrimaryGeneratedColumn,
-// } from 'typeorm';
-// import { Type } from '@src/domain/models/pokemon';
-// import { PokemonsEntity } from './pokemons';
+import {
+  Column, Entity, ManyToMany, PrimaryGeneratedColumn,
+} from 'typeorm';
+import { TypeModel } from '@src/domain/models/pokemon';
+import { PokemonsEntity } from './pokemons';
 
-// @Entity('tb_pokemon_types')
-// export class TypesEntity {
-//   @PrimaryGeneratedColumn('uuid')
-//     id: string;
+@Entity('tb_pokemon_types')
+export class TypesEntity {
+  @PrimaryGeneratedColumn('uuid')
+    id: string;
 
-//   @Column()
-//     name: string;
+  @Column()
+    name: string;
 
-//   @Column()
-//     url: string;
+  @ManyToMany(() => PokemonsEntity, (pokemon) => pokemon.types)
+    pokemon: PokemonsEntity[];
 
-//   @ManyToMany(() => PokemonsEntity, (pokemon) => pokemon.type)
-//     pokemon: PokemonsEntity[];
-
-//   public toPlainClass (): Type {
-//     return new Type(
-//       {
-//         name: this.name,
-//         url: this.url,
-//         pokemon: this.pokemon,
-//       },
-//       this.id,
-//     );
-//   }
-// }
+  public toPlainClass (): TypeModel {
+    return new TypeModel(
+      {
+        name: this.name,
+        pokemon: this.pokemon,
+      },
+      this.id,
+    );
+  }
+}
