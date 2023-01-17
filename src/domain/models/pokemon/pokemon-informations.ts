@@ -34,5 +34,4 @@ type Type = {
 
 type Move = {
   name: string;
-  url: string;
 }

@@ -7,5 +7,4 @@ export type PokemonsListModel = {
 
 type Pokemon = {
   name: string;
-  url: string;
 }

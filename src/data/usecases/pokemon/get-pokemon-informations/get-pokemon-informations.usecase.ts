@@ -35,7 +35,7 @@ export class GetPokemonInformationUseCase implements IGetPokemonInformations {
   }
 
   private movesFilter = (moves: Move[]) => {
-    const filteredMoves = moves.map((move) => move.move);
+    const filteredMoves = moves.map((move) => ({ name: move.move.name }));
     return filteredMoves;
   };
 

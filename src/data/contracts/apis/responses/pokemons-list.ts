@@ -7,5 +7,4 @@ export type PokemonListResponse = {
 
 export type Pokemon = {
   name: string;
-  url: string;
 }

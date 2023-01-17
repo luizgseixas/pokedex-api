@@ -22,7 +22,6 @@ export const mockPokemonInformations = (): PokemonInformationsModel => ({
   },
   moves: [{
     name: 'any_name',
-    url: 'any_url',
   }],
   familyTree: mockFamilyTreeThree(),
 });

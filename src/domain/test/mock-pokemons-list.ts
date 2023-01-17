@@ -8,11 +8,9 @@ export const mockPokemonList = (): PokemonsListModel => ({
   previous: 'http://localhost:4444/pokemon/list?offset=0&limit=20',
   results: [{
     name: 'any_name',
-    url: 'any_url',
   },
   {
     name: 'any_name',
-    url: 'any_url',
   }],
 });
 
@@ -23,11 +21,9 @@ export const mockPrimitivePokemonsList = (): PokemonListResponse => ({
   results: [
     {
       name: 'any_name',
-      url: 'any_url',
     },
     {
       name: 'any_name',
-      url: 'any_url',
     },
   ],
 });
