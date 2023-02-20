@@ -1,6 +1,6 @@
 import { ISavePokemonRepository } from '@src/data/contracts/db/pokemon/save-pokemon';
 import { Repository } from 'typeorm';
-import { PokemonsEntity } from '../../entities';
+import { PokemonsEntity } from '../entities';
 
 export class PokemonsRepository implements ISavePokemonRepository {
   constructor (private readonly pokemonsRepository: Repository<PokemonsEntity>) {}
