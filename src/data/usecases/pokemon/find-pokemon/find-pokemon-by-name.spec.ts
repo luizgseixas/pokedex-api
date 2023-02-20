@@ -1,18 +1,9 @@
-import { PokemonModel } from '@src/domain/models/pokemon';
+import { IFindPokemonByNameRepostiory } from '@src/data/contracts/db/pokemon/find-pokemon-by-name';
 import { failure, success } from '@src/domain/shared/utils/either';
 import { throwError } from '@src/domain/test';
 import { mockPokemon } from '@src/domain/test/mock-pokemon';
+import { mockFindPokemonByNameRepo } from '@src/infra/typeorm/test';
 import { FindPokemonByNameUseCase } from './find-pokemon-by-name.usecase';
-
-export interface IFindPokemonByNameRepostiory {
-  findByName: (name: string) => Promise<PokemonModel>;
-}
-
-export class FindPokemonByNameRepositoryStub implements IFindPokemonByNameRepostiory {
-  async findByName (name: string): Promise<PokemonModel> {
-    return Promise.resolve(mockPokemon());
-  }
-}
 
 type SutTypes = {
   sut: FindPokemonByNameUseCase,
@@ -20,7 +11,7 @@ type SutTypes = {
 }
 
 const makeSut = (): SutTypes => {
-  const findPokemonByNameRepositoryStub = new FindPokemonByNameRepositoryStub();
+  const findPokemonByNameRepositoryStub = mockFindPokemonByNameRepo();
   const sut = new FindPokemonByNameUseCase(findPokemonByNameRepositoryStub);
 
   return {
