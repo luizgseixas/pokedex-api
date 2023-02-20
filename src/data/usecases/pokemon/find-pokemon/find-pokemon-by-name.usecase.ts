@@ -1,9 +1,9 @@
-import { IFindPokemonByNameRepostiory } from '@src/data/contracts/db/pokemon/find-pokemon-by-name';
+import { IFindPokemonByNameRepository } from '@src/data/contracts/db/pokemon';
 import { failure, success } from '@src/domain/shared/utils/either';
 import { IFindPokemonByName } from '@src/domain/usecases/pokemon/find-pokemon-by-name';
 
 export class FindPokemonByNameUseCase implements IFindPokemonByName {
-  constructor (private readonly pokemonRepository: IFindPokemonByNameRepostiory) {}
+  constructor (private readonly pokemonRepository: IFindPokemonByNameRepository) {}
 
   async execute (params: IFindPokemonByName.Params): Promise<any> {
     try {
