@@ -1,4 +1,6 @@
 import { PokemonModel } from '@src/domain/models/pokemon';
+import { failure } from '@src/domain/shared/utils/either';
+import { throwError } from '@src/domain/test';
 import { mockPokemon } from '@src/domain/test/mock-pokemon';
 import { IFindPokemonByName } from '@src/domain/usecases/pokemon/find-pokemon-by-name';
 
@@ -16,7 +18,12 @@ export class FindPokemonByNameUseCase {
   constructor (private readonly pokemonRepository: IFindPokemonByNameRepostiory) {}
 
   async execute (params: IFindPokemonByName.Params): Promise<any> {
-    await this.pokemonRepository.findByName(params.name);
+    try {
+      await this.pokemonRepository.findByName(params.name);
+    } catch (err) {
+      console.error(err);
+      return failure(err);
+    }
   }
 }
 
@@ -43,5 +50,14 @@ describe('FindPokemonByNameUseCase', () => {
     await sut.execute({ name: 'Charmander' });
 
     expect(findSpy).toHaveBeenCalledWith('Charmander');
+  });
+
+  it('sould retusn a failure error if FindPokemonByNameRepository throws', async () => {
+    const { sut, findPokemonByNameRepositoryStub } = makeSut();
+    jest.spyOn(findPokemonByNameRepositoryStub, 'findByName').mockImplementationOnce(throwError);
+
+    const promise = sut.execute({ name: 'Charmander' });
+
+    expect(promise).resolves.toEqual(failure(Error()));
   });
 });
