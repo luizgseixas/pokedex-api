@@ -19,7 +19,8 @@ export class FindPokemonByNameUseCase {
 
   async execute (params: IFindPokemonByName.Params): Promise<any> {
     try {
-      await this.pokemonRepository.findByName(params.name);
+      const pokemon = await this.pokemonRepository.findByName(params.name);
+      return pokemon;
     } catch (err) {
       console.error(err);
       return failure(err);
@@ -43,7 +44,7 @@ const makeSut = (): SutTypes => {
 };
 
 describe('FindPokemonByNameUseCase', () => {
-  it('sould call FindPokemonByNameRepository with correct params', async () => {
+  test('sould call FindPokemonByNameRepository with correct params', async () => {
     const { sut, findPokemonByNameRepositoryStub } = makeSut();
     const findSpy = jest.spyOn(findPokemonByNameRepositoryStub, 'findByName');
 
@@ -52,12 +53,21 @@ describe('FindPokemonByNameUseCase', () => {
     expect(findSpy).toHaveBeenCalledWith('Charmander');
   });
 
-  it('sould retusn a failure error if FindPokemonByNameRepository throws', async () => {
+  test('sould retusn a failure error if FindPokemonByNameRepository throws', async () => {
     const { sut, findPokemonByNameRepositoryStub } = makeSut();
     jest.spyOn(findPokemonByNameRepositoryStub, 'findByName').mockImplementationOnce(throwError);
 
     const promise = sut.execute({ name: 'Charmander' });
 
     expect(promise).resolves.toEqual(failure(Error()));
+  });
+
+  test('sould returns null if FindPokemonByNameRepository not returns', async () => {
+    const { sut, findPokemonByNameRepositoryStub } = makeSut();
+    jest.spyOn(findPokemonByNameRepositoryStub, 'findByName').mockResolvedValueOnce(null);
+
+    const pokemon = await sut.execute({ name: 'Charmander' });
+
+    expect(pokemon).toBeNull();
   });
 });
