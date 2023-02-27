@@ -2,7 +2,7 @@ import { IFindPokemonByNameRepository } from '@src/data/contracts/db/pokemon';
 import { failure, success } from '@src/domain/shared/utils/either';
 import { throwError } from '@src/domain/test';
 import { mockPokemon } from '@src/domain/test/mock-pokemon';
-import { mockFindPokemonByNameRepo } from '@src/infra/typeorm/test';
+import { mockFindPokemonByNameRepo } from '@src/infra/typeorm/test/repositories';
 import { FindPokemonByNameUseCase } from './find-pokemon-by-name.usecase';
 
 type SutTypes = {
