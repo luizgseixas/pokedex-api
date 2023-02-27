@@ -5,7 +5,7 @@ import { IFindPokemonByName } from '@src/domain/usecases/pokemon/find-pokemon-by
 export class FindPokemonByNameUseCase implements IFindPokemonByName {
   constructor (private readonly pokemonRepository: IFindPokemonByNameRepository) {}
 
-  async execute (params: IFindPokemonByName.Params): Promise<any> {
+  async execute (params: IFindPokemonByName.Params): IFindPokemonByName.Result {
     try {
       const pokemon = await this.pokemonRepository.findByName(params.name);
       return success(pokemon);

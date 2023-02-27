@@ -1,6 +1,7 @@
 import { IGetPokemonInformations, IMapFamilyTree } from '@src/domain/usecases/pokemon';
 import { failure, success } from '@src/domain/shared/utils/either';
 import { IPokemonInformationsRequester, Move, Sprite } from '@src/data/contracts/apis';
+import { PokemonInformationsModel, Stats } from '@src/domain/models/pokemon';
 
 export class GetPokemonInformationUseCase implements IGetPokemonInformations {
   constructor (
@@ -18,11 +19,11 @@ export class GetPokemonInformationUseCase implements IGetPokemonInformations {
         return failure(familyTree.value);
       }
 
-      const information = {
+      const information: PokemonInformationsModel = {
         id: data.id,
         name: data.name,
-        stats: data.stats,
-        types: data.types,
+        stats: data.stats.reduce((acc, { stat, base_stat }) => ({ ...acc, [stat.name]: base_stat }), {} as Stats),
+        types: data.types.map((type) => ({ type: type.type.name })),
         sprites: this.spritesFilter(data.sprites),
         moves: this.movesFilter(data.moves),
         familyTree: familyTree.value,

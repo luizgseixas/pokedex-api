@@ -35,6 +35,7 @@
     "no-redeclare": "off",
     "prefer-const": "off",
     "no-console": "off",
+    "camelcase": "off",
     "max-len": "off",
     "@typescript-eslint/naming-convention": [
       "error",

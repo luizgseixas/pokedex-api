@@ -4,7 +4,7 @@ export type PokemonInformationsModel = {
   id: number;
   name: string;
   sprites: Sprite;
-  stats: Array<Stat>;
+  stats: Stats;
   types: Array<Type>;
   moves: Array<Move>;
   familyTree: Array<FamilyTreeModel>;
@@ -21,15 +21,17 @@ type Sprite = {
   back_shiny_female?: string;
 }
 
-type Stat = {
-  base_stat: number;
-  stat: { name: string };
+export type Stats = {
+  hp: number;
+  attack: number;
+  defense: number;
+  special_attack: number;
+  special_defense: number;
+  speed: number;
 }
 
 type Type = {
-  type: {
-    name: string;
-  };
+  type: string;
 }
 
 type Move = {

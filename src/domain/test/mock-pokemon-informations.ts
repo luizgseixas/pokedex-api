@@ -5,11 +5,15 @@ import { PokemonDataResponse } from '../../data/contracts/apis/responses';
 export const mockPokemonInformations = (): PokemonInformationsModel => ({
   id: 1,
   name: 'any_name',
-  stats: [{
-    base_stat: 40,
-    stat: { name: 'any_stat' },
-  }],
-  types: [{ type: { name: 'any_type' } }],
+  stats: {
+    hp: 1,
+    attack: 1,
+    defense: 1,
+    special_attack: 1,
+    special_defense: 1,
+    speed: 1,
+  },
+  types: [{ type: 'any_type' }],
   sprites: {
     front_default: 'any_front_default',
     front_shiny: 'any_front_shiny',
@@ -34,8 +38,28 @@ export const mockPrimitivePokemonInformations = (): PokemonDataResponse => ({
   types: [{ type: { name: 'any_type' } }],
   stats: [
     {
-      base_stat: 40,
-      stat: { name: 'any_stat' },
+      base_stat: 1,
+      stat: { name: 'hp' },
+    },
+    {
+      base_stat: 1,
+      stat: { name: 'attack' },
+    },
+    {
+      base_stat: 1,
+      stat: { name: 'defense' },
+    },
+    {
+      base_stat: 1,
+      stat: { name: 'special_attack' },
+    },
+    {
+      base_stat: 1,
+      stat: { name: 'special_defense' },
+    },
+    {
+      base_stat: 1,
+      stat: { name: 'speed' },
     },
   ],
   sprites: {
