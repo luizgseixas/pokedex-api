@@ -99,6 +99,7 @@ export class PokemonsEntity {
         special_attack: this.special_attack,
         special_defense: this.special_defense,
         speed: this.speed,
+        location_area: this.location_area,
         types: this.types,
       },
       this.id,

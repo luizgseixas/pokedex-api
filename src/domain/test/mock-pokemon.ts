@@ -18,6 +18,7 @@ export const mockPokemon = (): PokemonModel => ({
   special_attack: 20,
   special_defense: 40,
   speed: 60,
+  location_area: 'any_localtion_area',
   types: [{
     name: 'grass',
   }],

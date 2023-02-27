@@ -23,6 +23,7 @@ export namespace ISavePokemonRepository {
     special_attack: number;
     special_defense: number;
     speed: number;
+    location_area: string;
     types: TypeModel[];
   }
 

@@ -2,7 +2,7 @@ import { ISavePokemonRepository } from '@src/data/contracts/db/pokemon/save-poke
 import { failure } from '@src/domain/shared/utils/either';
 import { throwError } from '@src/domain/test';
 import { mockPokemon } from '@src/domain/test/mock-pokemon';
-import { mockSavePokemonRepo } from '@src/infra/typeorm/test/mock-save-pokemon.repository';
+import { mockSavePokemonRepo } from '@src/infra/typeorm/test/repositories';
 import { SavePokemonUseCase } from './save-pokemon.usecase';
 
 type SutTypes = {
