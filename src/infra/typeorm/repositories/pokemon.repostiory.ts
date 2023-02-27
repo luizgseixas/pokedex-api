@@ -7,11 +7,13 @@ export class PokemonsRepository implements ISavePokemonRepository, IFindPokemonB
   constructor (private readonly pokemonsRepository: Repository<PokemonsEntity>) {}
 
   async findByName (name: string): Promise<PokemonModel> {
-    return this.pokemonsRepository.findOne({
+    const pokemon = await this.pokemonsRepository.findOne({
       where: {
         name,
       },
     });
+    if (pokemon) return pokemon.toPlainClass();
+    return null;
   }
 
   async save (params: ISavePokemonRepository.Params): ISavePokemonRepository.Result {

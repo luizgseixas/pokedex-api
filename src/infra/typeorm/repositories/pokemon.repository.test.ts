@@ -1,8 +1,10 @@
 /* eslint-disable import/no-extraneous-dependencies */
+import { PokemonModel } from '@src/domain/models/pokemon';
 import { IBackup } from 'pg-mem';
 import { DataSource, Repository } from 'typeorm';
 import { makeDbInMemory } from '../../pg-mem';
 import { MovesEntity, PokemonsEntity, TypesEntity } from '../entities';
+import { mockPokemonEntity } from '../test/entities/mock-pokemon';
 import { PokemonsRepository } from './pokemon.repostiory';
 
 describe('PokemonRepository', () => {
@@ -44,6 +46,14 @@ describe('PokemonRepository', () => {
       const pokemon = await sut.findByName('any_pokemon_name');
 
       expect(pokemon).toBeNull();
+    });
+
+    it('should return a PokemonModel if found a pokemon with param name', async () => {
+      const newPokemon = pokemonRepository.create(mockPokemonEntity());
+      await pokemonRepository.save(newPokemon);
+      const pokemon = await sut.findByName('any_pokemon_name');
+
+      expect(pokemon).toBeInstanceOf(PokemonModel);
     });
   });
 });
