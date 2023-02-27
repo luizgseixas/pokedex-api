@@ -1,6 +1,6 @@
 import { PokemonModel } from '@src/domain/models/pokemon';
 import {
-  Column, CreateDateColumn, Entity, JoinTable, ManyToMany, PrimaryColumn,
+  Column, CreateDateColumn, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn,
 } from 'typeorm';
 import { MovesEntity } from './moves';
 import { TypesEntity } from './types';
@@ -11,7 +11,7 @@ export class PokemonsEntity {
     if (data) Object.assign(this, data);
   }
 
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn('uuid')
     id: string;
 
   @Column()
