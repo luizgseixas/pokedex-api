@@ -39,5 +39,11 @@ describe('PokemonRepository', () => {
         },
       });
     });
+
+    it('should return null if not found a pokemon', async () => {
+      const pokemon = await sut.findByName('any_pokemon_name');
+
+      expect(pokemon).toBeNull();
+    });
   });
 });
