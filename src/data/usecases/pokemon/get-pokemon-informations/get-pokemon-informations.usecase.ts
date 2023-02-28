@@ -23,7 +23,7 @@ export class GetPokemonInformationUseCase implements IGetPokemonInformations {
         id: data.id,
         name: data.name,
         stats: data.stats.reduce((acc, { stat, base_stat }) => ({ ...acc, [stat.name]: base_stat }), {} as Stats),
-        types: data.types.map((type) => ({ type: type.type.name })),
+        types: data.types.map((type) => type.type.name),
         sprites: this.spritesFilter(data.sprites),
         moves: data.moves.map((move) => move.move.name),
         familyTree: familyTree.value,

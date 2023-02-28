@@ -13,7 +13,7 @@ export const mockPokemonInformations = (): PokemonInformationsModel => ({
     special_defense: 1,
     speed: 1,
   },
-  types: [{ type: 'any_type' }],
+  types: ['any_type'],
   sprites: {
     front_default: 'any_front_default',
     front_shiny: 'any_front_shiny',

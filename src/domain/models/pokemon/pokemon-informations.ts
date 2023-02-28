@@ -5,7 +5,7 @@ export type PokemonInformationsModel = {
   name: string;
   sprites: Sprite;
   stats: Stats;
-  types: Array<Type>;
+  types: Array<string>;
   moves: Array<string>;
   familyTree: Array<FamilyTreeModel>;
 }
@@ -28,8 +28,4 @@ export type Stats = {
   special_attack: number;
   special_defense: number;
   speed: number;
-}
-
-type Type = {
-  type: string;
 }
