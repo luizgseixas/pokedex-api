@@ -9,6 +9,5 @@ export default (app: Express) => {
     if (!file.includes('.test.') && !file.endsWith('.map')) {
       (await import(`../routes/${file}`)).default(router);
     }
-    console.log('[Routes Setup]', file);
   });
 };

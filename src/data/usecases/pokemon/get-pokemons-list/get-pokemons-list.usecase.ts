@@ -10,16 +10,15 @@ export class GetPokemonsListUseCase implements IGetPokemonsList {
     try {
       const data = await this.listRequester.lists(params?.offset, params?.limit);
 
-      const withOutUrl = data.results.map((pokemon) => ({ name: pokemon.name }));
+      const formattedResults = data.results.map((pokemon) => ({ name: pokemon.name, url: `${Environment.API_URL}/pokemon/${pokemon.name}/informations` }));
 
       const next = data.next ? data.next.split('?')[1] : null;
       const previous = data.previous ? data.previous.split('?')[1] : null;
 
       data.next = next != null ? `${Environment.API_URL}/pokemon/list?${next}` : null;
       data.previous = previous != null ? `${Environment.API_URL}/pokemon/list?${previous}` : null;
-      data.results = withOutUrl;
 
-      return success(data);
+      return success({ ...data, ...{ results: formattedResults } });
     } catch (err) {
       // TODO: criar erro especifico e melhor tratativa
       console.error(err);
