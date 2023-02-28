@@ -25,7 +25,7 @@ export class GetPokemonInformationUseCase implements IGetPokemonInformations {
         stats: data.stats.reduce((acc, { stat, base_stat }) => ({ ...acc, [stat.name]: base_stat }), {} as Stats),
         types: data.types.map((type) => ({ type: type.type.name })),
         sprites: this.spritesFilter(data.sprites),
-        moves: this.movesFilter(data.moves),
+        moves: data.moves.map((move) => move.move.name),
         familyTree: familyTree.value,
       };
 
@@ -34,11 +34,6 @@ export class GetPokemonInformationUseCase implements IGetPokemonInformations {
       return failure(err);
     }
   }
-
-  private movesFilter = (moves: Move[]) => {
-    const filteredMoves = moves.map((move) => ({ name: move.move.name }));
-    return filteredMoves;
-  };
 
   private spritesFilter = (sprites: Sprite) => {
     return {

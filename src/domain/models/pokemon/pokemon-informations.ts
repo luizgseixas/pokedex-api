@@ -6,7 +6,7 @@ export type PokemonInformationsModel = {
   sprites: Sprite;
   stats: Stats;
   types: Array<Type>;
-  moves: Array<Move>;
+  moves: Array<string>;
   familyTree: Array<FamilyTreeModel>;
 }
 
@@ -32,8 +32,4 @@ export type Stats = {
 
 type Type = {
   type: string;
-}
-
-type Move = {
-  name: string;
 }

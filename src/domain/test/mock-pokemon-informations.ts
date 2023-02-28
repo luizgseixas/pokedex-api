@@ -24,9 +24,7 @@ export const mockPokemonInformations = (): PokemonInformationsModel => ({
     back_female: 'any_back_female',
     back_shiny_female: 'any_back_shiny_female',
   },
-  moves: [{
-    name: 'any_name',
-  }],
+  moves: ['any_name'],
   familyTree: mockFamilyTreeThree(),
 });
 
