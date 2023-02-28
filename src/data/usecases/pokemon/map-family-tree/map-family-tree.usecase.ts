@@ -22,9 +22,9 @@ export class MapFamilyTreeUseCase implements IMapFamilyTree {
     }
   }
 
-  private evolutionsDetailsFilter = (arr: Array<EvolutionDetail>): any => {
-    if (arr.length === 0) return null;
-    const evolutions = arr.map((datail) => {
+  private evolutionsDetailsFilter = (evolutionDetails: Array<EvolutionDetail>): any => {
+    if (evolutionDetails.length === 0) return null;
+    const evolutions = evolutionDetails.map((datail) => {
       return Object.entries(datail).reduce((newObj, [key, value]) => {
         if (value !== null && value !== false && value !== '') {
           if (key === 'trigger') {
