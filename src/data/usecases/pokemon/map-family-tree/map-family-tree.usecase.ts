@@ -29,9 +29,8 @@ export class MapFamilyTreeUseCase implements IMapFamilyTree {
         if (value !== null && value !== false && value !== '') {
           if (key === 'trigger') {
             newObj[key] = value.name;
-          } else {
-            newObj[key] = value;
-          }
+          } else if (typeof value === 'object') newObj[key] = value.name;
+          else newObj[key] = value;
         }
         return newObj;
       }, {});

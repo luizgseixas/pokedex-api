@@ -1,8 +1,8 @@
-import { IFamilyTreeRequester, ISpeciesRequester, SpeciesResponse } from '@src/data/contracts/apis';
+import { IFamilyTreeRequester, ISpeciesRequester } from '@src/data/contracts/apis';
 import { failure, success } from '@src/domain/shared/utils/either';
 import {
   mockFamilyTreeAll,
-  mockFamilyTreeOne, mockFamilyTreeThree, mockFamilyTreeTwo, mockPrimitiveAllEvolutionChain, mockPrimitiveOneEvolutionChain, mockPrimitiveTwoEvolutionChain, mockSpecies, throwError,
+  mockFamilyTreeOne, mockFamilyTreeThree, mockFamilyTreeTwo, mockPrimitiveAllEvolutionChain, mockPrimitiveOneEvolutionChain, mockPrimitiveTwoEvolutionChain, throwError,
 } from '@src/domain/test';
 import { IMapFamilyTree } from '@src/domain/usecases/pokemon';
 import { mockFamilyTreeRequester, mockSpeciesRequester } from '@src/data/test';

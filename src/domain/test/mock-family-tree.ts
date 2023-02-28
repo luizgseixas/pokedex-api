@@ -729,10 +729,7 @@ export const mockFamilyTreeAll = (): FamilyTreeModel[] => ([
     evolution_lvl: 2,
     name: 'any_name',
     evolution_details: [{
-      item: {
-        name: 'any_item',
-        url: 'any_url',
-      },
+      item: 'any_item',
       trigger: 'any_trigger',
     }],
   },
@@ -740,10 +737,7 @@ export const mockFamilyTreeAll = (): FamilyTreeModel[] => ([
     evolution_lvl: 3,
     name: 'any_name',
     evolution_details: [{
-      item: {
-        name: 'any_item',
-        url: 'any_url',
-      },
+      item: 'any_item',
       trigger: 'any_trigger',
     }],
   },
@@ -751,10 +745,7 @@ export const mockFamilyTreeAll = (): FamilyTreeModel[] => ([
     evolution_lvl: 4,
     name: 'any_name',
     evolution_details: [{
-      item: {
-        name: 'any_item',
-        url: 'any_url',
-      },
+      item: 'any_item',
       trigger: 'any_trigger',
     }],
   },
@@ -781,34 +772,22 @@ export const mockFamilyTreeAll = (): FamilyTreeModel[] => ([
     name: 'any_name',
     evolution_details: [
       {
-        location: {
-          name: 'any_location',
-          url: 'any_url',
-        },
+        location: 'any_location',
         trigger: 'any_trigger',
       },
       {
-        location: {
-          name: 'any_location',
-          url: 'any_url',
-        },
+        location: 'any_location',
         trigger: 'any_trigger',
       },
       {
-        location: {
-          name: 'any_location',
-          url: 'any_url',
-        },
+        location: 'any_location',
         trigger: 'any_trigger',
       },
       {
         trigger: 'any_trigger',
       },
       {
-        item: {
-          name: 'any_item',
-          url: 'any_url',
-        },
+        item: 'any_item',
         trigger: 'any_trigger',
       },
     ],
@@ -818,34 +797,22 @@ export const mockFamilyTreeAll = (): FamilyTreeModel[] => ([
     name: 'any_name',
     evolution_details: [
       {
-        location: {
-          name: 'any_location',
-          url: 'any_url',
-        },
+        location: 'any_location',
         trigger: 'any_trigger',
       },
       {
-        location: {
-          name: 'any_location',
-          url: 'any_url',
-        },
+        location: 'any_location',
         trigger: 'any_trigger',
       },
       {
-        location: {
-          name: 'any_location',
-          url: 'any_url',
-        },
+        location: 'any_location',
         trigger: 'any_trigger',
       },
       {
         trigger: 'any_trigger',
       },
       {
-        item: {
-          name: 'any_item',
-          url: 'any_url',
-        },
+        item: 'any_item',
         trigger: 'any_trigger',
       },
     ],
@@ -855,18 +822,12 @@ export const mockFamilyTreeAll = (): FamilyTreeModel[] => ([
     name: 'any_name',
     evolution_details: [
       {
-        known_move_type: {
-          name: 'any_move',
-          url: 'any_url',
-        },
+        known_move_type: 'any_move',
         min_affection: 2,
         trigger: 'any_trigger',
       },
       {
-        known_move_type: {
-          name: 'any_move',
-          url: 'any_url',
-        },
+        known_move_type: 'any_move',
         min_happiness: 160,
         trigger: 'any_trigger',
       },
