@@ -56,4 +56,31 @@ describe('PokemonRepository', () => {
       expect(pokemon).toBeInstanceOf(PokemonModel);
     });
   });
+
+  describe('save', () => {
+    it('should call save with correct params', async () => {
+      const createSpy = jest.spyOn(pokemonRepository, 'create');
+      const saveSpy = jest.spyOn(pokemonRepository, 'save');
+
+      await sut.save(mockPokemonEntity());
+
+      expect(createSpy).toHaveBeenCalledWith(mockPokemonEntity());
+      expect(saveSpy).toHaveBeenCalled();
+    });
+
+    it('should return null if not found a pokemon', async () => {
+      const pokemon = await sut.findByName('any_pokemon_name');
+
+      expect(pokemon).toBeNull();
+    });
+
+    it('should return a PokemonModel if found a pokemon with param name', async () => {
+      const newPokemon = pokemonRepository.create(mockPokemonEntity());
+      await pokemonRepository.save(newPokemon);
+      const pokemon = await sut.findByName(newPokemon.name);
+
+      expect(pokemon).toBeInstanceOf(PokemonModel);
+      expect(pokemon.name).toBe(mockPokemonEntity().name);
+    });
+  });
 });

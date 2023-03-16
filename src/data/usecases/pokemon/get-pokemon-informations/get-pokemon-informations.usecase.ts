@@ -1,6 +1,6 @@
 import { IGetPokemonInformations, IMapFamilyTree } from '@src/domain/usecases/pokemon';
 import { failure, success } from '@src/domain/shared/utils/either';
-import { IPokemonInformationsRequester, Move, Sprite } from '@src/data/contracts/apis';
+import { IPokemonInformationsRequester, Sprite } from '@src/data/contracts/apis';
 import { PokemonInformationsModel, Stats } from '@src/domain/models/pokemon';
 
 export class GetPokemonInformationUseCase implements IGetPokemonInformations {

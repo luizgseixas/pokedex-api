@@ -17,4 +17,5 @@ export const mockPokemonEntity = () => ({
   special_defense: 1,
   speed: 1,
   location_area: 'any_location_area',
+  types: [],
 });
