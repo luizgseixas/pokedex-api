@@ -6,9 +6,9 @@ import http from 'http';
 import cors from 'cors';
 import morgan from 'morgan';
 
-import routes from './routes';
+import { prismaSetup } from '@src/infra/database/prisma/prisma-client';
 import setupRoutes from './config/routes';
-import { setupTypeorm } from '../infra/typeorm';
+// import { setupTypeorm } from '../infra/typeorm';
 
 class Application {
   public static app: Express;
@@ -20,7 +20,8 @@ class Application {
     this.app.use(express.json());
     this.app.use(cors());
     setupRoutes(this.app);
-    await setupTypeorm();
+    await prismaSetup();
+    // await setupTypeorm();
 
     server.listen(4444, () => console.log(`🔥 Server running on host http://localhost:${4444} 🚀 `));
   }
