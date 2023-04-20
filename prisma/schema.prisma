@@ -13,7 +13,6 @@ datasource db {
 model Trainer {
   id         String    @id() @default(uuid())
   name       String
-  document   String
   email      String
   password   String
   auth_token String?

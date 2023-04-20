@@ -1,3 +1,5 @@
+import { PokemonModel } from '../pokemon';
+
 export class TrainerModel {
   constructor (data?: Omit<TrainerModel, 'id'>, id?: string) {
     if (data) Object.assign(this, data);
@@ -6,8 +8,11 @@ export class TrainerModel {
 
   id: string;
   name: string;
-  document: string;
   email: string;
   password: string;
-  created_at?: Date;
+  auth_token?: string;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
+  pokemons?: PokemonModel[];
 }
